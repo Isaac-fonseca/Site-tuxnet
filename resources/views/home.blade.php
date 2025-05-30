@@ -57,7 +57,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0 text-center animate-on-scroll fade-in-left">
-                    <img src="https://placehold.co/600x400/5F1970/FFFFFF?text=Sobre+a+Tuxnet" class="img-fluid rounded shadow" alt="Sobre a Tuxnet" style="max-width: 450px;">
+                    <img src="{{ asset('img/slogan.png') }}" class="img-fluid rounded shadow sobre-empresa-image" alt="Sobre a Tuxnet">
                 </div>
                 <div class="col-lg-6 animate-on-scroll fade-in-right">
                     <h2 class="font-montserrat mb-3 text-center text-lg-start">Bem-vindo à <span class="text-primary-tuxnet">Tuxnet</span></h2>
@@ -75,34 +75,59 @@
     <section id="cidades-atendidas" class="section-padding cidades-atendidas">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center mb-4">
-                    <h2 class="font-montserrat">Cidades <span class="text-primary-tuxnet">Atendidas</span></h2>
+                <div class="col-12 text-center mb-5"> {{-- Aumentei o mb para mb-5 --}}
+                    <h2 class="font-montserrat">Cidades <span class="text-primary-tuxnet">Atendidas na Bahia</span></h2>
                     <p class="lead">Levamos nossa conexão de alta qualidade para diversas localidades. Veja se a sua cidade está na lista!</p>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <ul>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i>Cidade Exemplo 1</li>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i>Cidade Exemplo 2</li>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i>Cidade Exemplo 3</li>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i>Cidade Exemplo 4</li>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i>Cidade Exemplo 5</li>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i>Cidade Exemplo 6</li>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i>Cidade Exemplo 7</li>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i>Cidade Exemplo 8</li>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i>Cidade Exemplo 9</li>
-                        <li><i class="bi bi-geo-alt-fill me-2"></i>Cidade Exemplo 10</li>
-                        {{-- Adicione mais cidades conforme necessário --}}
-                    </ul>
-                    <div class="text-center mt-4">
-                        <p>Não encontrou sua cidade? <a href="{{ url('/contato') }}" class="text-primary-tuxnet fw-bold">Entre em contato</a> para verificar a disponibilidade.</p>
+                @php
+                    $cidades = ['Feira de Santana', 'Retiro', 'Riachão do Jacuípe', 'Valente', 'Santa Luz'];
+                @endphp
+
+                @foreach($cidades as $cidade)
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card h-100 text-center cidade-card">
+                        <div class="card-body">
+                            <i class="bi bi-geo-alt-fill display-4 text-secondary-tuxnet mb-3"></i>
+                            <h5 class="card-title font-montserrat">{{ $cidade }}</h5>
+                        </div>
                     </div>
+                </div>
+                @endforeach
+               
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p>Não encontrou sua cidade? <a href="{{ url('/contato') }}" class="text-primary-tuxnet fw-bold">Entre em contato</a> para verificar a disponibilidade.</p>
                 </div>
             </div>
         </div>
     </section>
+</section>
 
+    <section id="cta-whatsapp" class="section-padding bg-primary-tuxnet text-white">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <i class="bi bi-whatsapp display-1 mb-3 animate-on-scroll fade-in-up"></i>
+                    <h2 class="font-montserrat mb-3 animate-on-scroll fade-in-up" data-animation-delay="100">Fale com um Especialista Agora!</h2>
+                    <p class="lead mb-4 animate-on-scroll fade-in-up" data-animation-delay="200">
+                        Tem dúvidas ou quer contratar o melhor plano de internet para você ou sua empresa? Nossa equipe está pronta para te atender pelo WhatsApp!
+                    </p>
+                    <a href="https://wa.me/5508007226662?text=Olá! Gostaria de mais informações sobre os planos da Tuxnet." target="_blank" class="btn btn-lg btn-secondary-tuxnet animate-on-scroll fade-in-up" data-animation-delay="300">
+                        <i class="bi bi-whatsapp me-2"></i> Chamar no WhatsApp: 0800 722 6662
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- Fim da Seção CTA WhatsApp --}}
+
+    {{-- Ícone Flutuante do WhatsApp (adicionado no final do content se for específico da home) --}}
+    <a href="https://wa.me/5508007226662?text=Olá! Gostaria de mais informações sobre os planos da Tuxnet." target="_blank" class="whatsapp-float" title="Fale Conosco pelo WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
 @endsection
 
 @push('scripts')

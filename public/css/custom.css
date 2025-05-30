@@ -1,123 +1,210 @@
-    /* Estilos específicos para a Página Inicial (home.blade.php) */
+/* Estilos específicos para a Página Inicial (home.blade.php) */
 
-    .hero-carousel {
-        margin-top: -1.5rem; /* Compensa o padding-top do main.py-4 para encostar na navbar */
-        overflow: hidden; /* Garante que nada escape dos limites do carrossel */
-    }
+.hero-carousel {
+    margin-top: -1.5rem; /* Compensa o padding-top do main.py-4 para encostar na navbar */
+    overflow: hidden; /* Garante que nada escape dos limites do carrossel */
+}
 
+.hero-carousel .carousel-item {
+    height: 50vh; /* Altura para desktop */
+    min-height: 280px; /* Altura mínima para telas muito pequenas/desktop */
+}
+
+.hero-carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+/* Ajuste de altura do carrossel para telas menores */
+@media (max-width: 767.98px) { /* Telas MD e menores */
     .hero-carousel .carousel-item {
-        height: 50vh; /* AJUSTADO: Altura para desktop */
-        min-height: 280px; /* AJUSTADO: Altura mínima para telas muito pequenas/desktop */
+        height: 35vh; /* Altura para mobile */
+        min-height: 200px;
     }
-
-    .hero-carousel .carousel-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center center; /* PADRÃO: Mantenha ou ajuste por imagem se necessário. Veja exemplos abaixo. */
-        /* Exemplos de object-position (descomente e teste UMA por vez se o corte central não for ideal): */
-        /* object-position: top center; */  /* Prioriza o topo da imagem */
-        /* object-position: bottom center; */ /* Prioriza a base da imagem */
-        /* object-position: 50% 25%; */ /* Centro horizontal, 25% a partir do topo */
+    .hero-carousel .carousel-caption h5 {
+        font-size: 1.1rem;
     }
-
-    /* Ajuste de altura do carrossel para telas menores */
-    @media (max-width: 767.98px) { /* Telas MD e menores */
-        .hero-carousel .carousel-item {
-            height: 35vh; /* AJUSTADO: Altura para mobile - visa reduzir corte lateral */
-            min-height: 200px; /* AJUSTADO */
-        }
-        .hero-carousel .carousel-caption h5 {
-            font-size: 1.1rem; /* Ajustado */
-        }
-        .hero-carousel .carousel-caption p {
-            font-size: 0.75rem; /* Ajustado */
-            margin-bottom: 0.4rem; /* Ajustado */
-        }
-        .hero-carousel .carousel-caption .btn {
-            font-size: 0.75rem; /* Ajustado */
-            padding: 0.2rem 0.4rem; /* Ajustado */
-        }
+    .hero-carousel .carousel-caption p {
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
     }
+    .hero-carousel .carousel-caption .btn {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
 
+.hero-carousel .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    bottom: 1rem;
+    left: 5%;
+    right: 5%;
+    text-align: center;
+}
+
+@media (min-width: 768px) { /* Desktop e telas maiores */
     .hero-carousel .carousel-caption {
-        background-color: rgba(0, 0, 0, 0.6);
-        padding: 0.8rem; /* Ajustado */
-        border-radius: 0.5rem;
-        bottom: 1rem; /* Ajustado */
-        left: 5%;
-        right: 5%;
-        text-align: center;
+        padding: 1.2rem;
+        left: 15%;
+        right: 15%;
+        bottom: 1.5rem;
     }
-
-    @media (min-width: 768px) { /* Desktop e telas maiores */
-        .hero-carousel .carousel-caption {
-            padding: 1.2rem; /* Ajustado */
-            left: 15%;
-            right: 15%;
-            bottom: 1.5rem; /* Ajustado */
-        }
-    }
+}
 
 
+.section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
     .section-padding {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
+}
 
-    @media (min-width: 768px) {
-        .section-padding {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
-        }
-    }
+/* Animações ao rolar */
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
 
-    /* Animações ao rolar */
-    .animate-on-scroll {
-        opacity: 0;
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
+.animate-on-scroll.fade-in-left {
+    transform: translateX(-50px);
+}
 
-    .animate-on-scroll.fade-in-left {
-        transform: translateX(-50px);
-    }
+.animate-on-scroll.fade-in-right {
+    transform: translateX(50px);
+}
 
-    .animate-on-scroll.fade-in-right {
-        transform: translateX(50px);
-    }
-    
-    .animate-on-scroll.fade-in-up { /* Exemplo de outra animação, se precisar */
-        transform: translateY(50px);
-    }
+.animate-on-scroll.fade-in-up {
+    transform: translateY(50px);
+}
 
-    .animate-on-scroll.is-visible {
-        opacity: 1;
-        transform: translateX(0) translateY(0); /* Reseta transformações */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0); /* Reseta transformações */
+}
+
+/* Estilos para a seção sobre-empresa */
+#sobre-empresa {
+    overflow-x: hidden; /* Para conter qualquer overflow da seção inteira */
+}
+
+/* Imagem na seção Sobre Empresa */
+.sobre-empresa-image {
+    /* A classe img-fluid já define max-width: 100%; e height: auto; */
+}
+
+@media (min-width: 992px) { /* Telas LG (desktop) e maiores */
+    .sobre-empresa-image {
+        max-width: 620px; /* Tamanho máximo da imagem em telas de desktop. Ajuste conforme necessário. */
     }
+}
 
 
-    .cidades-atendidas ul {
-        list-style: none;
-        padding-left: 0;
-        column-count: 1;
+/* Ajuste responsivo para o título e texto na seção sobre em telas pequenas */
+@media (max-width: 575.98px) { /* Telas extra pequenas (celulares em modo retrato) */
+    #sobre-empresa h2.font-montserrat {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        overflow-wrap: break-word;
     }
+    #sobre-empresa p.lead {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-bottom: 0.75rem;
+        overflow-wrap: break-word;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+    #sobre-empresa p {
+        font-size: 0.8rem;
+        line-height: 1.6;
+        margin-bottom: 0.75rem;
+        overflow-wrap: break-word;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+    #sobre-empresa .btn {
+        font-size: 0.85rem;
+        padding: 0.35rem 0.7rem;
+    }
+}
 
-    @media (min-width: 576px) {
-        .cidades-atendidas ul {
-            column-count: 2;
-        }
-    }
+/* Cidades Atendidas - Estilos para Cards */
+.cidades-atendidas .cidade-card {
+    border: 1px solid #e9ecef; /* Borda sutil padrão */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: var(--tuxnet-white); /* Garante fundo branco para o card */
+}
 
-    @media (min-width: 992px) {
-        .cidades-atendidas ul {
-            column-count: 3;
-        }
-    }
+.cidades-atendidas .cidade-card:hover {
+    transform: translateY(-5px); /* Efeito de levantar no hover */
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); /* Sombra no hover */
+}
 
-    .cidades-atendidas ul li {
-        margin-bottom: 0.5rem;
-    }
+.cidades-atendidas .cidade-card .card-title {
+    color: var(--tuxnet-primary); /* Cor primária para o nome da cidade */
+    font-size: 1.1rem; /* Tamanho da fonte para o nome da cidade */
+}
 
-    .cidades-atendidas ul li i {
-        color: var(--tuxnet-secondary);
-    }
+.cidades-atendidas .bi-geo-alt-fill { /* Estilo para o ícone de localização nos cards */
+    font-size: 2.5rem; /* Tamanho do ícone, ajustado de display-4 */
+}
+
+/* Seção CTA WhatsApp */
+#cta-whatsapp.section-padding {
+    /* A classe section-padding adiciona padding-top e padding-bottom.
+       Vamos manter o padding-top, mas compensar o padding-bottom do main.main-content. */
+    padding-bottom: 1.5rem; /* Reduz o padding-bottom original para compensar a margem negativa */
+    margin-bottom: -1.5rem; /* Compensa o padding-bottom do main.main-content (que tem py-4, ou seja, 1.5rem de padding) */
+                               /* Isso faz com que o fundo roxo da CTA se estenda até onde o main-content terminaria,
+                                  eliminando o espaço branco antes do footer. */
+    position: relative; /* Para garantir que a margem negativa não cause problemas de sobreposição com o footer em alguns casos */
+    z-index: 1; /* Para garantir que a margem negativa não cause problemas de sobreposição com o footer em alguns casos */
+}
+
+#cta-whatsapp .display-1 {
+    font-size: 4.5rem;
+    color: var(--tuxnet-secondary);
+}
+
+#cta-whatsapp h2 {
+    color: var(--tuxnet-white);
+}
+
+
+/* Ícone Flutuante do WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25D366; /* Cor verde do WhatsApp */
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px; /* Tamanho do ícone */
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    z-index: 1000; /* Para ficar sobre outros elementos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+    color: #FFF;
+}
