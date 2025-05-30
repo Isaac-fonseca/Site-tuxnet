@@ -1,0 +1,123 @@
+    /* Estilos específicos para a Página Inicial (home.blade.php) */
+
+    .hero-carousel {
+        margin-top: -1.5rem; /* Compensa o padding-top do main.py-4 para encostar na navbar */
+        overflow: hidden; /* Garante que nada escape dos limites do carrossel */
+    }
+
+    .hero-carousel .carousel-item {
+        height: 50vh; /* AJUSTADO: Altura para desktop */
+        min-height: 280px; /* AJUSTADO: Altura mínima para telas muito pequenas/desktop */
+    }
+
+    .hero-carousel .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center; /* PADRÃO: Mantenha ou ajuste por imagem se necessário. Veja exemplos abaixo. */
+        /* Exemplos de object-position (descomente e teste UMA por vez se o corte central não for ideal): */
+        /* object-position: top center; */  /* Prioriza o topo da imagem */
+        /* object-position: bottom center; */ /* Prioriza a base da imagem */
+        /* object-position: 50% 25%; */ /* Centro horizontal, 25% a partir do topo */
+    }
+
+    /* Ajuste de altura do carrossel para telas menores */
+    @media (max-width: 767.98px) { /* Telas MD e menores */
+        .hero-carousel .carousel-item {
+            height: 35vh; /* AJUSTADO: Altura para mobile - visa reduzir corte lateral */
+            min-height: 200px; /* AJUSTADO */
+        }
+        .hero-carousel .carousel-caption h5 {
+            font-size: 1.1rem; /* Ajustado */
+        }
+        .hero-carousel .carousel-caption p {
+            font-size: 0.75rem; /* Ajustado */
+            margin-bottom: 0.4rem; /* Ajustado */
+        }
+        .hero-carousel .carousel-caption .btn {
+            font-size: 0.75rem; /* Ajustado */
+            padding: 0.2rem 0.4rem; /* Ajustado */
+        }
+    }
+
+    .hero-carousel .carousel-caption {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 0.8rem; /* Ajustado */
+        border-radius: 0.5rem;
+        bottom: 1rem; /* Ajustado */
+        left: 5%;
+        right: 5%;
+        text-align: center;
+    }
+
+    @media (min-width: 768px) { /* Desktop e telas maiores */
+        .hero-carousel .carousel-caption {
+            padding: 1.2rem; /* Ajustado */
+            left: 15%;
+            right: 15%;
+            bottom: 1.5rem; /* Ajustado */
+        }
+    }
+
+
+    .section-padding {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    @media (min-width: 768px) {
+        .section-padding {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+    }
+
+    /* Animações ao rolar */
+    .animate-on-scroll {
+        opacity: 0;
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .animate-on-scroll.fade-in-left {
+        transform: translateX(-50px);
+    }
+
+    .animate-on-scroll.fade-in-right {
+        transform: translateX(50px);
+    }
+    
+    .animate-on-scroll.fade-in-up { /* Exemplo de outra animação, se precisar */
+        transform: translateY(50px);
+    }
+
+    .animate-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateX(0) translateY(0); /* Reseta transformações */
+    }
+
+
+    .cidades-atendidas ul {
+        list-style: none;
+        padding-left: 0;
+        column-count: 1;
+    }
+
+    @media (min-width: 576px) {
+        .cidades-atendidas ul {
+            column-count: 2;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .cidades-atendidas ul {
+            column-count: 3;
+        }
+    }
+
+    .cidades-atendidas ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .cidades-atendidas ul li i {
+        color: var(--tuxnet-secondary);
+    }
