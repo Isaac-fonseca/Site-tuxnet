@@ -44,3 +44,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+// Inicializa o Carrossel do Bootstrap para a seção "Planos para você"
+        document.addEventListener('DOMContentLoaded', function () {
+            const carouselPlanosElement = document.querySelector('#carouselPlanosParaVoce');
+            if (carouselPlanosElement) {
+                if (typeof bootstrap !== 'undefined' && bootstrap.Carousel) {
+                    const carouselPlanos = new bootstrap.Carousel(carouselPlanosElement, {
+                        interval: 5000, // Muda de slide a cada 5 segundos
+                        wrap: true
+                    });
+                } else {
+                    console.error('Bootstrap Carousel component not found for #carouselPlanosParaVoce.');
+                }
+            }
+        });
+    

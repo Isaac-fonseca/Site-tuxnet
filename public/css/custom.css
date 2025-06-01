@@ -1,13 +1,13 @@
-/* Estilos específicos para a Página Inicial (home.blade.php) */
+/* Estilos específicos para a Página Inicial (home.blade.php) e Planos */
 
 .hero-carousel {
-    margin-top: -1.5rem; /* Compensa o padding-top do main.py-4 para encostar na navbar */
-    overflow: hidden; /* Garante que nada escape dos limites do carrossel */
+    margin-top: -1.5rem; 
+    overflow: hidden; 
 }
 
 .hero-carousel .carousel-item {
-    height: 50vh; /* Altura para desktop */
-    min-height: 280px; /* Altura mínima para telas muito pequenas/desktop */
+    height: 50vh; 
+    min-height: 280px; 
 }
 
 .hero-carousel .carousel-item img {
@@ -17,106 +17,122 @@
     object-position: center center;
 }
 
-/* Ajuste de altura do carrossel para telas menores */
-@media (max-width: 767.98px) { /* Telas MD e menores */
+@media (max-width: 767.98px) { 
     .hero-carousel .carousel-item {
-        height: 35vh; /* Altura para mobile */
+        height: 35vh; 
         min-height: 200px;
     }
     .hero-carousel .carousel-caption h5 {
-        font-size: 1.1rem;
+        font-size: 1.05rem; 
+        font-weight: 600; 
+        margin-bottom: 0.3rem;
     }
     .hero-carousel .carousel-caption p {
-        font-size: 0.75rem;
-        margin-bottom: 0.4rem;
+        font-size: 0.7rem; 
+        margin-bottom: 0.5rem; 
     }
     .hero-carousel .carousel-caption .btn {
-        font-size: 0.75rem;
+        font-size: 0.7rem; 
         padding: 0.2rem 0.4rem;
     }
 }
 
 .hero-carousel .carousel-caption {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 0.8rem;
+    background-color: rgba(0, 0, 0, 0.65); 
+    padding: 1rem; 
     border-radius: 0.5rem;
-    bottom: 1rem;
+    bottom: 1.25rem; 
     left: 5%;
     right: 5%;
     text-align: center;
 }
+.hero-carousel .carousel-caption h5{
+    font-weight: 600; 
+    line-height: 1.4;
+}
 
-@media (min-width: 768px) { /* Desktop e telas maiores */
+@media (min-width: 768px) { 
     .hero-carousel .carousel-caption {
-        padding: 1.2rem;
+        padding: 1.5rem; 
         left: 15%;
         right: 15%;
-        bottom: 1.5rem;
+        bottom: 2rem;
+    }
+     .hero-carousel .carousel-caption h5{
+        font-size: 1.4rem; 
+    }
+    .hero-carousel .carousel-caption p {
+        font-size: 0.9rem; 
+    }
+    .hero-carousel .carousel-caption .btn {
+        font-size: 0.9rem; 
+        padding: 0.4rem 0.8rem;
     }
 }
 
 
 .section-padding {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 3.5rem; 
+    padding-bottom: 3.5rem; 
 }
 
 @media (min-width: 768px) {
     .section-padding {
-        padding-top: 4rem;
-        padding-bottom: 4rem;
+        padding-top: 5rem; 
+        padding-bottom: 5rem; 
     }
 }
 
-/* Animações ao rolar */
 .animate-on-scroll {
     opacity: 0;
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-
 .animate-on-scroll.fade-in-left {
     transform: translateX(-50px);
 }
-
 .animate-on-scroll.fade-in-right {
     transform: translateX(50px);
 }
-
 .animate-on-scroll.fade-in-up {
     transform: translateY(50px);
 }
-
 .animate-on-scroll.is-visible {
     opacity: 1;
-    transform: translateX(0) translateY(0); /* Reseta transformações */
+    transform: translateX(0) translateY(0);
 }
 
-/* Estilos para a seção sobre-empresa */
 #sobre-empresa {
-    overflow-x: hidden; /* Para conter qualquer overflow da seção inteira */
+    overflow-x: hidden; 
+}
+#sobre-empresa h2.font-montserrat { 
+    font-size: 2rem; 
+}
+#sobre-empresa p.lead {
+    font-size: 1.1rem; 
+    margin-bottom: 1rem;
+}
+#sobre-empresa p {
+    font-size: 0.95rem; 
+    line-height: 1.75; 
 }
 
-/* Imagem na seção Sobre Empresa */
-.sobre-empresa-image {
-    /* A classe img-fluid já define max-width: 100%; e height: auto; */
-}
+.sobre-empresa-image { }
 
-@media (min-width: 992px) { /* Telas LG (desktop) e maiores */
+@media (min-width: 992px) { 
     .sobre-empresa-image {
-        max-width: 620px; /* Tamanho máximo da imagem em telas de desktop. Ajuste conforme necessário. */
+        max-width: 620px; 
     }
 }
 
 
-/* Ajuste responsivo para o título e texto na seção sobre em telas pequenas */
-@media (max-width: 575.98px) { /* Telas extra pequenas (celulares em modo retrato) */
+@media (max-width: 575.98px) { 
     #sobre-empresa h2.font-montserrat {
-        font-size: 1.5rem;
+        font-size: 1.6rem; 
         margin-bottom: 0.75rem;
         overflow-wrap: break-word;
     }
     #sobre-empresa p.lead {
-        font-size: 0.85rem;
+        font-size: 0.9rem; 
         line-height: 1.6;
         margin-bottom: 0.75rem;
         overflow-wrap: break-word;
@@ -125,7 +141,7 @@
         hyphens: auto;
     }
     #sobre-empresa p {
-        font-size: 0.8rem;
+        font-size: 0.85rem; 
         line-height: 1.6;
         margin-bottom: 0.75rem;
         overflow-wrap: break-word;
@@ -139,72 +155,294 @@
     }
 }
 
-/* Cidades Atendidas - Estilos para Cards */
 .cidades-atendidas .cidade-card {
-    border: 1px solid #e9ecef; /* Borda sutil padrão */
+    border: 1px solid #e9ecef; 
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    background-color: var(--tuxnet-white); /* Garante fundo branco para o card */
+    background-color: var(--tuxnet-white); 
 }
-
 .cidades-atendidas .cidade-card:hover {
-    transform: translateY(-5px); /* Efeito de levantar no hover */
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); /* Sombra no hover */
+    transform: translateY(-5px); 
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); 
 }
-
 .cidades-atendidas .cidade-card .card-title {
-    color: var(--tuxnet-primary); /* Cor primária para o nome da cidade */
-    font-size: 1.1rem; /* Tamanho da fonte para o nome da cidade */
+    color: var(--tuxnet-primary); 
+    font-size: 1.1rem; 
+    font-weight: 500; 
+}
+.cidades-atendidas .bi-geo-alt-fill { 
+    font-size: 2.5rem; 
 }
 
-.cidades-atendidas .bi-geo-alt-fill { /* Estilo para o ícone de localização nos cards */
-    font-size: 2.5rem; /* Tamanho do ícone, ajustado de display-4 */
+#cta-whatsapp.section-padding.bg-light {
+    margin-bottom: 0;
+    padding-bottom: 3.5rem; 
+    padding-top: 3.5rem; 
 }
 
-/* Seção CTA WhatsApp */
-#cta-whatsapp.section-padding {
-    /* A classe section-padding adiciona padding-top e padding-bottom.
-       Vamos manter o padding-top, mas compensar o padding-bottom do main.main-content. */
-    padding-bottom: 1.5rem; /* Reduz o padding-bottom original para compensar a margem negativa */
-    margin-bottom: -1.5rem; /* Compensa o padding-bottom do main.main-content (que tem py-4, ou seja, 1.5rem de padding) */
-                               /* Isso faz com que o fundo roxo da CTA se estenda até onde o main-content terminaria,
-                                  eliminando o espaço branco antes do footer. */
-    position: relative; /* Para garantir que a margem negativa não cause problemas de sobreposição com o footer em alguns casos */
-    z-index: 1; /* Para garantir que a margem negativa não cause problemas de sobreposição com o footer em alguns casos */
+#cta-whatsapp .cta-content-box {
+    background-color: var(--tuxnet-white);
+    padding: 2.5rem; 
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12); 
+    border: 1px solid #dee2e6;
 }
 
-#cta-whatsapp .display-1 {
-    font-size: 4.5rem;
-    color: var(--tuxnet-secondary);
+@media (min-width: 768px) {
+    #cta-whatsapp .cta-content-box {
+        padding: 3.5rem; 
+    }
 }
 
-#cta-whatsapp h2 {
-    color: var(--tuxnet-white);
+#cta-whatsapp .cta-image {
+    max-height: 450px; 
+    width: auto; 
+    max-width: 100%; 
+    object-fit: contain;
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+@media (max-width: 767.98px) { 
+    #cta-whatsapp .cta-image {
+        max-height: 320px; 
+        margin-bottom: 2rem; 
+    }
 }
 
 
-/* Ícone Flutuante do WhatsApp */
+#cta-whatsapp .display-2 { 
+    font-size: 3rem; 
+    color: var(--tuxnet-primary); 
+}
+
+#cta-whatsapp .cta-title { 
+    color: var(--tuxnet-primary); 
+    font-size: 2rem; 
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1rem; 
+}
+
+#cta-whatsapp .cta-title .text-secondary-tuxnet { 
+    font-weight: 700;
+}
+
+@media (min-width: 768px) {
+    #cta-whatsapp .cta-title {
+        font-size: 2.6rem; 
+    }
+     #cta-whatsapp .display-2 { 
+        display: none !important;
+    }
+}
+
+#cta-whatsapp .cta-text { 
+    color: var(--tuxnet-dark); 
+    font-size: 1.1rem; 
+    line-height: 1.7; 
+    margin-bottom: 1.75rem !important; 
+}
+
+#cta-whatsapp .tuxnet-cta-button.btn-secondary-tuxnet { 
+    font-weight: bold;
+    padding: 0.9rem 2.5rem; 
+    font-size: 1.15rem; 
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    border-radius: 50px; 
+}
+
+#cta-whatsapp .tuxnet-cta-button.btn-secondary-tuxnet:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 12px rgba(var(--tuxnet-secondary-rgb),0.3); 
+    text-decoration: none !important;
+}
+
+#cta-whatsapp .cta-phone-number {
+    font-size: 1.05rem; 
+    color: var(--tuxnet-dark);
+    font-weight: 500;
+    margin-top: 1.5rem !important;
+    display: inline-block; 
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--tuxnet-primary-lighter, #a485b0); 
+    border-radius: 30px; 
+    transition: all 0.3s ease;
+}
+#cta-whatsapp .cta-phone-number i { 
+    margin-right: 0.5rem;
+    color: var(--tuxnet-primary);
+}
+
+#cta-whatsapp .cta-phone-number:hover {
+    background-color: var(--tuxnet-light);
+    border-color: var(--tuxnet-primary);
+    color: var(--tuxnet-primary);
+}
+
 .whatsapp-float {
     position: fixed;
     width: 60px;
     height: 60px;
     bottom: 40px;
     right: 40px;
-    background-color: #25D366; /* Cor verde do WhatsApp */
+    background-color: #25D366;
     color: #FFF;
     border-radius: 50px;
     text-align: center;
-    font-size: 30px; /* Tamanho do ícone */
+    font-size: 30px;
     box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-    z-index: 1000; /* Para ficar sobre outros elementos */
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
-
 .whatsapp-float:hover {
     transform: scale(1.1);
     box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
     color: #FFF;
+    text-decoration: none !important;
+}
+
+/* Estilos para o Carrossel de Planos Para Você */
+.carousel-planos .carousel-item {
+    padding: 0 5%; /* Reduzido o padding lateral para dar mais espaço ao card */
+    /* Para exibir múltiplos cards por slide, você precisaria de JS customizado ou uma biblioteca de carrossel diferente.
+       Com o Bootstrap padrão, é um item por vez. Este padding ajuda a centralizar o único item. */
+}
+
+.carousel-planos .plan-card-rotativo {
+    /* Este é o contêiner da imagem dentro do carousel-item */
+    /* Vamos definir uma largura máxima para o card do plano */
+    max-width: 450px; /* AJUSTE CONFORME NECESSÁRIO - este valor controlará o tamanho do card */
+    margin: 0 auto; /* Centraliza o card dentro do carousel-item */
+    background-color: var(--tuxnet-white); /* Opcional: se quiser um fundo para o card em si */
+    border-radius: 0.75rem; /* Opcional: se quiser bordas arredondadas no card */
+    /* box-shadow: 0 4px 15px rgba(0,0,0,0.1); */ /* Opcional: sombra para o card */
+    /* padding: 1rem; */ /* Opcional: padding interno se o card tiver mais conteúdo */
+}
+
+.carousel-planos .plan-card-rotativo img {
+    border-radius: 0.5rem; /* Mantém bordas arredondadas para as imagens */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 100%; /* A imagem ocupará 100% do .plan-card-rotativo */
+    height: auto;
+    display: block; /* Para remover espaço extra abaixo da imagem */
+}
+
+/* Ajuste dos controles do carrossel para ficarem mais visíveis e não sobrepor tanto os cards */
+.carousel-planos .carousel-control-prev,
+.carousel-planos .carousel-control-next {
+    width: 8%; /* Aumentado um pouco para melhor clique, mas ainda fora do card principal */
+    background-color: rgba(0,0,0,0.1); /* Fundo levemente escuro para os controles */
+}
+.carousel-planos .carousel-control-prev-icon,
+.carousel-planos .carousel-control-next-icon {
+    filter: invert(1) grayscale(100) brightness(1.5); /* Torna os ícones brancos e mais visíveis */
+}
+
+/* Ajuste dos indicadores do carrossel */
+.carousel-planos .carousel-indicators button {
+    background-color: var(--tuxnet-primary); /* Cor dos indicadores */
+}
+.carousel-planos .carousel-indicators .active {
+    background-color: var(--tuxnet-secondary); /* Cor do indicador ativo */
+}
+
+/* Estilos para os cards de serviço gerais (Todos os Nossos Serviços) */
+.service-card { 
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.08);
+    overflow: hidden;
+    background-color: var(--tuxnet-white);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1.2rem rgba(0,0,0,0.12);
+}
+.service-image-container {
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f0f0; 
+}
+.service-card .service-image-container img.img-fluid-fill { 
+    display: block;
+    width: 100%;
+    height: 220px; 
+    object-fit: cover;
+    object-position: center;
+}
+.service-card .service-image-container .bi.display-1 {
+    font-size: 5rem; 
+    line-height: 1;
+}
+.service-badge {
+    position: absolute;
+    top: 15px; 
+    width: 90px; 
+    height: 90px; 
+    border-radius: 50%;
+    color: var(--tuxnet-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 0.8rem; 
+    line-height: 1.1; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    padding: 5px;
+}
+.service-badge-purple {
+    background-color: var(--tuxnet-primary);
+    left: 15px; 
+}
+.service-badge-yellow {
+    background-color: var(--tuxnet-secondary);
+    color: var(--tuxnet-dark);
+    right: 15px; 
+}
+.service-card .card-body h4.card-title { 
+    font-size: 1.3rem; 
+    margin-bottom: 0.75rem; 
+}
+.service-card .card-body p.card-text {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+@media (max-width: 767.98px) {
+    .service-image-container img.img-fluid-fill, 
+    .service-card .service-image-container .bi.display-1 { 
+        height: 180px; 
+        font-size: 4rem; 
+    }
+    .service-badge {
+        width: 75px; 
+        height: 75px; 
+        font-size: 0.7rem; 
+        top: 10px;
+    }
+    .service-badge-purple {
+        left: 10px;
+    }
+    .service-badge-yellow {
+        right: 10px;
+    }
+    .service-card .card-body h4.card-title {
+        font-size: 1.2rem; 
+    }
+}
+
+/* Remoção de sublinhado de botões no hover globalmente */
+.btn:hover, .btn:focus,
+.btn-primary-tuxnet:hover, .btn-primary-tuxnet:focus,
+.btn-secondary-tuxnet:hover, .btn-secondary-tuxnet:focus,
+.btn-outline-secondary-tuxnet:hover, .btn-outline-secondary-tuxnet:focus {
+    text-decoration: none !important;
 }

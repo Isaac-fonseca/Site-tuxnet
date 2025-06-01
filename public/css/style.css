@@ -10,212 +10,238 @@
 
 /* Estilos Globais do Body */
 body {
-    font-family: 'Roboto', sans-serif; /* Fonte padrão para o corpo do texto */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400; /* Peso padrão para o corpo do texto */
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Garante que o body ocupe pelo menos toda a altura da viewport */
-    background-color: var(--tuxnet-light); /* Cor de fundo geral suave */
-    color: var(--tuxnet-dark); /* Cor padrão do texto */
-    line-height: 1.6; /* Espaçamento entre linhas para melhor legibilidade */
+    min-height: 100vh;
+    background-color: var(--tuxnet-light);
+    color: var(--tuxnet-dark);
+    line-height: 1.7; /* Aumentado um pouco para melhor legibilidade */
+    -webkit-font-smoothing: antialiased; /* Melhora a renderização da fonte */
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Estilos para Cabeçalhos e classe .font-montserrat */
-h1, h2, h3, h4, h5, h6, .font-montserrat {
-    font-family: 'Montserrat', sans-serif; /* Fonte para títulos e elementos com a classe específica */
-    font-weight: 600; /* Peso da fonte para títulos (pode ajustar) */
-    color: var(--tuxnet-primary); /* Cor padrão para títulos (roxo) */
+h1, .font-montserrat.h1-style { /* Adicionada classe para aplicar estilo de h1 */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Mais forte para h1 */
+    color: var(--tuxnet-primary);
+    line-height: 1.3;
+    letter-spacing: -0.02em; /* Leve ajuste para h1 */
+    margin-bottom: 0.75rem;
 }
+
+h2, .font-montserrat.h2-style {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; /* Mantido 600 para h2 */
+    color: var(--tuxnet-primary);
+    line-height: 1.35;
+    letter-spacing: -0.01em; /* Leve ajuste para h2 */
+    margin-bottom: 0.65rem;
+}
+
+h3, .font-montserrat.h3-style {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--tuxnet-primary);
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+h4, .font-montserrat.h4-style {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; /* Um pouco mais leve */
+    color: var(--tuxnet-primary);
+    line-height: 1.45;
+    margin-bottom: 0.4rem;
+}
+
+h5, h6, .font-montserrat.h5-style, .font-montserrat.h6-style {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: var(--tuxnet-primary);
+    line-height: 1.5;
+    margin-bottom: 0.3rem;
+}
+
+p {
+    margin-bottom: 1rem; /* Espaçamento padrão para parágrafos */
+}
+
+.lead { /* Estilo para parágrafos de destaque */
+    font-size: 1.15rem; /* Um pouco maior */
+    font-weight: 400;
+}
+
 
 /* Container Principal do Conteúdo */
 .main-content {
-    flex: 1; /* Faz o conteúdo principal expandir para ocupar o espaço vertical restante */
+    flex: 1;
 }
 
-/* Classes Utilitárias de Cor Personalizadas */
-
-/* Backgrounds */
+/* Classes Utilitárias de Cor Personalizadas (mantidas como estão) */
+/* ... (bg-primary-tuxnet, bg-secondary-tuxnet, etc.) ... */
 .bg-primary-tuxnet {
-    background-color: var(--tuxnet-primary) !important; /* Força a cor primária no background */
+    background-color: var(--tuxnet-primary) !important;
 }
-
 .bg-secondary-tuxnet {
-    background-color: var(--tuxnet-secondary) !important; /* Força a cor secundária no background */
+    background-color: var(--tuxnet-secondary) !important;
 }
-
-/* Textos */
 .text-primary-tuxnet {
-    color: var(--tuxnet-primary) !important; /* Força a cor primária no texto */
+    color: var(--tuxnet-primary) !important;
 }
-
 .text-secondary-tuxnet {
-    color: var(--tuxnet-secondary) !important; /* Força a cor secundária no texto */
+    color: var(--tuxnet-secondary) !important;
 }
-
 .text-white {
     color: var(--tuxnet-white) !important;
 }
 
-/* Botões Personalizados */
+
+/* Botões Personalizados (mantidos como estão, mas o hover será ajustado para não ter sublinhado) */
+/* ... (btn-primary-tuxnet, btn-secondary-tuxnet) ... */
 .btn-primary-tuxnet {
     background-color: var(--tuxnet-primary);
     border-color: var(--tuxnet-primary);
-    color: var(--tuxnet-white); /* Texto branco para contraste com roxo */
+    color: var(--tuxnet-white);
     padding: 0.5rem 1rem;
     font-weight: 500;
     transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 .btn-primary-tuxnet:hover,
 .btn-primary-tuxnet:focus {
-    background-color: #4a145a; /* Um tom mais escuro do roxo para hover/focus */
+    background-color: #4a145a;
     border-color: #4a145a;
     color: var(--tuxnet-white);
+    text-decoration: none !important; /* Removendo sublinhado */
 }
 
 .btn-secondary-tuxnet {
     background-color: var(--tuxnet-secondary);
     border-color: var(--tuxnet-secondary);
-    color: var(--tuxnet-dark); /* Texto escuro para contraste com amarelo */
+    color: var(--tuxnet-dark);
     padding: 0.5rem 1rem;
     font-weight: 500;
     transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 .btn-secondary-tuxnet:hover,
 .btn-secondary-tuxnet:focus {
-    background-color: #e0a82a; /* Um tom mais escuro do amarelo para hover/focus */
+    background-color: #e0a82a;
     border-color: #e0a82a;
     color: var(--tuxnet-dark);
+    text-decoration: none !important; /* Removendo sublinhado */
 }
+
 
 /* Outros Estilos Globais que você pode precisar */
 a {
     color: var(--tuxnet-primary);
     text-decoration: none; /* Remove sublinhado padrão de links */
+    transition: color 0.2s ease-in-out; /* Transição suave para cor do link */
 }
-a:hover {
+a:not(.btn):hover { /* Aplica sublinhado no hover APENAS se não for um botão */
     color: #4a145a; /* Roxo mais escuro no hover */
     text-decoration: underline; /* Adiciona sublinhado no hover para clareza */
 }
 
-/* nav */ 
-/* Estilização da Navbar Tuxnet */
-.navbar.bg-primary-tuxnet { /* Garante que a classe que já criamos funcione bem com navbar */
+/* Estilização da Navbar (mantida como está, mas os botões dentro dela também não terão sublinhado no hover) */
+/* ... (Toda a sua estilização da navbar) ... */
+.navbar.bg-primary-tuxnet {
     background-color: var(--tuxnet-primary) !important;
 }
-
 .navbar-dark .navbar-brand {
-    color: var(--tuxnet-white); /* Cor da marca/logo em texto */
-    font-size: 1.5rem; /* Tamanho um pouco maior para a marca */
+    color: var(--tuxnet-white);
+    font-size: 1.5rem;
 }
 .navbar-dark .navbar-brand:hover,
 .navbar-dark .navbar-brand:focus {
-    color: var(--tuxnet-secondary); /* Amarelo no hover da marca */
+    color: var(--tuxnet-secondary);
 }
-
 .navbar-dark .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.85) !important; /* Branco com leve transparência para links */
+    color: rgba(255, 255, 255, 0.85) !important;
     font-weight: 500;
     padding-left: 1rem;
     padding-right: 1rem;
-    position: relative; /* Necessário para o pseudo-elemento da animação */
+    position: relative;
     transition: color 0.3s ease-in-out;
 }
-
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link:focus,
-.navbar-dark .navbar-nav .nav-link.active { /* Link ativo também terá destaque amarelo */
+.navbar-dark .navbar-nav .nav-link.active {
     color: var(--tuxnet-secondary) !important;
 }
-
-/* Animação de sublinhado para links da navbar (EXCETO dropdown-toggle) */
 .navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle)::after {
     content: '';
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: 5px; /* Posição do sublinhado em relação ao link */
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--tuxnet-secondary);
     transition: width 0.3s ease-in-out;
 }
-
 .navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle):hover::after,
 .navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle):focus::after,
 .navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle).active::after {
-    width: 70%; /* Largura do sublinhado no hover/focus/active */
+    width: 70%;
 }
-
-/* Estilização da seta do dropdown-toggle */
 .navbar-dark .navbar-nav .nav-link.dropdown-toggle::after {
-    border-top-color: rgba(255, 255, 255, 0.85); /* Cor da seta do dropdown (branca) */
-    transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Adicionada transição para a seta */
+    border-top-color: rgba(255, 255, 255, 0.85);
+    transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
-
 .navbar-dark .navbar-nav .nav-link.dropdown-toggle:hover::after,
 .navbar-dark .navbar-nav .nav-link.dropdown-toggle:focus::after,
 .navbar-dark .navbar-nav .nav-link.dropdown-toggle.active::after {
-    border-top-color: var(--tuxnet-secondary); /* Cor da seta do dropdown no hover (amarela) */
+    border-top-color: var(--tuxnet-secondary);
 }
-
-/* Gira a seta do dropdown quando o menu está aberto (opcional, mas bom UX) */
-.navbar-dark .navbar-nav .nav-item.dropdown.show .nav-link.dropdown-toggle::after, /* Bootstrap JS adiciona .show */
-.navbar-dark .navbar-nav .nav-item.dropdown:hover .nav-link.dropdown-toggle::after { /* Para o hover CSS */
+.navbar-dark .navbar-nav .nav-item.dropdown.show .nav-link.dropdown-toggle::after,
+.navbar-dark .navbar-nav .nav-item.dropdown:hover .nav-link.dropdown-toggle::after {
     transform: rotate(180deg);
 }
-
-
-/* Estilização do Dropdown Menu */
 .navbar-dark .dropdown-menu {
-    background-color: var(--tuxnet-white); /* Fundo branco para o dropdown */
+    background-color: var(--tuxnet-white);
     border: none;
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
-    margin-top: 0; /* AJUSTADO: Removida a margem superior para evitar o problema de hover */
-    opacity: 0; /* Começa invisível para transição suave */
-    visibility: hidden; /* Começa escondido */
+    margin-top: 0;
+    opacity: 0;
+    visibility: hidden;
     transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-    display: block; /* Necessário para que a transição de opacidade funcione e para o CSS controlar */
-    pointer-events: none; /* Evita interações quando escondido */
+    display: block;
+    pointer-events: none;
 }
-
-/* Mostrar dropdown no hover do item PAI (.nav-item.dropdown) */
 .navbar-dark .navbar-nav .nav-item.dropdown:hover > .dropdown-menu {
-    display: block; /* Garante que está visível para o Bootstrap JS não interferir negativamente */
+    display: block;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
-
 .navbar-dark .dropdown-item {
-    color: var(--tuxnet-dark); /* Texto escuro para itens do dropdown */
+    color: var(--tuxnet-dark);
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    position: relative; /* Para o ícone de seta */
-    padding-left: 1.5rem; /* Espaço para o ícone de seta */
+    position: relative;
+    padding-left: 1.5rem;
 }
-
-/* Ícone de seta para itens do dropdown */
 .navbar-dark .dropdown-item::before {
-    content: '›'; /* Você pode usar um ícone SVG ou de fonte aqui se preferir */
+    content: '›';
     position: absolute;
     left: 0.5rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--tuxnet-primary); /* Cor do ícone de seta */
+    color: var(--tuxnet-primary);
     font-weight: bold;
 }
-
 .navbar-dark .dropdown-item:hover,
 .navbar-dark .dropdown-item:focus {
-    background-color: var(--tuxnet-light); /* Fundo levemente acinzentado no hover */
-    color: var(--tuxnet-primary); /* Texto roxo no hover */
+    background-color: var(--tuxnet-light);
+    color: var(--tuxnet-primary);
 }
 .navbar-dark .dropdown-item:hover::before,
 .navbar-dark .dropdown-item:focus::before {
-    color: var(--tuxnet-secondary); /* Cor do ícone de seta no hover */
+    color: var(--tuxnet-secondary);
 }
-
-
-/* Botão "Área do Cliente" com contorno amarelo */
 .btn-outline-secondary-tuxnet {
     color: var(--tuxnet-secondary);
     border-color: var(--tuxnet-secondary);
@@ -226,42 +252,33 @@ a:hover {
 .btn-outline-secondary-tuxnet:focus {
     background-color: var(--tuxnet-secondary);
     border-color: var(--tuxnet-secondary);
-    color: var(--tuxnet-primary); /* Texto roxo quando o fundo do botão é amarelo */
+    color: var(--tuxnet-primary);
+    text-decoration: none !important; /* Removendo sublinhado */
 }
-
-/* Ajustes para o toggler (botão hamburguer em telas menores) */
 .navbar-dark .navbar-toggler {
-    border-color: rgba(255,255,255,0.25); /* Cor da borda do toggler */
+    border-color: rgba(255,255,255,0.25);
 }
 .navbar-dark .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Ícone do toggler em branco */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* ... Footer ... */
-
-footer.bg-primary-tuxnet .bi { /* Estilo para Bootstrap Icons no footer */
-    margin-right: 0.5rem; /* Espaçamento à direita do ícone */
-    vertical-align: middle; /* Alinha o ícone melhor com o texto */
-    /* A cor será herdada do elemento pai (texto branco ou título amarelo) */
-    /* Se quiser uma cor específica para todos os ícones no footer: */
-    /* color: var(--tuxnet-secondary); */
+/* Estilização do Footer (mantida como está) */
+/* ... (Toda a sua estilização do footer) ... */
+footer.bg-primary-tuxnet .bi {
+    margin-right: 0.5rem;
+    vertical-align: middle;
 }
-
-/* Se quiser que os ícones nos títulos das seções do footer também sejam amarelos (já devem ser por herança) */
 footer.bg-primary-tuxnet h6 .bi {
-    color: var(--tuxnet-secondary); /* Garante que o ícone no título seja amarelo */
+    color: var(--tuxnet-secondary);
 }
-
-/* Se quiser que os ícones nos links de parágrafo sejam brancos (já devem ser por herança) */
 footer.bg-primary-tuxnet p .bi {
-     color: rgba(255, 255, 255, 0.85); /* Garante que o ícone no parágrafo seja branco */
+     color: rgba(255, 255, 255, 0.85);
+}
+footer.bg-primary-tuxnet a:hover .bi {
+    color: var(--tuxnet-secondary);
 }
 
-/* Efeito de hover para ícones junto com os links, se desejar */
-footer.bg-primary-tuxnet a:hover .bi {
-    color: var(--tuxnet-secondary); /* Ícone fica amarelo no hover do link */
+/* Remoção de sublinhado para TODOS os botões no hover globalmente */
+.btn:hover, .btn:focus {
+    text-decoration: none !important;
 }
-.hero-carousel {
-    margin-top: -1.5rem; /* Ajusta para compensar o padding de py-4 (1.5rem) */
-}
-/* ... resto do seu style.css ... */

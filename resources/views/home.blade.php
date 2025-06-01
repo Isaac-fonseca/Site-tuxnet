@@ -18,7 +18,7 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('img/banner1.jpg') }}" class="d-block w-100" alt="Banner Promocional 1">
+                    <img src="{{ asset('img/banners/banner1.jpg') }}" class="d-block w-100" alt="Banner Promocional 1">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 class="font-montserrat">Promoção Imperdível!</h5>
                         <p>Planos de internet com velocidade dobrada pelo mesmo preço. Aproveite!</p>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/banner2.jpg') }}" class="d-block w-100" alt="Banner Novos Serviços">
+                    <img src="{{ asset('img/banners/banner2.jpg') }}" class="d-block w-100" alt="Banner Novos Serviços">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 class="font-montserrat">Novos Serviços Chegando!</h5>
                         <p>Descubra nossas soluções completas para sua casa e empresa.</p>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/banner3.png') }}" class="d-block w-100" alt="Banner Qualidade Tuxnet">
+                    <img src="{{ asset('img/banners/banner3.png') }}" class="d-block w-100" alt="Banner Qualidade Tuxnet">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 class="font-montserrat">A Qualidade que Você Confia</h5>
                         <p>Suporte técnico especializado e a melhor conexão da região.</p>
@@ -106,31 +106,39 @@
     </section>
 </section>
 
-    <section id="cta-whatsapp" class="section-padding bg-primary-tuxnet text-white">
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <i class="bi bi-whatsapp display-1 mb-3 animate-on-scroll fade-in-up"></i>
-                    <h2 class="font-montserrat mb-3 animate-on-scroll fade-in-up" data-animation-delay="100">Fale com um Especialista Agora!</h2>
-                    <p class="lead mb-4 animate-on-scroll fade-in-up" data-animation-delay="200">
-                        Tem dúvidas ou quer contratar o melhor plano de internet para você ou sua empresa? Nossa equipe está pronta para te atender pelo WhatsApp!
-                    </p>
-                    <a href="https://wa.me/5508007226662?text=Olá! Gostaria de mais informações sobre os planos da Tuxnet." target="_blank" class="btn btn-lg btn-secondary-tuxnet animate-on-scroll fade-in-up" data-animation-delay="300">
-                        <i class="bi bi-whatsapp me-2"></i> Chamar no WhatsApp: 0800 722 6662
-                    </a>
+ 
+
+ <section id="cta-whatsapp" class="section-padding bg-light">
+        <div class="container">
+            <div class="cta-content-box animate-on-scroll fade-in-up">
+                <div class="row align-items-center">
+                    <div class="col-md-5 mb-4 mb-md-0 text-center text-md-start">
+                        <img src="{{ asset('img/tuxvalor.jpg') }}" class="img-fluid rounded cta-image" alt="Fale com a Tuxnet"> {{-- SUBSTITUA PELA SUA IMAGEM REAL, SE O SLOGAN.PNG NÃO FOR A IMAGEM DA CTA --}}
+                    </div>
+                    <div class="col-md-7 text-center text-md-start">
+                        <i class="bi bi-whatsapp display-2 mb-3 text-primary-tuxnet d-block d-md-none"></i> 
+                        <h2 class="font-montserrat mb-3 cta-title text-primary-tuxnet">Conexão <span class="text-secondary-tuxnet">Sem Limites</span> na Palma da Sua Mão!</h2>
+                        <p class="lead mb-4 cta-text text-dark"> 
+                            Cansado de internet lenta? Fale com nossos especialistas e descubra o plano ideal com a velocidade e o suporte que você merece!
+                        </p>
+                        <a href="https://wa.me/5508007226662?text=Olá! Gostaria de mais informações sobre os planos da Tuxnet." target="_blank" class="btn btn-lg btn-secondary-tuxnet tuxnet-cta-button">
+                            <i class="bi bi-whatsapp me-2"></i> Chamar no WhatsApp
+                        </a>
+                        <p class="mt-3 mb-0 cta-phone-number">
+                            <i class="bi bi-telephone-fill"></i> Ou ligue: 0800 722 6662
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    {{-- Fim da Seção CTA WhatsApp --}}
-
-    {{-- Ícone Flutuante do WhatsApp (adicionado no final do content se for específico da home) --}}
+   
     <a href="https://wa.me/5508007226662?text=Olá! Gostaria de mais informações sobre os planos da Tuxnet." target="_blank" class="whatsapp-float" title="Fale Conosco pelo WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 @endsection
 
 @push('scripts')
-    {{-- Link para seu arquivo JavaScript principal da aplicação --}}
+    
     <script src="{{ asset('js/app.js') }}" defer></script>
 @endpush
