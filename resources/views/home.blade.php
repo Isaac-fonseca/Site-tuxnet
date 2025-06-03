@@ -9,7 +9,7 @@
 
 @section('content')
 
-    <section id="hero-carousel" class="hero-carousel">
+ <section id="hero-carousel" class="hero-carousel">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -19,26 +19,20 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="{{ asset('img/banners/banner1.jpg') }}" class="d-block w-100" alt="Banner Promocional 1">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="font-montserrat">Promoção Imperdível!</h5>
-                        <p>Planos de internet com velocidade dobrada pelo mesmo preço. Aproveite!</p>
-                        <a href="{{ url('/planos') }}" class="btn btn-secondary-tuxnet btn-sm">Conheça os Planos</a>
+                    <div class="assine-ja-container">
+                        <a href="{{ route('planos.servicos') }}" class="btn btn-lg btn-assine-ja">ASSINE JÁ</a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="{{ asset('img/banners/banner2.jpg') }}" class="d-block w-100" alt="Banner Novos Serviços">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="font-montserrat">Novos Serviços Chegando!</h5>
-                        <p>Descubra nossas soluções completas para sua casa e empresa.</p>
-                        <a href="{{ url('/planos/para-empresa') }}" class="btn btn-primary-tuxnet btn-sm">Para Empresas</a>
+                    <div class="assine-ja-container">
+                        <a href="{{ route('planos.servicos') }}" class="btn btn-lg btn-assine-ja">ASSINE JÁ</a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="{{ asset('img/banners/banner3.png') }}" class="d-block w-100" alt="Banner Qualidade Tuxnet">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="font-montserrat">A Qualidade que Você Confia</h5>
-                        <p>Suporte técnico especializado e a melhor conexão da região.</p>
-                        <a href="{{ url('/contato') }}" class="btn btn-light btn-sm">Fale Conosco</a>
+                    <div class="assine-ja-container">
+                        <a href="{{ route('planos.servicos') }}" class="btn btn-lg btn-assine-ja">ASSINE JÁ</a>
                     </div>
                 </div>
             </div>
@@ -52,7 +46,6 @@
             </button>
         </div>
     </section>
-
     <section id="sobre-empresa" class="section-padding bg-white">
         <div class="container">
             <div class="row align-items-center">

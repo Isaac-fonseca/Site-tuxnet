@@ -9,81 +9,85 @@
 @section('content')
     <div class="container section-padding">
         <div class="row">
-            <div class="col-12 text-center mb-4">
-                <h1 class="font-montserrat display-5 fw-bold">Nossos <span class="text-primary-tuxnet">Planos e Serviços</span></h1>
+            <div class="col-12 text-center mb-5">
+                <h1 class="font-montserrat display-4 fw-bold">Nossos <span class="text-primary-tuxnet">Planos e Serviços</span></h1>
                 <p class="lead">Soluções completas em telecomunicações para conectar você ao que mais importa.</p>
             </div>
         </div>
 
-        <section id="planos-para-voce" class="mb-5">
-            <div class="row">
-                <div class="col-12 text-center mb-4">
-                    <h2 class="font-montserrat">Planos <span class="text-secondary-tuxnet">Para Você</span></h2>
-                    <p>Velocidade e estabilidade para navegar, assistir, jogar e muito mais!</p>
-                </div>
-            </div>
-            <div id="carouselPlanosParaVoce" class="carousel slide carousel-planos" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselPlanosParaVoce" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Plano 1"></button>
-                    <button type="button" data-bs-target="#carouselPlanosParaVoce" data-bs-slide-to="1" aria-label="Plano 2"></button>
-                    <button type="button" data-bs-target="#carouselPlanosParaVoce" data-bs-slide-to="2" aria-label="Plano 3"></button>
-                    <button type="button" data-bs-target="#carouselPlanosParaVoce" data-bs-slide-to="3" aria-label="Plano 4"></button>
-                </div>
-                <div class="carousel-inner">
-                    @php
-                        // Atualizando para usar os nomes de arquivo .png fornecidos pelo usuário
-                        $planosVoce = [
-                            ['nome' => 'COMBO PLUS 500 MEGA', 'imagem' => '500.png', 'alt' => 'Plano Tuxnet 500 Mega'],
-                            ['nome' => 'COMBO MAX 700 MEGA', 'imagem' => '700.png', 'alt' => 'Plano Tuxnet 700 Mega'],
-                            ['nome' => 'COMBO SUPER 900 MEGA', 'imagem' => '900.png', 'alt' => 'Plano Tuxnet 900 Mega'],
-                            ['nome' => 'COMBO PREMIUM 1.1GB', 'imagem' => '1100.png', 'alt' => 'Plano Tuxnet 1.1GB']
-                        ];
-                    @endphp
-
-                    @foreach($planosVoce as $index => $plano)
-                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                        <div class="plan-card-rotativo text-center">
-                            {{-- Caminho atualizado para public/img/planos/ e nomes .png --}}
-                            <img src="{{ asset('img/planos/' . $plano['imagem']) }}" class="img-fluid" alt="{{ $plano['alt'] }}">
-                            {{-- Você pode adicionar um botão "Saiba Mais" ou "Contratar" aqui se desejar --}}
-                            {{-- Exemplo: <a href="#" class="btn btn-primary-tuxnet mt-3">Quero Esse!</a> --}}
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselPlanosParaVoce" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselPlanosParaVoce" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Próximo</span>
-                </button>
-            </div>
-        </section>
-        <hr class="my-5"> {{-- Divisor --}}
-
-        <div class="row">
-            <div class="col-12 text-center mb-5">
-                <h2 class="font-montserrat">Todos os Nossos <span class="text-primary-tuxnet">Serviços</span></h2>
-            </div>
-        </div>
-
-        <div class="row align-items-stretch service-highlight-section">
-            @if(isset($servicos) && count($servicos) > 0)
-                @foreach($servicos as $index => $servico)
-                    {{-- Usando o Blade Component --}}
-                    <x-service-card :servico="$servico" :index="$index" />
-                @endforeach
-            @else
+        @if(isset($categoriasDePlanos) && count($categoriasDePlanos) > 0)
+            <div class="row mb-5">
                 <div class="col-12">
-                    <p class="text-center">Nenhum serviço disponível no momento.</p>
+                    <ul class="nav nav-pills tuxnet-plan-filters justify-content-center nav-fill flex-column flex-md-row" id="planCategoryTabs" role="tablist">
+                        @foreach($categoriasDePlanos as $index => $categoria)
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link {{ $index == 0 ? 'active' : '' }}" 
+                                        id="{{ $categoria['id_secao'] ?? Str::slug($categoria['titulo_secao']) }}-tab" 
+                                        data-bs-toggle="pill" 
+                                        data-bs-target="#{{ $categoria['id_secao'] ?? Str::slug($categoria['titulo_secao']) }}-content" 
+                                        type="button" role="tab" 
+                                        aria-controls="{{ $categoria['id_secao'] ?? Str::slug($categoria['titulo_secao']) }}-content" 
+                                        aria-selected="{{ $index == 0 ? 'true' : 'false' }}">
+                                    {!! strip_tags($categoria['titulo_secao'], '<span>') !!} {{-- Remove spans do título para o botão --}}
+                                </button>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
+            </div>
+
+            <div class="tab-content" id="planCategoryTabsContent">
+                @foreach($categoriasDePlanos as $index => $categoria)
+                    <div class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}" 
+                         id="{{ $categoria['id_secao'] ?? Str::slug($categoria['titulo_secao']) }}-content" 
+                         role="tabpanel" 
+                         aria-labelledby="{{ $categoria['id_secao'] ?? Str::slug($categoria['titulo_secao']) }}-tab">
+                        
+                        <section class="plan-category-section"> {{-- Removido mb-5 daqui, pois o espaçamento será entre as abas --}}
+                            {{-- O título da seção já está na aba, mas podemos ter uma descrição --}}
+                            @if(!empty($categoria['descricao_secao']))
+                                <div class="row">
+                                    <div class="col-12 text-center mb-4">
+                                        <p class="lead">{{ $categoria['descricao_secao'] }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                            @if(!empty($categoria['texto_adicional_secao']))
+                                <div class="texto-adicional-categoria small text-muted mb-4 text-center">
+                                    {!! nl2br(e($categoria['texto_adicional_secao'])) !!}
+                                </div>
+                            @endif
+
+                            <div class="row justify-content-center">
+                                @if(isset($categoria['planos']) && count($categoria['planos']) > 0)
+                                    @foreach($categoria['planos'] as $plano)
+                                        @if(view()->exists('components.' . $categoria['estilo_card_template']))
+                                            <x-dynamic-component :component="$categoria['estilo_card_template']" :plano="$plano" />
+                                        @else
+                                            <div class="col-12">
+                                                <p class="text-danger text-center">Erro: Template de card '{{ $categoria['estilo_card_template'] }}' não encontrado em resources/views/components/.</p>
+                                            </div>
+                                            @break 
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <div class="col-12">
+                                        <p class="text-center">Nenhum plano disponível nesta categoria no momento.</p>
+                                    </div>
+                                @endif
+                            </div>
+                        </section>
+                    </div>
+                @endforeach
             @endif
-        </div>
+       
+        
+        
+
     </div>
 @endsection
 
 @push('scripts')
-  <script src="{{ asset('js/app.js') }}" defer></script>                   
+  
+    <script src="{{ asset('js/app.js') }}" defer></script>
 @endpush

@@ -1,284 +1,205 @@
 /* Variáveis de Cor Globais */
 :root {
     --tuxnet-primary: #5F1970; /* Roxo Tuxnet */
-    --tuxnet-secondary: #FCB62E; /* Amarelo Tuxnet */
+    --tuxnet-secondary: #FCB62E; /* Amarelo/Laranja Tuxnet */
     --tuxnet-light: #f8f9fa;    /* Cinza claro (Bootstrap light) */
     --tuxnet-dark: #212529;     /* Cinza escuro (Bootstrap dark) */
     --tuxnet-white: #ffffff;    /* Branco */
     --tuxnet-black: #000000;    /* Preto */
+    --tuxnet-primary-darker: #4a145a; /* Roxo mais escuro para hover */
+    --tuxnet-primary-lighter: #d3c1d8; /* Roxo mais claro para bordas */
+    --tuxnet-secondary-darker: #e0a82a; /* Amarelo mais escuro para hover/bordas */
+    --tuxnet-text-muted: #6c757d; /* Cor para texto secundário/muted */
+    --tuxnet-success: #198754; /* Verde para ícones de sucesso, etc. */
+    --tuxnet-text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Sombra sutil para textos de destaque */
+    /* Defina as versões RGB se for usar em rgba() para sombras com cor */
+    --tuxnet-primary-rgb: 95,25,112;
+    --tuxnet-secondary-rgb: 252,182,46;
 }
 
 /* Estilos Globais do Body */
 body {
     font-family: 'Roboto', sans-serif;
-    font-weight: 400; /* Peso padrão para o corpo do texto */
+    font-weight: 400; 
+    font-size: 1rem; /* 16px como base */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-color: var(--tuxnet-light);
     color: var(--tuxnet-dark);
-    line-height: 1.7; /* Aumentado um pouco para melhor legibilidade */
-    -webkit-font-smoothing: antialiased; /* Melhora a renderização da fonte */
+    line-height: 1.7; 
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 /* Estilos para Cabeçalhos e classe .font-montserrat */
-h1, .font-montserrat.h1-style { /* Adicionada classe para aplicar estilo de h1 */
+h1, .h1, .font-montserrat.h1-style {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700; /* Mais forte para h1 */
+    font-weight: 700; 
     color: var(--tuxnet-primary);
     line-height: 1.3;
-    letter-spacing: -0.02em; /* Leve ajuste para h1 */
-    margin-bottom: 0.75rem;
+    letter-spacing: -0.025em; 
+    margin-top: 0;
+    margin-bottom: 1rem; /* Aumentado para mais respiro */
+    text-shadow: var(--tuxnet-text-shadow);
 }
 
-h2, .font-montserrat.h2-style {
+h2, .h2, .font-montserrat.h2-style {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600; /* Mantido 600 para h2 */
+    font-weight: 600; 
     color: var(--tuxnet-primary);
     line-height: 1.35;
-    letter-spacing: -0.01em; /* Leve ajuste para h2 */
-    margin-bottom: 0.65rem;
+    letter-spacing: -0.015em;
+    margin-top: 0;
+    margin-bottom: 0.85rem; /* Aumentado */
 }
 
-h3, .font-montserrat.h3-style {
+h3, .h3, .font-montserrat.h3-style {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: var(--tuxnet-primary);
     line-height: 1.4;
-    margin-bottom: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 0.7rem; /* Aumentado */
 }
 
-h4, .font-montserrat.h4-style {
+h4, .h4, .font-montserrat.h4-style {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500; /* Um pouco mais leve */
+    font-weight: 600; /* Um pouco mais de peso */
     color: var(--tuxnet-primary);
     line-height: 1.45;
-    margin-bottom: 0.4rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem; /* Aumentado */
 }
 
-h5, h6, .font-montserrat.h5-style, .font-montserrat.h6-style {
+h5, .h5, .font-montserrat.h5-style {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     color: var(--tuxnet-primary);
     line-height: 1.5;
-    margin-bottom: 0.3rem;
+    margin-top: 0;
+    margin-bottom: 0.4rem; /* Aumentado */
+}
+
+h6, .h6, .font-montserrat.h6-style {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: var(--tuxnet-primary);
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 0.4rem; /* Aumentado */
 }
 
 p {
-    margin-bottom: 1rem; /* Espaçamento padrão para parágrafos */
+    margin-top: 0;
+    margin-bottom: 1.1rem; 
+    font-size: 0.95rem; 
+    line-height: 1.75; /* Aumentado para parágrafos */
 }
 
-.lead { /* Estilo para parágrafos de destaque */
-    font-size: 1.15rem; /* Um pouco maior */
+.lead { 
+    font-size: 1.15rem; 
     font-weight: 400;
+    line-height: 1.65; /* Ajustado */
 }
 
+.small, small {
+    font-size: 0.875rem; /* Um pouco maior */
+}
 
 /* Container Principal do Conteúdo */
 .main-content {
     flex: 1;
 }
 
-/* Classes Utilitárias de Cor Personalizadas (mantidas como estão) */
-/* ... (bg-primary-tuxnet, bg-secondary-tuxnet, etc.) ... */
-.bg-primary-tuxnet {
-    background-color: var(--tuxnet-primary) !important;
-}
-.bg-secondary-tuxnet {
-    background-color: var(--tuxnet-secondary) !important;
-}
-.text-primary-tuxnet {
-    color: var(--tuxnet-primary) !important;
-}
-.text-secondary-tuxnet {
-    color: var(--tuxnet-secondary) !important;
-}
-.text-white {
-    color: var(--tuxnet-white) !important;
-}
+/* Classes Utilitárias de Cor Personalizadas */
+.bg-primary-tuxnet { background-color: var(--tuxnet-primary) !important; }
+.bg-secondary-tuxnet { background-color: var(--tuxnet-secondary) !important; }
+.text-primary-tuxnet { color: var(--tuxnet-primary) !important; }
+.text-secondary-tuxnet { color: var(--tuxnet-secondary) !important; }
+.text-white { color: var(--tuxnet-white) !important; }
+.text-success { color: var(--tuxnet-success) !important; }
 
-
-/* Botões Personalizados (mantidos como estão, mas o hover será ajustado para não ter sublinhado) */
-/* ... (btn-primary-tuxnet, btn-secondary-tuxnet) ... */
+/* Botões Personalizados */
 .btn-primary-tuxnet {
     background-color: var(--tuxnet-primary);
     border-color: var(--tuxnet-primary);
     color: var(--tuxnet-white);
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.4rem; /* Aumentado padding */
     font-weight: 500;
-    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif; /* Fonte Montserrat para botões */
+    letter-spacing: 0.03em;
+    transition: all 0.2s ease-in-out;
 }
 .btn-primary-tuxnet:hover,
 .btn-primary-tuxnet:focus {
-    background-color: #4a145a;
-    border-color: #4a145a;
+    background-color: var(--tuxnet-primary-darker, #4a145a);
+    border-color: var(--tuxnet-primary-darker, #4a145a);
     color: var(--tuxnet-white);
-    text-decoration: none !important; /* Removendo sublinhado */
 }
 
 .btn-secondary-tuxnet {
     background-color: var(--tuxnet-secondary);
     border-color: var(--tuxnet-secondary);
-    color: var(--tuxnet-dark);
-    padding: 0.5rem 1rem;
-    font-weight: 500;
-    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    color: var(--tuxnet-primary); 
+    padding: 0.7rem 1.4rem; /* Aumentado padding */
+    font-weight: 600; /* Mais peso para botões secundários */
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.03em;
+    transition: all 0.2s ease-in-out;
 }
 .btn-secondary-tuxnet:hover,
 .btn-secondary-tuxnet:focus {
-    background-color: #e0a82a;
-    border-color: #e0a82a;
-    color: var(--tuxnet-dark);
-    text-decoration: none !important; /* Removendo sublinhado */
+    background-color: var(--tuxnet-secondary-darker, #e0a82a);
+    border-color: var(--tuxnet-secondary-darker, #e0a82a);
+    color: var(--tuxnet-primary);
 }
 
-
-/* Outros Estilos Globais que você pode precisar */
+/* Links Globais */
 a {
     color: var(--tuxnet-primary);
-    text-decoration: none; /* Remove sublinhado padrão de links */
-    transition: color 0.2s ease-in-out; /* Transição suave para cor do link */
+    text-decoration: none; 
+    transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out; 
 }
-a:not(.btn):hover { /* Aplica sublinhado no hover APENAS se não for um botão */
-    color: #4a145a; /* Roxo mais escuro no hover */
-    text-decoration: underline; /* Adiciona sublinhado no hover para clareza */
-}
-
-/* Estilização da Navbar (mantida como está, mas os botões dentro dela também não terão sublinhado no hover) */
-/* ... (Toda a sua estilização da navbar) ... */
-.navbar.bg-primary-tuxnet {
-    background-color: var(--tuxnet-primary) !important;
-}
-.navbar-dark .navbar-brand {
-    color: var(--tuxnet-white);
-    font-size: 1.5rem;
-}
-.navbar-dark .navbar-brand:hover,
-.navbar-dark .navbar-brand:focus {
-    color: var(--tuxnet-secondary);
-}
-.navbar-dark .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.85) !important;
-    font-weight: 500;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    position: relative;
-    transition: color 0.3s ease-in-out;
-}
-.navbar-dark .navbar-nav .nav-link:hover,
-.navbar-dark .navbar-nav .nav-link:focus,
-.navbar-dark .navbar-nav .nav-link.active {
-    color: var(--tuxnet-secondary) !important;
-}
-.navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle)::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--tuxnet-secondary);
-    transition: width 0.3s ease-in-out;
-}
-.navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle):hover::after,
-.navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle):focus::after,
-.navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle).active::after {
-    width: 70%;
-}
-.navbar-dark .navbar-nav .nav-link.dropdown-toggle::after {
-    border-top-color: rgba(255, 255, 255, 0.85);
-    transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-.navbar-dark .navbar-nav .nav-link.dropdown-toggle:hover::after,
-.navbar-dark .navbar-nav .nav-link.dropdown-toggle:focus::after,
-.navbar-dark .navbar-nav .nav-link.dropdown-toggle.active::after {
-    border-top-color: var(--tuxnet-secondary);
-}
-.navbar-dark .navbar-nav .nav-item.dropdown.show .nav-link.dropdown-toggle::after,
-.navbar-dark .navbar-nav .nav-item.dropdown:hover .nav-link.dropdown-toggle::after {
-    transform: rotate(180deg);
-}
-.navbar-dark .dropdown-menu {
-    background-color: var(--tuxnet-white);
-    border: none;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
-    margin-top: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-    display: block;
-    pointer-events: none;
-}
-.navbar-dark .navbar-nav .nav-item.dropdown:hover > .dropdown-menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-.navbar-dark .dropdown-item {
-    color: var(--tuxnet-dark);
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    position: relative;
-    padding-left: 1.5rem;
-}
-.navbar-dark .dropdown-item::before {
-    content: '›';
-    position: absolute;
-    left: 0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--tuxnet-primary);
-    font-weight: bold;
-}
-.navbar-dark .dropdown-item:hover,
-.navbar-dark .dropdown-item:focus {
-    background-color: var(--tuxnet-light);
-    color: var(--tuxnet-primary);
-}
-.navbar-dark .dropdown-item:hover::before,
-.navbar-dark .dropdown-item:focus::before {
-    color: var(--tuxnet-secondary);
-}
-.btn-outline-secondary-tuxnet {
-    color: var(--tuxnet-secondary);
-    border-color: var(--tuxnet-secondary);
-    font-weight: 500;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-.btn-outline-secondary-tuxnet:hover,
-.btn-outline-secondary-tuxnet:focus {
-    background-color: var(--tuxnet-secondary);
-    border-color: var(--tuxnet-secondary);
-    color: var(--tuxnet-primary);
-    text-decoration: none !important; /* Removendo sublinhado */
-}
-.navbar-dark .navbar-toggler {
-    border-color: rgba(255,255,255,0.25);
-}
-.navbar-dark .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+a:not(.btn):not(.nav-link):not(.dropdown-item):hover { 
+    color: var(--tuxnet-primary-darker, #4a145a); 
+    text-decoration: underline; 
 }
 
-/* Estilização do Footer (mantida como está) */
-/* ... (Toda a sua estilização do footer) ... */
-footer.bg-primary-tuxnet .bi {
-    margin-right: 0.5rem;
-    vertical-align: middle;
-}
-footer.bg-primary-tuxnet h6 .bi {
-    color: var(--tuxnet-secondary);
-}
-footer.bg-primary-tuxnet p .bi {
-     color: rgba(255, 255, 255, 0.85);
-}
-footer.bg-primary-tuxnet a:hover .bi {
-    color: var(--tuxnet-secondary);
-}
+/* Navbar */
+.navbar.bg-primary-tuxnet { background-color: var(--tuxnet-primary) !important; }
+.navbar-dark .navbar-brand { color: var(--tuxnet-white); margin-right: 1rem; font-weight: 700; }
+.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus { color: var(--tuxnet-secondary); }
+.tuxnet-logo { height: 50px; width: auto; } 
+.navbar-dark .navbar-nav .nav-link { color: rgba(255, 255, 255, 0.9) !important; font-weight: 500; padding: 0.75rem 1rem; position: relative; transition: color 0.3s ease-in-out; font-size: 0.95rem; }
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link.active { color: var(--tuxnet-secondary) !important; }
+.navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle)::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0.5rem; left: 50%; transform: translateX(-50%); background-color: var(--tuxnet-secondary); transition: width 0.3s ease-in-out; }
+.navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle):hover::after, .navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle):focus::after, .navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle).active::after { width: 60%; }
+.navbar-dark .navbar-nav .nav-link.dropdown-toggle::after { border-top-color: rgba(255, 255, 255, 0.9); transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out; }
+.navbar-dark .navbar-nav .nav-link.dropdown-toggle:hover::after, .navbar-dark .navbar-nav .nav-link.dropdown-toggle:focus::after, .navbar-dark .navbar-nav .nav-link.dropdown-toggle.active::after { border-top-color: var(--tuxnet-secondary); }
+.navbar-dark .navbar-nav .nav-item.dropdown.show .nav-link.dropdown-toggle::after, .navbar-dark .navbar-nav .nav-item.dropdown:hover .nav-link.dropdown-toggle::after { transform: rotate(180deg); }
+.navbar-dark .dropdown-menu { background-color: var(--tuxnet-white); border: none; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); margin-top: 0; opacity: 0; visibility: hidden; transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out; display: block; pointer-events: none; }
+.navbar-dark .navbar-nav .nav-item.dropdown:hover > .dropdown-menu { display: block; opacity: 1; visibility: visible; pointer-events: auto; }
+.navbar-dark .dropdown-item { color: var(--tuxnet-dark); padding: 0.6rem 1.25rem; position: relative; font-size: 0.9rem; } 
+.navbar-dark .dropdown-item::before { content: '›'; position: absolute; left: 0.5rem; top: 50%; transform: translateY(-50%); color: var(--tuxnet-primary); font-weight: bold; }
+.navbar-dark .dropdown-item:hover, .navbar-dark .dropdown-item:focus { background-color: var(--tuxnet-light); color: var(--tuxnet-primary); }
+.navbar-dark .dropdown-item:hover::before, .navbar-dark .dropdown-item:focus::before { color: var(--tuxnet-secondary); }
+.btn-outline-secondary-tuxnet { color: var(--tuxnet-secondary); border-color: var(--tuxnet-secondary); font-weight: 500; transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; padding: 0.6rem 1.2rem; font-family: 'Montserrat', sans-serif; letter-spacing: 0.03em; }
+.btn-outline-secondary-tuxnet:hover, .btn-outline-secondary-tuxnet:focus { background-color: var(--tuxnet-secondary); border-color: var(--tuxnet-secondary); color: var(--tuxnet-primary); }
+.navbar-dark .navbar-toggler { border-color: rgba(255,255,255,0.25); }
+.navbar-dark .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
 
-/* Remoção de sublinhado para TODOS os botões no hover globalmente */
+/* Footer */
+footer.bg-primary-tuxnet a { color: rgba(255,255,255,0.9); font-size: 0.9rem; }
+footer.bg-primary-tuxnet a:hover { color: var(--tuxnet-secondary); text-decoration: none; } 
+footer.bg-primary-tuxnet .bi { margin-right: 0.5rem; vertical-align: middle; }
+footer.bg-primary-tuxnet h6 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+footer.bg-primary-tuxnet h6 .bi { color: var(--tuxnet-secondary); }
+footer.bg-primary-tuxnet p { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+footer.bg-primary-tuxnet p .bi { color: rgba(255, 255, 255, 0.9); }
+footer.bg-primary-tuxnet a:hover .bi { color: var(--tuxnet-secondary); }
+
+/* Remoção de sublinhado para TODOS os botões no hover/focus globalmente */
 .btn:hover, .btn:focus {
     text-decoration: none !important;
 }
