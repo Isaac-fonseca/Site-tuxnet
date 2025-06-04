@@ -9,18 +9,16 @@ class PlanController extends Controller
 {
     public function index(Request $request)
     {
-        // Dados dos planos de carrossel da página de planos
+        
         $planosVoceCarousel = [
-            // Se estes planos eram os MAX, você precisará decidir quais planos destacar aqui
-            // ou remover/alterar este carrossel se ele não fizer mais sentido sem os planos MAX.
-            // Por enquanto, vou manter a estrutura, mas você deve atualizar os links e dados.
+            
             ['id_plano_link' => '#planos-boleto', 'nome' => 'Nossos Combos', 'imagem' => '500.png', 'alt' => 'Conheça Nossos Combos'],
             ['id_plano_link' => '#planos-empresas', 'nome' => 'Soluções Empresariais', 'imagem' => '700.png', 'alt' => 'Planos para Empresas'],
             ['id_plano_link' => '#planos-chip', 'nome' => 'Planos Móveis', 'imagem' => '900.png', 'alt' => 'Nossos Planos de Chip'],
             ['id_plano_link' => '#planos-fixo', 'nome' => 'Telefonia Fixa', 'imagem' => '1100.png', 'alt' => 'Planos com Telefone Fixo'],
         ];
 
-        // --- DEFINIÇÃO DOS PLANOS POR CATEGORIA ---
+       
 
         $combosBoleto = [
             ['id_plano' => 'boleto-100', 'nome_plano_card' => '100 MEGA', 'preco' => '69,99', 'tipo_pagamento' => 'BOLETO', 'observacao' => '*SOB CONSULTA DE VIABILIDADE', 'instalacao_info' => 'INSTALAÇÃO GRATUITA 100% FIBRA', 'inclusos' => ['100% Fibra Óptica', 'Instalação inclusa', 'Wi-fi de alta performance', 'Assistência Premium 24h', 'Upload 50% da velocidade'], 'destaque' => false, 'link_contratar' => '#'],
@@ -30,11 +28,11 @@ class PlanController extends Controller
             ['id_plano' => 'boleto-1gb', 'nome_plano_card' => '1 GB', 'preco' => '134,99', 'tipo_pagamento' => 'BOLETO', 'observacao' => '*SOB CONSULTA DE VIABILIDADE', 'instalacao_info' => 'INSTALAÇÃO GRATUITA 100% FIBRA', 'inclusos' => ['100% Fibra Óptica', 'Instalação inclusa', 'Wi-fi de alta performance', 'Assistência Premium 24h', 'Upload 50% da velocidade'], 'destaque' => false, 'link_contratar' => '#'],
         ];
 
-        // $planosMaxCartao foi removido
+        
 
         $planosGloboPlay = [
             ['id_plano' => 'globoplay-500', 'nome_plano_card' => 'COMBO PLUS 500 MEGA + GloboPlay', 'velocidade' => '500 MEGA', 'preco' => '99,98', 'tipo_pagamento' => 'CARTÃO/BOLETO', 'observacao' => '*SOB CONSULTA DE VIABILIDADE', 'instalacao_info' => 'INSTALAÇÃO GRATUITA 100% FIBRA', 'inclusos' => ['Globo Play Incluso', '100% Fibra Óptica', 'Wi-fi de alta performance'], 'destaque' => false, 'link_contratar' => '#'],
-            // Adicionar outros planos GloboPlay aqui (700, 900, 1.1GB)
+           
         ];
 
         $planosMesh = [
@@ -43,7 +41,7 @@ class PlanController extends Controller
             ['id_plano' => 'mesh-600', 'nome_plano_card' => 'COMBO MAX 600 MEGA + Mesh', 'velocidade' => '600 MEGA', 'preco' => '114,98', 'tipo_pagamento' => 'BOLETO', 'observacao' => '*SOB CONSULTA DE VIABILIDADE', 'instalacao_info' => 'INSTALAÇÃO GRATUITA 100% FIBRA', 'inclusos' => ['Tecnologia Mesh Premium', 'APPS INCLUSOS', '100% Fibra Óptica', 'Wi-fi de alta performance'], 'destaque' => true, 'link_contratar' => '#'],
             ['id_plano' => 'mesh-800', 'nome_plano_card' => 'COMBO SUPER 800 MEGA + Mesh', 'velocidade' => '800 MEGA', 'preco' => '134,98', 'tipo_pagamento' => 'BOLETO', 'observacao' => '*SOB CONSULTA DE VIABILIDADE', 'instalacao_info' => 'INSTALAÇÃO GRATUITA 100% FIBRA', 'inclusos' => ['Tecnologia Mesh Premium', 'APPS INCLUSOS', '100% Fibra Óptica', 'Wi-fi de alta performance'], 'destaque' => false, 'link_contratar' => '#'],
             ['id_plano' => 'mesh-1gb', 'nome_plano_card' => 'PREMIUM 1GB + Mesh', 'velocidade' => '1 GB', 'preco' => '159,98', 'tipo_pagamento' => 'BOLETO', 'observacao' => '*SOB CONSULTA DE VIABILIDADE', 'instalacao_info' => 'INSTALAÇÃO GRATUITA 100% FIBRA', 'inclusos' => ['Tecnologia Mesh Premium', 'APPS INCLUSOS', '100% Fibra Óptica', 'Wi-fi de alta performance'], 'destaque' => false, 'link_contratar' => '#'],
-            ['id_plano' => 'mesh-avulso', 'nome_plano_card' => 'SERVIÇO MESH PREMIUM (Avulso)', 'velocidade' => 'Adicional', 'preco' => '24,99', 'tipo_pagamento' => 'Adicional ao plano', 'observacao' => 'Ideal para casas > 60m²', 'instalacao_info' => 'Consulte condições', 'inclusos' => ['Melhora cobertura Wi-Fi', 'Rede única e contínua'], 'destaque' => false, 'link_contratar' => '#'],
+            
         ];
 
         $combosEmpresas = [
@@ -75,18 +73,10 @@ class PlanController extends Controller
                 'planos' => $combosBoleto,
                 'estilo_card_template' => 'plan-card-boleto'
             ],
-            // Removida a categoria MAX CARTÃO
-            // [
-            //     'id_secao' => 'planos-max-cartao',
-            //     'titulo_secao' => 'Turbine com <span class="text-secondary-tuxnet">MAX</span> <span class="text-primary-tuxnet">(Cartão)</span>',
-            //     'descricao_secao' => 'Sua internet ultraveloz com acesso ao MAX Standard Streaming e muito mais, no cartão de crédito.',
-            //     'texto_adicional_secao' => 'Com o MAX STANDARD Streaming, você tem acesso a uma biblioteca cheia de sucessos para curtir quando e onde quiser. Filmes premiados, séries que todo mundo comenta, documentários fascinantes e muito mais estão esperando por você!',
-            //     'planos' => $planosMaxCartao, // Este array foi removido
-            //     'estilo_card_template' => 'plan-card-imagem'
-            // ],
+         
             [
                 'id_secao' => 'planos-globoplay',
-                'titulo_secao' => 'Diversão Garantida com <span class="text-secondary-tuxnet">GloboPlay</span>', // Cor do span alterada para secundária (laranja)
+                'titulo_secao' => 'Diversão Garantida com <span class="text-secondary-tuxnet">GloboPlay</span>', 
                 'descricao_secao' => 'Internet de alta velocidade com acesso ao melhor do entretenimento nacional e internacional.',
                 'planos' => $planosGloboPlay,
                 'estilo_card_template' => 'plan-card-boleto' 

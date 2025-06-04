@@ -19,11 +19,7 @@
                 <p>
                     <i class="bi bi-whatsapp me-2"></i> <a href="https://wa.me/5508007226662" target="_blank" class="text-white" style="text-decoration: none;">WhatsApp</a>
                 </p>
-                {{-- Você pode adicionar mais contatos como email aqui:
-                <p>
-                    <i class="bi bi-envelope-fill me-2"></i> <a href="mailto:contato@tuxnet.com.br" class="text-white" style="text-decoration: none;">contato@tuxnet.com.br</a>
-                </p>
-                --}}
+              
             </div>
 
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -52,7 +48,7 @@
                     <i class="bi bi-link-45deg me-2"></i>Links Úteis
                 </h6>
                 <p><a href="{{ url('/') }}" class="text-white"><i class="bi bi-house-door-fill me-2"></i>Início</a></p>
-                <p><a href="{{ url('/planos') }}" class="text-white"><i class="bi bi-wifi me-2"></i>Nossos Planos</a></p> {{-- Crie a rota /planos depois --}}
+                <p><a href="{{ url('/planos') }}" class="text-white"><i class="bi bi-wifi me-2"></i>Nossos Planos</a></p> 
                 <p><a href="{{ url('/sobre') }}" class="text-white"><i class="bi bi-info-circle-fill me-2"></i>Sobre Nós</a></p>
                 
             </div>

@@ -28,7 +28,7 @@
                                         type="button" role="tab" 
                                         aria-controls="{{ $categoria['id_secao'] ?? Str::slug($categoria['titulo_secao']) }}-content" 
                                         aria-selected="{{ $index == 0 ? 'true' : 'false' }}">
-                                    {!! strip_tags($categoria['titulo_secao'], '<span>') !!} {{-- Remove spans do título para o botão --}}
+                                    {!! strip_tags($categoria['titulo_secao'], '<span>') !!} 
                                 </button>
                             </li>
                         @endforeach
@@ -43,8 +43,7 @@
                          role="tabpanel" 
                          aria-labelledby="{{ $categoria['id_secao'] ?? Str::slug($categoria['titulo_secao']) }}-tab">
                         
-                        <section class="plan-category-section"> {{-- Removido mb-5 daqui, pois o espaçamento será entre as abas --}}
-                            {{-- O título da seção já está na aba, mas podemos ter uma descrição --}}
+                        <section class="plan-category-section"> 
                             @if(!empty($categoria['descricao_secao']))
                                 <div class="row">
                                     <div class="col-12 text-center mb-4">

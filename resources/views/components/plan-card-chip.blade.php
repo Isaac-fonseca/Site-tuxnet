@@ -2,9 +2,7 @@
 
 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-11 mx-auto mb-4 d-flex align-items-stretch">
     <div class="card plano-card plano-chip-card {{ $plano['destaque'] ?? false ? 'border-secondary-tuxnet shadow-lg' : 'shadow-sm' }} h-100 text-center">
-        @if($plano['destaque'] ?? false)
-            <div class="plano-destaque-badge">MAIS DADOS</div>
-        @endif
+      
         <div class="card-header bg-primary-tuxnet text-white py-3">
             <h3 class="h4 mb-0 font-montserrat">{{ $plano['nome_plano_card'] ?? 'Chip Tuxnet' }}</h3>
         </div>
