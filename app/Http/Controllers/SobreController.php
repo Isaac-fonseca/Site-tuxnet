@@ -13,7 +13,7 @@ class SobreController extends Controller
             'apresentacao_completa' => "Somos a TUXNET, uma operadora de telecomunicações com presença regional, criada para oferecer ao mercado infraestrutura de alta capacidade e uma plataforma multiserviços para tráfego dados, voz e imagem de alta confiabilidade.\nNossa rede possui pontos de presença (POP) em diversos municípios, e está presente nos pontos de troca de tráfego com as principais operadoras do mercado, sendo possível oferecer soluções de comunicação de alta qualidade para qualquer destino do mundo, através de uma rede IP híbrida, compostas por enlaces em fibra óptica e rádios digitais com total redundância.\nOferecemos soluções diferenciadas e personalizadas, de acordo com a necessidade de cada cliente. Mais do que um serviço de transporte de dados, a TUXNET desenvolve soluções, com análise técnica e financeira, a fim de indicar o melhor serviço para atender as necessidades do cliente, sempre com o objetivo de garantir que seu empreendimento obtenha resultados positivos, aumentando a eficiência com redução de custo operacional.\nSabemos que o investimento feito por sua empresa deve ter um retorno associado, e pensando nisso, a TUXNET traça suas metas na integração da comunicação dos usuários e na transmissão de qualquer tipo de informação com segurança, rapidez e eficiência.",
             'missao' => "Oferecer serviços de telecomunicações com qualidade e bom atendimento, superando as expectativas dos clientes.",
             'visao' => "Ser uma empresa de excelência, referência em infraestrutura e conhecimento técnico, com reconhecimento dos usuários."
-           
+            // 'valores_resumo' foi removido
         ];
 
         $valoresDetalhados = [
@@ -99,7 +99,7 @@ class SobreController extends Controller
                     ],
                      [
                         'nome_local' => 'Loja Feira IX',
-                        'endereco_completo' => 'Rua E, Feira IX, 64, Feira de Santana/BA - 40301-110',
+                        'endereco_completo' => 'Rua E, Feira IX, 64, Feira de Santana/BA - 44024-056', // CEP CORRIGIDO (Exemplo, verifique o CEP correto para Feira IX)
                         'link_mapa' => 'https://www.google.com/maps/place/R.+E,+64+-+Calumbi,+Feira+de+Santana+-+BA,+44009-180'
                     ],
                 ],
@@ -131,7 +131,7 @@ class SobreController extends Controller
                         'link_mapa' => 'https://maps.google.com/?q=Praça+27+de+julho,+Centro,+Retirolândia,+BA'
                     ]
                 ]
-               
+                // Adicionar Ichu, Pé de Serra, São Domingos, Serra Preta quando tiver os endereços
             ]
         ];
 
