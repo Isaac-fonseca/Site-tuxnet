@@ -324,3 +324,114 @@
 #nossas-lojas .loja-card .btn-sm { font-size: 0.85rem; padding: 0.4rem 0.9rem; font-family: 'Montserrat', sans-serif; font-weight: 500; }
 #nossas-lojas h5.text-primary-tuxnet { font-size: 1.3rem; font-weight: 600; }
 
+.plan-card {
+    border: 1px solid #e9ecef;
+    border-radius: 1rem; /* Bordas mais arredondadas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Garante que o "badge" não vaze */
+}
+
+.plan-card:hover {
+    transform: translateY(-10px); /* Efeito de elevação no hover */
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+}
+
+.plan-card .card-header {
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Estilização do preço */
+.price-display .price-currency {
+    font-size: 1.5rem;
+    font-weight: 500;
+    vertical-align: top;
+    margin-right: 2px;
+}
+
+.price-display .price-main {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.price-display .price-period {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+/* Lista de benefícios */
+.plan-card ul li {
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem;
+}
+
+/* Estilos para o Card em Destaque */
+.plan-card-highlighted {
+    border: 2px solid var(--tuxnet-primary); /* Use a variável de cor primária do seu site */
+    position: relative;
+}
+
+/* Badge "Mais Popular" */
+.popular-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: -2.5rem;
+    background-color: var(--tuxnet-primary);
+    color: white;
+    padding: 0.3rem 3rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transform: rotate(45deg);
+    z-index: 10;
+}
+/* ===================================================
+   Novos Estilos para os Cards de Planos
+   =================================================== */
+
+/* Container da logo Tuxnet no topo do card */
+.card-logo-container {
+    border-bottom: 1px solid #f0f0f0; /* Linha sutil de separação */
+}
+
+/* Estilo para a logo da Tuxnet dentro do card */
+.card-tuxnet-logo {
+    max-height: 28px; /* Controle o tamanho da sua logo aqui */
+    width: auto;
+}
+
+/* Container das logos dos parceiros */
+.partner-logos {
+    padding: 1rem 0;
+    border-top: 1px solid #f0f0f0;
+    margin-top: auto !important; /* Empurra para o final do card-body */
+}
+
+/* Estilo para as IMAGENS das logos dos parceiros */
+.partner-logo-img {
+    height: 24px; /* Normaliza a altura de todas as logos */
+    width: auto;
+    filter: grayscale(100%); /* Deixa as logos em escala de cinza */
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+/* Efeito de hover nas logos dos parceiros */
+.partner-logo-img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Estilo para os ÍCONES (Bootstrap Icons) dos parceiros */
+.partner-logo-icon {
+    font-size: 1.8rem; /* Tamanho do ícone */
+    color: #888; /* Cor do ícone */
+    transition: all 0.3s ease;
+}
+
+.partner-logo-icon:hover {
+    color: var(--tuxnet-primary); /* Use a cor primária no hover */
+    transform: scale(1.1);
+}

@@ -1,5 +1,25 @@
-// Evento que garante que o script só roda depois que todo o HTML foi carregado.
+
 document.addEventListener('DOMContentLoaded', function () {
+
+   
+   const navMenu = document.getElementById('navbarNavDropdown');
+    const closeNavButton = document.querySelector('.btn-close-nav');
+
+    // A única coisa que nosso JS precisa fazer é fechar o menu
+    // ao clicar no nosso botão "X" personalizado.
+    if (navMenu && closeNavButton) {
+        closeNavButton.addEventListener('click', function () {
+            // Usamos o objeto Collapse do Bootstrap para fechar o menu programaticamente
+            const bsCollapse = new bootstrap.Collapse(navMenu, {
+                toggle: false // importante para não re-abrir se já estiver fechando
+            });
+            bsCollapse.hide();
+        });
+    }
+
+    // ===============================================
+    // Scripts Anteriores (Carrossel, Animação, etc.)
+    // ===============================================
 
     // Inicializa o Carrossel do Bootstrap para a página inicial (se existir)
     const heroCarouselElement = document.querySelector('#carouselExampleCaptions');
@@ -7,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typeof bootstrap !== 'undefined' && bootstrap.Carousel) {
             const heroCarousel = new bootstrap.Carousel(heroCarouselElement, {
                 interval: 5000, // Muda de slide a cada 5 segundos
-                wrap: true     // Permite que o carrossel volte ao primeiro slide após o último
+                wrap: true      // Permite que o carrossel volte ao primeiro slide após o último
             });
         } else {
             console.error('Bootstrap Carousel component not found for #carouselExampleCaptions.');

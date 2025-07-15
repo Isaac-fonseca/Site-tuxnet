@@ -1,5 +1,6 @@
 @import 'tailwindcss';
-
+@import 'style.css';
+@import 'custom.css';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -21,3 +22,5 @@ body {
 footer a:hover {
     text-decoration: underline;
 }
+
+

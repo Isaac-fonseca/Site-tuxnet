@@ -3,7 +3,7 @@
 @section('title', 'Página Inicial')
 
 @push('styles')
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    
 @endpush
 
 @section('content')
@@ -46,25 +46,117 @@
         </div>
     </section>
 
- 
-    <section id="sobre-empresa" class="section-padding bg-white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0 text-center animate-on-scroll fade-in-left">
-                    <img src="{{ asset('img/slogan.png') }}" class="img-fluid rounded shadow sobre-empresa-image" alt="Sobre a Tuxnet">
-                </div>
-                <div class="col-lg-6 animate-on-scroll fade-in-right">
-                    <h2 class="font-montserrat mb-3 text-center text-lg-start">Bem-vindo à <span class="text-primary-tuxnet">Tuxnet</span></h2>
-                    <p class="lead">Somos uma empresa líder em soluções de telecomunicações, dedicada a fornecer internet de alta velocidade, telefonia e serviços inovadores para residências e empresas.</p>
-                    <p>Com uma infraestrutura moderna e uma equipe apaixonada por tecnologia, nosso compromisso é conectar pessoas e negócios ao futuro, oferecendo qualidade, confiança e um atendimento excepcional.</p>
-                    <p>Nossa missão é simplificar sua vida digital, garantindo que você tenha sempre a melhor experiência, seja navegando, trabalhando, estudando ou se divertindo.</p>
-                    <div class="text-center text-lg-start">
-                        <a href="{{ url('/sobre') }}" class="btn btn-primary-tuxnet mt-3">Saiba Mais Sobre Nós</a>
+ <section id="planos-destaque" class="section-padding bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">A ultravelocidade que você precisa!</h2>
+            <p class="lead text-muted">com o plano que cabe no seu bolso.</p>
+        </div>
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card plan-card h-100 shadow-sm">
+                    <div class="card-header text-center bg-white border-0 pt-4 pb-3">
+                        <h3 class="fw-bold fs-2">100 MEGA</h3>
+                    </div>
+                    <div class="card-body text-center d-flex flex-column">
+                        <div class="price-display my-3">
+                            <span class="price-currency">R$</span>
+                            <span class="price-main">69</span>
+                            <span class="price-period">,99 /mês</span>
+                        </div>
+                        <p class="text-muted small">*SOB CONSULTA DE VIABILIDADE</p>
+                        
+                        <ul class="list-unstyled text-start my-4 mx-auto">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>100% Fibra Óptica</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Instalação Inclusa</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Wi-Fi de Alta Performance</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Assistência Premium 24h</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Upload de 50 MEGA</li>
+                        </ul>
+
+                        <div class="mt-auto">
+                            <a href="#" class="btn btn-outline-primary-tuxnet w-100">Contratar Agora</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
+           <div class="col-lg-4 col-md-6 mb-4">
+    <div class="card plan-card plan-card-highlighted h-100 shadow">
+        <div class="popular-badge">Mais Popular</div>
+
+        <div class="card-logo-container text-center pt-4 pb-3">
+            <img src="{{ asset('img/logo-tuxnet-pequena.png') }}" alt="Tuxnet" class="card-tuxnet-logo">
         </div>
-    </section>
+
+        <div class="card-header text-center bg-white border-0 pt-3 pb-3">
+            <h3 class="fw-bold fs-2 text-primary-tuxnet">400 MEGA</h3>
+        </div>
+        <div class="card-body text-center d-flex flex-column">
+            <div class="price-display my-3">
+                <span class="price-currency">R$</span>
+                <span class="price-main">79</span>
+                <span class="price-period">,99 /mês</span>
+            </div>
+            <p class="text-muted small">*SOB CONSULTA DE VIABILIDADE</p>
+            
+            <ul class="list-unstyled text-start my-4 mx-auto">
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>100% Fibra Óptica</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Instalação Inclusa</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Wi-Fi de Alta Performance</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Assistência Premium 24h</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Upload de 200 MEGA</li>
+            </ul>
+
+            <div class="partner-logos text-center my-4">
+                <small class="d-block mb-2 text-muted fw-bold">Conteúdos Inclusos:</small>
+                <div class="d-flex justify-content-center align-items-center gap-3">
+                    <img src="{{ asset('img/logos/max.png') }}" alt="Max" class="partner-logo-img" title="Max">
+                    <img src="{{ asset('img/logos/globoplay.png') }}" alt="Globoplay" class="partner-logo-img" title="Globoplay">
+                    <i class="bi bi-book-half partner-logo-icon" title="Skeelo"></i>
+                </div>
+            </div>
+
+            <div class="mt-auto">
+                 <a href="#" class="btn btn-primary-tuxnet w-100">Contratar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card plan-card h-100 shadow-sm">
+                    <div class="card-header text-center bg-white border-0 pt-4 pb-3">
+                        <h3 class="fw-bold fs-2">600 MEGA</h3>
+                    </div>
+                    <div class="card-body text-center d-flex flex-column">
+                        <div class="price-display my-3">
+                            <span class="price-currency">R$</span>
+                            <span class="price-main">99</span>
+                            <span class="price-period">,99 /mês</span>
+                        </div>
+                        <p class="text-muted small">*SOB CONSULTA DE VIABILIDADE</p>
+                        
+                        <ul class="list-unstyled text-start my-4 mx-auto">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>100% Fibra Óptica</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Instalação Inclusa</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Wi-Fi 5G de Alta Performance</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Assistência Premium 24h</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Upload de 300 MEGA</li>
+                        </ul>
+
+                        <div class="mt-auto">
+                           <a href="#" class="btn btn-outline-primary-tuxnet w-100">Contratar Agora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+  
 
   
     <section id="app-tuxnet" class="section-padding">
@@ -87,8 +179,8 @@
                         <div class="col-md-7 col-lg-12 col-xl-7">
                             <p class="fw-bold">Baixe agora e facilite seu dia a dia:</p>
                             <div class="d-flex align-items-center justify-content-center justify-content-md-start">
-                                <a href="https://play.google.com/store/apps/details?id=com.hubsoft_client_app.tuxnet&hl=pt_BR" class="me-3"><img src="https://placehold.co/150x50/000000/FFFFFF?text=Play+Store" alt="Disponível no Play Store" style="height: 50px;"></a>
-                                <a href="https://apps.apple.com/br/app/tuxnet/id1530094992"><img src="https://placehold.co/150x50/000000/FFFFFF?text=Apple+Store" alt="Disponível na Apple Store" style="height: 50px;"></a>
+                                <a href="https://play.google.com/store/apps/details?id=com.hubsoft_client_app.tuxnet&hl=pt_BR" class="me-3"><img src="https://placehold.co/150x50/FCB62E/FFFFFF?text=Play+Store" alt="Disponível no Play Store" style="height: 50px;"></a>
+                                <a href="https://apps.apple.com/br/app/tuxnet/id1530094992"><img src="https://placehold.co/150x50/FCB62E/FFFFFF?text=Apple+Store" alt="Disponível na Apple Store" style="height: 50px;"></a>
                             </div>
                         </div>
                         <div class="col-md-5 col-lg-12 col-xl-5 mt-3 mt-md-0 text-center text-md-end">
@@ -219,13 +311,43 @@
             </div>
         </div>
     </section>
+ <section id="sobre-empresa" class="section-padding bg-white">
 
+ <div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6 mb-4 mb-lg-0 text-center animate-on-scroll fade-in-left">
+
+<img src="{{ asset('img/slogan.png') }}" class="img-fluid rounded shadow sobre-empresa-image" alt="Sobre a Tuxnet">
+
+ </div>
+
+ <div class="col-lg-6 animate-on-scroll fade-in-right">
+
+ <h2 class="font-montserrat mb-3 text-center text-lg-start">Bem-vindo à <span class="text-primary-tuxnet">Tuxnet</span></h2>
+
+ <p class="lead">Somos uma empresa líder em soluções de telecomunicações, dedicada a fornecer internet de alta velocidade, telefonia e serviços inovadores para residências e empresas.</p>
+ <p>Com uma infraestrutura moderna e uma equipe apaixonada por tecnologia, nosso compromisso é conectar pessoas e negócios ao futuro, oferecendo qualidade, confiança e um atendimento excepcional.</p>
+
+ <p>Nossa missão é simplificar sua vida digital, garantindo que você tenha sempre a melhor experiência, seja navegando, trabalhando, estudando ou se divertindo.</p>
+
+ <div class="text-center text-lg-start">
+
+<a href="{{ url('/sobre') }}" class="btn btn-primary-tuxnet mt-3">Saiba Mais Sobre Nós</a>
+
+ </div>
+
+ </div>
+
+ </div>
+ </div>
+
+</section>
     <a href="https://wa.me/5508007226662?text=Olá! Gostaria de mais informações sobre os planos da Tuxnet." target="_blank" class="whatsapp-float" title="Fale Conosco pelo WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 
 @endsection
 
-@push('scripts')
-    <script src="{{ asset('js/app.js') }}" defer></script>
-@endpush
+
