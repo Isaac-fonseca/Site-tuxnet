@@ -1,61 +1,74 @@
 
 :root {
-    
+
     --tuxnet-text-shadow-light: 1px 1px 2px rgba(255,255,255,0.1);
-    --tuxnet-text-outline-subtle: 
+    --tuxnet-text-outline-subtle:
         0px 0px 1px rgba(0,0,0,0.6),
-        0px 0px 3px rgba(0,0,0,0.3);  
+        0px 0px 3px rgba(0,0,0,0.3);
     --tuxnet-text-outline-white:
-        -0.5px -0.5px 0 rgba(var(--tuxnet-primary-darker-rgb, 74,20,90),0.7),  
+        -0.5px -0.5px 0 rgba(var(--tuxnet-primary-darker-rgb, 74,20,90),0.7),
          0.5px -0.5px 0 rgba(var(--tuxnet-primary-darker-rgb, 74,20,90),0.7),
         -0.5px  0.5px 0 rgba(var(--tuxnet-primary-darker-rgb, 74,20,90),0.7),
          0.5px  0.5px 0 rgba(var(--tuxnet-primary-darker-rgb, 74,20,90),0.7),
          0 0 2px rgba(var(--tuxnet-primary-darker-rgb, 74,20,90),0.5);
-  
+
 }
 
 
 .hero-carousel {
-    margin-top: -1.5rem; 
-    overflow: hidden; 
-    position: relative; 
-}
-.hero-carousel .carousel-item {
-    height: 60vh; 
-    min-height: 350px; 
-    position: relative; 
-    background-color: var(--tuxnet-dark);
-}
-.hero-carousel .carousel-item img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center center;
-}
-.hero-carousel .carousel-item .assine-ja-container {
-    position: absolute; bottom: 30px; right: 30px; left: auto; transform: none; 
-    z-index: 10; padding: 10px; text-align: right; 
-}
-.btn-assine-ja {
-    background-color: var(--tuxnet-secondary); color: var(--tuxnet-primary); 
-    border: 2px solid var(--tuxnet-secondary); font-family: 'Montserrat', sans-serif;
-    font-weight: 700; text-transform: uppercase; padding: 0.85rem 2.8rem; 
-    font-size: 1.2rem; border-radius: 50px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: all 0.3s ease;
-    text-shadow: none; 
-}
-.btn-assine-ja:hover, .btn-assine-ja:focus {
-    background-color: #fcc850; border-color: #fcc850; color: var(--tuxnet-primary);
-    transform: translateY(-2px) scale(1.05); box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    margin-top: -1.5rem;
+    overflow: hidden;
+    position: relative;
 }
 
-@media (max-width: 767.98px) { 
-    .hero-carousel .carousel-item { height: 30vh; min-height: 200px; }
-    .hero-carousel .carousel-item .assine-ja-container { bottom: 10px; right: 15px; width: auto; }
-    .btn-assine-ja { padding: 0.5rem 1.2rem; font-size: 0.85rem; }
+.hero-carousel .carousel-item {
+
+    aspect-ratio: 1200 / 250;
+
+    position: relative;
+    background-color: var(--tuxnet-dark);
 }
-@media (min-width: 2000px) {
-    .hero-carousel .carousel-item { height: 50vh; min-height: 400px; }
-    .hero-carousel .carousel-item .assine-ja-container { bottom: 35px; right: 35px; }
-    .btn-assine-ja { padding: 0.9rem 2.8rem; font-size: 1.3rem; }
+
+.hero-carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 'cover' funciona perfeitamente quando a proporção bate */
+    object-position: center center;
 }
+
+
+
+/* --- Ajustes para telas menores (Mobile) --- */
+.hero-carousel {
+    margin-top: -1.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-carousel .carousel-item {
+    /* Proporção 1200x250 aplicada a TODAS as telas */
+    /* Isso garante "apenas a imagem", sem bordas e sem cortes. */
+    aspect-ratio: 1200 / 250;
+
+    position: relative;
+    background-color: var(--tuxnet-dark);
+}
+
+.hero-carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- REMOVENDO ELEMENTOS --- */
+
+/* Remove as setas de navegação em todas as telas */
+.hero-carousel .carousel-control-prev,
+.hero-carousel .carousel-control-next {
+    display: none;
+}
+
+/* --- AJUSTES PARA MOBILE --- */
 
 .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
 @media (min-width: 768px) { .section-padding { padding-top: 5rem; padding-bottom: 5rem; } }
@@ -70,13 +83,13 @@
 #sobre-empresa h2.font-montserrat { font-size: 2.2rem; text-shadow: var(--tuxnet-text-shadow); }
 #sobre-empresa p.lead { font-size: 1.15rem; margin-bottom: 1.2rem; color: #495057; }
 #sobre-empresa p { font-size: 1rem; line-height: 1.75; color: var(--tuxnet-dark); }
-.sobre-empresa-image { width: 100%; max-width: 500px;  display: block; margin-left: auto; margin-right: auto;} 
+.sobre-empresa-image { width: 100%; max-width: 500px;  display: block; margin-left: auto; margin-right: auto;}
 @media (min-width: 992px) { .sobre-empresa-image { max-width: 620px; } }
-@media (max-width: 575.98px) { 
-    #sobre-empresa h2.font-montserrat { font-size: 1.7rem; margin-bottom: 0.75rem; overflow-wrap: break-word; } 
-    #sobre-empresa p.lead { font-size: 1rem; line-height: 1.6; margin-bottom: 0.75rem; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; } 
-    #sobre-empresa p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.75rem; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; } 
-    #sobre-empresa .btn { font-size: 0.9rem; padding: 0.4rem 0.9rem; } 
+@media (max-width: 575.98px) {
+    #sobre-empresa h2.font-montserrat { font-size: 1.7rem; margin-bottom: 0.75rem; overflow-wrap: break-word; }
+    #sobre-empresa p.lead { font-size: 1rem; line-height: 1.6; margin-bottom: 0.75rem; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
+    #sobre-empresa p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.75rem; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
+    #sobre-empresa .btn { font-size: 0.9rem; padding: 0.4rem 0.9rem; }
 }
 
 #porque-tuxnet h2.font-montserrat { text-shadow: var(--tuxnet-text-shadow); }
@@ -89,7 +102,7 @@
 .cidades-atendidas .cidade-card-link { display: block; color: inherit; text-decoration: none; }
 .cidades-atendidas .cidade-card-link:hover .cidade-card { transform: translateY(-7px); box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.18); }
 .cidades-atendidas .cidade-card { border: 1px solid #e9ecef; transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out; background-color: var(--tuxnet-white); border-radius: 0.75rem; }
-.cidades-atendidas .cidade-card .card-body { padding: 1.5rem; } 
+.cidades-atendidas .cidade-card .card-body { padding: 1.5rem; }
 .cidades-atendidas .cidade-card .card-title { color: var(--tuxnet-primary); font-size: 1.15rem; font-weight: 600; text-shadow: var(--tuxnet-text-shadow-light); }
 .cidades-atendidas .bi-geo-alt-fill { font-size: 2.8rem; }
 
@@ -100,7 +113,7 @@
 @media (max-width: 767.98px) { #cta-whatsapp .cta-image { max-height: 320px; margin-bottom: 2rem; } }
 #cta-whatsapp .display-2 { font-size: 3rem; color: var(--tuxnet-primary); }
 #cta-whatsapp .cta-title { color: var(--tuxnet-primary); font-size: 2.2rem; font-weight: 700; line-height: 1.3; margin-bottom: 1rem; text-shadow: var(--tuxnet-text-shadow); }
-#cta-whatsapp .cta-title .text-secondary-tuxnet { font-weight: 700; text-shadow: var(--tuxnet-text-outline-subtle); } 
+#cta-whatsapp .cta-title .text-secondary-tuxnet { font-weight: 700; text-shadow: var(--tuxnet-text-outline-subtle); }
 @media (min-width: 768px) { #cta-whatsapp .cta-title { font-size: 2.8rem; } #cta-whatsapp .display-2 { display: none !important; } }
 #cta-whatsapp .cta-text { color: var(--tuxnet-dark); font-size: 1.15rem; line-height: 1.75; margin-bottom: 2rem !important; }
 #cta-whatsapp .tuxnet-cta-button-container { display: block; text-align: center; width: 100%; }
@@ -109,21 +122,21 @@
 
 
 #cta-whatsapp .cta-phone-number {
-    display: block; 
+    display: block;
     text-align:center;
-    font-size: 1.1rem; 
-    color: var(--tuxnet-dark); 
+    font-size: 1.1rem;
+    color: var(--tuxnet-dark);
     font-weight: 500;
-    margin-top: 1.5rem !important; 
-    padding: 0.5rem; 
-    border: none; 
-    border-radius: 0; 
-    background-color: transparent; 
-    text-shadow: none; 
+    margin-top: 1.5rem !important;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    text-shadow: none;
 }
-#cta-whatsapp .cta-phone-number i { 
-    margin-right: 0.6rem; 
-    font-size: 1.1em; 
+#cta-whatsapp .cta-phone-number i {
+    margin-right: 0.6rem;
+    font-size: 1.1em;
     color: var(--tuxnet-primary);
     vertical-align: middle;
 }
@@ -131,7 +144,7 @@
     color: var(--tuxnet-primary);
     font-weight: 600;
     text-decoration: none;
-    border-bottom: 1px dashed var(--tuxnet-primary-lighter); 
+    border-bottom: 1px dashed var(--tuxnet-primary-lighter);
     padding-bottom: 2px;
 }
 #cta-whatsapp .cta-phone-number a:hover {
@@ -165,9 +178,9 @@
 .tuxnet-plan-filters #planos-globoplay-tab:hover span.text-success, .tuxnet-plan-filters #planos-globoplay-tab.active span.text-success { color: var(--tuxnet-white) !important; }
 
 
-.plan-category-section .row.justify-content-center > [class*="col-"] { 
+.plan-category-section .row.justify-content-center > [class*="col-"] {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     flex-wrap: wrap;
 }
 .plan-category-section .h2-style { margin-bottom: 0.75rem; font-size: 2rem; text-shadow: var(--tuxnet-text-shadow); }
@@ -176,50 +189,50 @@
 
 
 .plano-card {
-    border: 2px solid var(--tuxnet-primary-lighter, #e0e0e0); 
-    border-radius: 0.85rem; 
+    border: 2px solid var(--tuxnet-primary-lighter, #e0e0e0);
+    border-radius: 0.85rem;
     transition: all 0.3s ease-in-out;
-    position: relative; 
-    background-color: var(--tuxnet-white); 
-    display: flex; 
+    position: relative;
+    background-color: var(--tuxnet-white);
+    display: flex;
     flex-direction: column;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08); 
-    width: 100%; 
-    max-width: 360px; 
-    margin-left: auto; 
-    margin-right: auto; 
-    margin-bottom: 1.5rem; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
 }
-.plano-card.border-secondary-tuxnet { 
-    border-width: 2px; 
+.plano-card.border-secondary-tuxnet {
+    border-width: 2px;
     border-color: var(--tuxnet-secondary) !important;
-    box-shadow: 0 8px 20px rgba(var(--tuxnet-secondary-rgb, 252, 182, 46), 0.35); 
+    box-shadow: 0 8px 20px rgba(var(--tuxnet-secondary-rgb, 252, 182, 46), 0.35);
 }
 
 
 .plano-card .card-header {
-    border-top-left-radius: calc(0.85rem - 2px); 
+    border-top-left-radius: calc(0.85rem - 2px);
     border-top-right-radius: calc(0.85rem - 2px);
-    padding: 1.25rem 1rem; 
-    position: relative; 
-    background-color: var(--tuxnet-primary); 
+    padding: 1.25rem 1rem;
+    position: relative;
+    background-color: var(--tuxnet-primary);
 }
 .plano-card .card-header h3 {
-    font-weight: 600; 
-    font-size: 1.4rem; 
-    color: var(--tuxnet-white); 
-    text-shadow: var(--tuxnet-text-outline-white); 
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: var(--tuxnet-white);
+    text-shadow: var(--tuxnet-text-outline-white);
 }
 .plano-card .preco-container { margin-bottom: 0.75rem; padding-top: 0.75rem; }
-.plano-card .preco-container .preco-simbolo { 
-    font-size: 1.4rem; vertical-align: text-top; margin-right: -0.1em; 
-    color: var(--tuxnet-secondary); font-weight: 500; 
-    text-shadow: var(--tuxnet-text-outline-subtle); 
+.plano-card .preco-container .preco-simbolo {
+    font-size: 1.4rem; vertical-align: text-top; margin-right: -0.1em;
+    color: var(--tuxnet-secondary); font-weight: 500;
+    text-shadow: var(--tuxnet-text-outline-subtle);
 }
-.plano-card .preco-container .preco-valor { 
-    font-weight: 700; line-height: 1; font-size: 3.5rem; 
-    color: var(--tuxnet-secondary); 
-    text-shadow: var(--tuxnet-text-outline-subtle); 
+.plano-card .preco-container .preco-valor {
+    font-weight: 700; line-height: 1; font-size: 3.5rem;
+    color: var(--tuxnet-secondary);
+    text-shadow: var(--tuxnet-text-outline-subtle);
 }
 .plano-card .preco-container .preco-periodo { font-size: 1rem; font-weight: 500; color: #6c757d; }
 .plano-card .tipo-pagamento { font-weight: 500; color: var(--tuxnet-primary) !important; font-size: 0.9rem; margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -227,11 +240,11 @@
 .plano-card .plano-inclusos li { margin-bottom: 0.65rem; display: flex; align-items: center; color: var(--tuxnet-dark); font-size: 0.95rem; }
 .plano-card .plano-inclusos li .bi { margin-right: 0.6rem; flex-shrink: 0; color: var(--tuxnet-success); font-size: 1.15em; }
 .plano-card .plano-inclusos li .bi-gear-fill, .plano-card .plano-inclusos li .bi-star-fill, .plano-card .plano-inclusos li .bi-broadcast-pin, .plano-card .plano-inclusos li .bi-chat-dots-fill {
-    color: var(--tuxnet-secondary); 
+    color: var(--tuxnet-secondary);
 }
 .plano-card .instalacao-info { font-weight: bold; font-size: 0.9rem; color: var(--tuxnet-primary); margin-top: 1rem; text-shadow: var(--tuxnet-text-shadow-light); }
 .plano-card .observacao-plano { font-style: italic; font-size: 0.85rem; color: #6c757d; margin-top: 0.5rem; }
-.plano-card .card-footer { padding-top: 0.75rem; padding-bottom: 1.5rem !important; } 
+.plano-card .card-footer { padding-top: 0.75rem; padding-bottom: 1.5rem !important; }
 .plano-card .card-footer .btn.contratar-btn { font-weight: 600; padding: 0.85rem 1.75rem; font-size: 1.1rem; }
 .plano-card:not(.border-secondary-tuxnet):hover { transform: translateY(-8px); box-shadow: 0 .85rem 2rem rgba(0,0,0,.14)!important; }
 
@@ -242,8 +255,8 @@
 
 .plano-chip-card .chip-dados-total { line-height: 1; font-size: 2.8rem; text-shadow: var(--tuxnet-text-outline-subtle); }
 .plano-chip-card .plano-inclusos li i { color: var(--tuxnet-primary); }
-.plano-chip-card .card-header h3 { font-size: 1.3rem; text-shadow: var(--tuxnet-text-outline-white); } 
-.plano-chip-card .preco-valor { font-size: 2.8rem; text-shadow: var(--tuxnet-text-outline-subtle); } 
+.plano-chip-card .card-header h3 { font-size: 1.3rem; text-shadow: var(--tuxnet-text-outline-white); }
+.plano-chip-card .preco-valor { font-size: 2.8rem; text-shadow: var(--tuxnet-text-outline-subtle); }
 
 
 
@@ -324,114 +337,308 @@
 #nossas-lojas .loja-card .btn-sm { font-size: 0.85rem; padding: 0.4rem 0.9rem; font-family: 'Montserrat', sans-serif; font-weight: 500; }
 #nossas-lojas h5.text-primary-tuxnet { font-size: 1.3rem; font-weight: 600; }
 
-.plan-card {
-    border: 1px solid #e9ecef;
-    border-radius: 1rem; /* Bordas mais arredondadas */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden; /* Garante que o "badge" não vaze */
+
+
+/* ================================================================ */
+/* == ESTILOS PARA O NOVO CARD DE PLANO (BASEADO NA IMAGEM) == */
+/* ================================================================ */
+
+/* --- Estrutura Principal do Card --- */
+.plan-card-new {
+    border: none;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom, #6E3F91, #340667);
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: all 0.3s ease-in-out;
 }
 
-.plan-card:hover {
-    transform: translateY(-10px); /* Efeito de elevação no hover */
-    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+.plan-card-new.highlight {
+
+    transform: scale(1.05);
+    box-shadow: 0 15px 45px rgba(var(--tuxnet-primary-rgb), 0.3);
+
 }
 
-.plan-card .card-header {
-    border-bottom: 1px solid #e9ecef;
+
+.plan-card-new:not(.highlight):hover {
+    transform: none;
 }
 
-/* Estilização do preço */
-.price-display .price-currency {
-    font-size: 1.5rem;
-    font-weight: 500;
-    vertical-align: top;
-    margin-right: 2px;
+.plan-card-new.highlight:hover {
+    transform: scale(1.05);
 }
 
-.price-display .price-main {
-    font-size: 4rem;
-    font-weight: 700;
+
+
+
+.plan-card-new .plan-title {
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+.plan-card-new .plan-speed .speed-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 6rem;
+    font-weight: 800;
     line-height: 1;
+    display: block;
 }
-
-.price-display .price-period {
-    font-size: 1.2rem;
+.plan-card-new .plan-speed .speed-unit {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.plan-card-new .included-text {
+    font-size: 0.8rem;
     font-weight: 500;
-    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
 }
-
-/* Lista de benefícios */
-.plan-card ul li {
+.plan-card-new .service-item {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.installation-banner {
+    background-color: var(--tuxnet-secondary);
+    color: var(--tuxnet-primary);
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.viability-text {
+    color: rgba(255, 255, 255, 0.7);
+}
+.price-separator {
     display: flex;
     align-items: center;
-    font-size: 1.05rem;
-}
-
-/* Estilos para o Card em Destaque */
-.plan-card-highlighted {
-    border: 2px solid var(--tuxnet-primary); /* Use a variável de cor primária do seu site */
-    position: relative;
-}
-
-/* Badge "Mais Popular" */
-.popular-badge {
-    position: absolute;
-    top: 1.5rem;
-    right: -2.5rem;
-    background-color: var(--tuxnet-primary);
-    color: white;
-    padding: 0.3rem 3rem;
+    gap: 1rem;
+    color: var(--tuxnet-secondary);
+    font-weight: 600;
     font-size: 0.9rem;
+    text-transform: uppercase;
+}
+.price-separator::before,
+.price-separator::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--tuxnet-secondary);
+    opacity: 0.5;
+}
+.price-display-new {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1;
+}
+.price-display-new .currency,
+.price-display-new .period {
+    color: var(--tuxnet-secondary);
+    font-weight: 600;
+}
+.price-display-new .currency {
+    font-size: 1.5rem;
+    vertical-align: top;
+}
+.price-display-new .main-price {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: #fff;
+}
+.price-display-new .cents {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+.price-display-new .period {
+    font-size: 1.5rem;
+}
+.payment-method {
+    opacity: 0.8;
+}
+.slogan-container {
+    /* ATIVA O FLEXBOX */
+    display: flex;
+    align-items: center;      /* Alinha o texto e a imagem verticalmente no centro */
+    justify-content: center;  /* Centraliza o conjunto (texto + imagem) no card */
+    gap: 1rem;                /* Cria um espaço entre o texto e a imagem */
+    line-height: 1.2;
+    /* Mantém os espaçamentos que você já tinha */
+    margin-top: auto;
+    padding-top: 1.5rem; /* Ajustei um pouco o padding para o novo layout */
+}
+
+.slogan-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    /* Tamanho de fonte reduzido para caber ao lado da imagem */
+    font-size: 1.2rem;
+    margin: 0; /* Remove margens padrão do parágrafo */
+    text-align: center; /* Alinha o texto à direita, perto da imagem */
+
+}
+
+.slogan-text .highlight {
+    color: var(--tuxnet-secondary);
+}
+
+.slogan-image {
+    /* Tamanho da imagem reduzido para o novo layout */
+    max-width: 90px;
+    margin-top: 0; /* Remove a margem anterior */
+}
+
+
+/* --- AJUSTE RESPONSIVO --- */
+/* Para telas muito pequenas, voltamos ao layout de pilha para melhor leitura */
+@media (max-width: 400px) {
+    .slogan-container {
+        flex-direction: column; /* Coloca a imagem embaixo do texto */
+        gap: 0.5rem; /* Diminui o espaço entre eles */
+        text-align: center; /* Centraliza tudo */
+    }
+
+    .slogan-text {
+        text-align: center; /* Centraliza o texto */
+    }
+}
+
+/* ================================================================ */
+/* == AJUSTES PARA TELAS MENORES (MOBILE) == */
+/* ================================================================ */
+
+@media (max-width: 767px) {
+
+    .plan-card-new .card-body {
+        padding: 1.5rem; /* Reduz o espaçamento interno geral */
+    }
+
+    /* Remove o efeito de "levantar" o card de destaque no mobile para não ocupar espaço lateral */
+    .plan-card-new.highlight {
+        transform: none;
+    }
+
+    .plan-card-new .plan-speed .speed-number {
+        font-size: 4.5rem; /* <<< GRANDE MUDANÇA */
+    }
+
+    .plan-card-new .plan-speed .speed-unit {
+        font-size: 1.2rem;
+    }
+
+    .installation-banner {
+        font-size: 0.8rem;
+        padding: 0.6rem;
+    }
+
+    .price-display-new .main-price {
+        font-size: 3.5rem; /* <<< GRANDE MUDANÇA */
+    }
+
+    .price-display-new .currency,
+    .price-display-new .period {
+        font-size: 1rem;
+    }
+
+    .price-display-new .cents {
+        font-size: 2rem;
+    }
+
+
+}
+.btn-contratar {
+    background-color: var(--tuxnet-secondary); /* Usa sua cor secundária */
+    color: var(--tuxnet-primary); /* Usa sua cor primária */
+    border-radius: 50rem;
+    padding: 0.8rem 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block; /* Garante que ocupe a largura */
+    width: 100%;
+}
+
+.btn-contratar:hover {
+    background-color: #fff; /* Efeito hover, pode ajustar */
+    color: var(--tuxnet-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+/* Estilo para o carrossel de planos */
+.plans-carousel {
+  padding-top: 20px; /* Adiciona espaço no topo para o card aumentado */
+    padding-bottom: 50px; /* Mantém o espaço para a paginação */
+    overflow: hidden; /* Garante que o conteúdo não vaze nas laterais */
+}
+
+/* ================================================================ */
+/* == CSS CORRIGIDO E REFORÇADO PARA AS SETAS DO CARROSSEL == */
+/* ================================================================ */
+
+/* 1. Container que agrupa as setas (sem alterações) */
+.swiper-navigation-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* 2. Regra REFORÇADA para os botões */
+/* Usamos o ID da seção para aumentar a especificidade */
+#planos-destaque .swiper-button-prev,
+#planos-destaque .swiper-button-next {
+    /* A regra mais IMPORTANTE: garante que as setas fiquem no fluxo da página */
+    position: static !important;
+
+    margin: 0 !important; /* Reseta margens */
+
+    /* Mantém o tamanho e o visual que já definimos */
+    width: 48px;
+    height: 48px;
+    background-color: var(--tuxnet-primary, #6E3F91);
+    border-radius: 12px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* 3. Esconde as setas padrão (sem alterações) */
+#planos-destaque .swiper-button-prev::after,
+#planos-destaque .swiper-button-next::after {
+    display: none !important;
+}
+
+/* 4. Ícone do Bootstrap (sem alterações) */
+#planos-destaque .swiper-button-prev i,
+#planos-destaque .swiper-button-next i {
+    font-size: 1.2rem;
     font-weight: bold;
-    transform: rotate(45deg);
-    z-index: 10;
-}
-/* ===================================================
-   Novos Estilos para os Cards de Planos
-   =================================================== */
-
-/* Container da logo Tuxnet no topo do card */
-.card-logo-container {
-    border-bottom: 1px solid #f0f0f0; /* Linha sutil de separação */
 }
 
-/* Estilo para a logo da Tuxnet dentro do card */
-.card-tuxnet-logo {
-    max-height: 28px; /* Controle o tamanho da sua logo aqui */
-    width: auto;
+/* 5. Efeito de hover (sem alterações) */
+#planos-destaque .swiper-button-prev:not(.swiper-button-disabled):hover,
+#planos-destaque .swiper-button-next:not(.swiper-button-disabled):hover {
+    background-color: #340667;
 }
 
-/* Container das logos dos parceiros */
-.partner-logos {
-    padding: 1rem 0;
-    border-top: 1px solid #f0f0f0;
-    margin-top: auto !important; /* Empurra para o final do card-body */
-}
-
-/* Estilo para as IMAGENS das logos dos parceiros */
-.partner-logo-img {
-    height: 24px; /* Normaliza a altura de todas as logos */
-    width: auto;
-    filter: grayscale(100%); /* Deixa as logos em escala de cinza */
-    opacity: 0.7;
-    transition: all 0.3s ease;
-}
-
-/* Efeito de hover nas logos dos parceiros */
-.partner-logo-img:hover {
-    filter: grayscale(0%);
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-/* Estilo para os ÍCONES (Bootstrap Icons) dos parceiros */
-.partner-logo-icon {
-    font-size: 1.8rem; /* Tamanho do ícone */
-    color: #888; /* Cor do ícone */
-    transition: all 0.3s ease;
-}
-
-.partner-logo-icon:hover {
-    color: var(--tuxnet-primary); /* Use a cor primária no hover */
-    transform: scale(1.1);
+/* 6. Estilo da seta desabilitada (sem alterações) */
+#planos-destaque .swiper-button-disabled {
+    background-color: var(--tuxnet-primary, #6E3F91);
+    opacity: 0.4;
+    cursor: not-allowed;
 }

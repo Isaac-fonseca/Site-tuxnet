@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary-tuxnet shadow-sm pt-2 pb-1">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary-tuxnet shadow-sm pt-2 ">
     <div class="container">
         <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ route('home') }}">
             <img src="{{ asset('img/logo.png') }}" alt="Tuxnet Logo" class="tuxnet-logo">
         </a>
 
-   
+
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
 </button>
@@ -12,7 +12,6 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <button class="btn-close-nav d-lg-none" aria-label="Close">
                 <i class="bi bi-x-lg"></i> </button>
-            
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" aria-current="page" href="{{ route('home') }}">Início</a>
@@ -34,15 +33,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}#cta-whatsapp">Contato</a>
                 </li>
-                
+
                <li class="nav-item d-lg-none mt-4">
     <a class="btn btn-secondary-tuxnet" href="{{ url('/cliente/login') }}">
         Área do Cliente
     </a>
-</li> 
+</li>
             </ul>
 
-            <ul class="navbar-nav ms-auto d-none d-lg-flex"> 
+            <ul class="navbar-nav ms-auto d-none d-lg-flex">
                 <li class="nav-item">
                     <a class="btn btn-outline-secondary-tuxnet" href="{{ url('/cliente/login') }}">
                         Área do Cliente
