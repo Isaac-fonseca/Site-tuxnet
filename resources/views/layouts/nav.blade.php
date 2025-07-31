@@ -33,7 +33,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}#cta-whatsapp">Contato</a>
                 </li>
-
+  <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('trabalhe-conosco') ? 'active' : '' }}" href="{{ url('/trabalhe-conosco') }}">trabalhe conosco</a>
+                </li>
                <li class="nav-item d-lg-none mt-4">
     <a class="btn btn-secondary-tuxnet" href="{{ url('/cliente/login') }}">
         Área do Cliente

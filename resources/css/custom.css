@@ -98,13 +98,7 @@
 .feature-card .feature-icon i { font-size: 3rem; margin-bottom: 0.75rem !important; }
 .feature-card h5 { color: var(--tuxnet-primary); font-weight: 600; font-size: 1.2rem; margin-bottom: 0.5rem; text-shadow: var(--tuxnet-text-shadow-light); }
 .feature-card p.small { color: #495057; line-height: 1.65; flex-grow: 1; font-size: 0.9rem; }
-.cidades-atendidas h2.font-montserrat { text-shadow: var(--tuxnet-text-shadow); }
-.cidades-atendidas .cidade-card-link { display: block; color: inherit; text-decoration: none; }
-.cidades-atendidas .cidade-card-link:hover .cidade-card { transform: translateY(-7px); box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.18); }
-.cidades-atendidas .cidade-card { border: 1px solid #e9ecef; transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out; background-color: var(--tuxnet-white); border-radius: 0.75rem; }
-.cidades-atendidas .cidade-card .card-body { padding: 1.5rem; }
-.cidades-atendidas .cidade-card .card-title { color: var(--tuxnet-primary); font-size: 1.15rem; font-weight: 600; text-shadow: var(--tuxnet-text-shadow-light); }
-.cidades-atendidas .bi-geo-alt-fill { font-size: 2.8rem; }
+
 
 #cta-whatsapp.section-padding.bg-light { margin-bottom: 0; padding-bottom: 4rem; padding-top: 4rem; }
 #cta-whatsapp .cta-content-box { background-color: var(--tuxnet-white); padding: 2.5rem; border-radius: 0.75rem; box-shadow: 0 8px 25px rgba(0,0,0,0.12); border: 1px solid #dee2e6; }
@@ -153,17 +147,49 @@
     text-decoration: none;
 }
 
-.whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25D366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 6px rgba(0,0,0,0.3); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
-.whatsapp-float:hover { transform: scale(1.1); box-shadow: 3px 3px 8px rgba(0,0,0,0.4); color: #FFF; text-decoration: none !important; }
+/* ===============================================
+   CSS de Centralização Reforçado (Tentativa Final)
+   =============================================== */
+
+/* Estilo base compartilhado com centralização REFORÇADA */
+.whatsapp-float, .phone-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    right: 25px;
+    color: #FFF !important; /* Adicionado !important para garantir a cor */
+    border-radius: 50%; /* Mantido para ser círculo */
+    font-size: 28px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.25);
+    z-index: 1000; /* Aumentado para garantir que fique na frente */
+    transition: transform 0.2s ease-in-out;
+    text-decoration: none !important; /* Garante que não haja sublinhado */
+
+    /* --- Centralização com Flexbox (reforçado) --- */
+    display: flex !important; /* Força o modo flex */
+    justify-content: center !important; /* Força centralização horizontal */
+    align-items: center !important;    
+  
+    padding: 0;
+    line-height: 1; 
+}
 
 
-.carousel-planos .carousel-item { padding: 0 5%; }
-.carousel-planos .plan-card-rotativo { max-width: 450px; margin: 0 auto; background-color: var(--tuxnet-white); border-radius: 0.75rem; }
-.carousel-planos .plan-card-rotativo img { border-radius: 0.5rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 100%; height: auto; display: block; }
-.carousel-planos .carousel-control-prev, .carousel-planos .carousel-control-next { width: 8%; background-color: rgba(0,0,0,0.1); }
-.carousel-planos .carousel-control-prev-icon, .carousel-planos .carousel-control-next-icon { filter: invert(1) grayscale(100) brightness(1.5); }
-.carousel-planos .carousel-indicators button { background-color: var(--tuxnet-primary); }
-.carousel-planos .carousel-indicators .active { background-color: var(--tuxnet-secondary); }
+.whatsapp-float:hover, .phone-float:hover {
+    transform: scale(1.1);
+    color: #FFF !important;
+}
+
+
+.whatsapp-float {
+    bottom: 25px;
+    background-color: #25D366;
+}
+
+.phone-float {
+    bottom: 100px;
+    background-color: #7F57F1;
+}
 
 .tuxnet-plan-filters { border-bottom: none; margin-bottom: 3.5rem !important; padding-bottom: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
 .tuxnet-plan-filters .nav-item { margin-bottom: 0.5rem; }
@@ -268,31 +294,6 @@
 
 
 
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 40px;
-    right: 40px;
-    background-color: #25D366;
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-.whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
-    color: #FFF;
-    text-decoration: none !important;
-}
 
 
 .btn:hover, .btn:focus,
@@ -329,15 +330,35 @@
 #faq .accordion-header button:not(.collapsed)::after { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); transform: rotate(-180deg) scale(0.9); }
 #faq .accordion-body { font-size: 0.95rem; line-height: 1.75; padding: 1.5rem; background-color: #fdfdff; }
 
-#nossas-lojas .loja-card { transition: all 0.3s ease-in-out; border-radius: 0.75rem; }
-#nossas-lojas .loja-card:hover { transform: translateY(-8px); box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.12)!important; }
-#nossas-lojas .loja-card .card-title { font-weight: 600; color: var(--tuxnet-primary); font-size: 1.1rem; }
-#nossas-lojas .loja-card .card-subtitle { font-weight: 500; font-size: 1rem; color: var(--tuxnet-dark); }
-#nossas-lojas .loja-card p.card-text { font-size: 0.9rem; color: var(--tuxnet-text-muted); line-height: 1.6; }
-#nossas-lojas .loja-card .btn-sm { font-size: 0.85rem; padding: 0.4rem 0.9rem; font-family: 'Montserrat', sans-serif; font-weight: 500; }
-#nossas-lojas h5.text-primary-tuxnet { font-size: 1.3rem; font-weight: 600; }
+/* Estilos para os cards de loja DENTRO DO MODAL */
 
+.loja-card-modal {
+    border-radius: 0.75rem;
+    border: 1px solid #dee2e6; /* Borda padrão do Bootstrap */
+}
 
+.loja-card-modal .card-body {
+    padding: 1.25rem;
+}
+
+.loja-card-modal .card-subtitle {
+    font-weight: 600; /* Dando mais destaque ao nome da loja */
+    font-size: 1rem;
+    color: var(--tuxnet-dark);
+}
+
+.loja-card-modal .card-text {
+    font-size: 0.9rem;
+    color: var(--tuxnet-text-muted); /* Certifique-se que essa variável exista, ou troque por #6c757d */
+    line-height: 1.6;
+}
+
+.loja-card-modal .btn-sm {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
 
 /* ================================================================ */
 /* == ESTILOS PARA O NOVO CARD DE PLANO (BASEADO NA IMAGEM) == */
@@ -617,28 +638,161 @@
     transition: opacity 0.3s ease, background-color 0.3s ease;
 }
 
-/* 3. Esconde as setas padrão (sem alterações) */
 #planos-destaque .swiper-button-prev::after,
 #planos-destaque .swiper-button-next::after {
     display: none !important;
 }
 
-/* 4. Ícone do Bootstrap (sem alterações) */
+
 #planos-destaque .swiper-button-prev i,
 #planos-destaque .swiper-button-next i {
     font-size: 1.2rem;
     font-weight: bold;
 }
 
-/* 5. Efeito de hover (sem alterações) */
 #planos-destaque .swiper-button-prev:not(.swiper-button-disabled):hover,
 #planos-destaque .swiper-button-next:not(.swiper-button-disabled):hover {
     background-color: #340667;
 }
 
-/* 6. Estilo da seta desabilitada (sem alterações) */
+
 #planos-destaque .swiper-button-disabled {
     background-color: var(--tuxnet-primary, #6E3F91);
     opacity: 0.4;
     cursor: not-allowed;
+}
+/* ===============================================
+   CSS Final para a Seção Cidades Atendidas
+   =============================================== */
+
+.cidades-atendidas h2.font-montserrat {
+    text-shadow: var(--tuxnet-text-shadow);
+}
+
+
+.cidades-atendidas .cidade-card {
+    border: 1px solid #e9ecef;
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+    background-color: var(--tuxnet-white);
+    border-radius: 0.75rem;
+    position: relative; 
+    overflow: hidden; 
+}
+
+
+.cidades-atendidas .cidade-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.18);
+}
+
+
+.cidades-atendidas .cidade-card .card-body {
+    padding: 1.5rem;
+}
+
+.cidades-atendidas .cidade-card .card-title {
+    color: var(--tuxnet-primary);
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-shadow: var(--tuxnet-text-shadow-light);
+}
+
+.cidades-atendidas .bi-geo-alt-fill {
+    font-size: 2.8rem;
+}
+
+
+.selo-matriz {
+    position: absolute;
+    top: 18px;
+    right: -34px;
+    background-color: var(--tuxnet-primary); 
+    color: white;
+    padding: 6px 40px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    transform: rotate(45deg);
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ===============================================
+   CSS para a Seção do Aplicativo
+   =============================================== */
+
+/* Estilo para os novos botões da App Store / Google Play */
+.app-buttons-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas pequenas */
+    gap: 1rem; /* Espaçamento entre os botões */
+    justify-content: center; /* Centraliza em telas pequenas */
+}
+
+@media (min-width: 768px) {
+    .app-buttons-container {
+        justify-content: flex-start; /* Alinha à esquerda em telas maiores */
+    }
+}
+
+.btn-app-store {
+    display: inline-flex;
+    align-items: center;
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 1px solid #333;
+}
+
+.btn-app-store:hover {
+    background-color: #e9ce33;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-app-store i {
+    font-size: 2rem;
+    margin-right: 0.8rem;
+}
+
+.btn-app-store div {
+    text-align: left;
+    line-height: 1.1;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.btn-app-store div span {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-bottom: 2px;
+}
+
+/* [CORREÇÃO] Limita o tamanho máximo do QR Code */
+.app-qrcode {
+    max-width: 160px; /* Define um tamanho máximo razoável */
+    height: auto;     /* Mantém a proporção da imagem */
+}
+
+.app-tuxnet-image {
+    max-width: 450px; /* O tamanho máximo que você gostou */
+    height: auto;
+}
+
+/* 2. Estilo específico para telas de CELULAR */
+@media (max-width: 767px) {
+    .app-tuxnet-image {
+        /* Força a imagem a ocupar no máximo 90% da largura da tela.
+           Isso cria as "bordas" ou margens laterais que faltavam.
+        */
+        width: 90%; 
+        
+        display: block;   /* Necessário para a margem funcionar */
+        margin: 0 auto;   /* Garante a centralização perfeita */
+    }
 }

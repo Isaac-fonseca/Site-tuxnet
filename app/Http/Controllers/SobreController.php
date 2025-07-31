@@ -79,62 +79,8 @@ class SobreController extends Controller
             ]
         ];
 
-        $lojas = [
-            'matriz' => [
-                'nome' => 'Matriz - Riachão do Jacuípe',
-                'endereco_completo' => 'Rua 2 Lot. Maria Luiza I e II, 49 - Mandacaru, Riachão do Jacuípe/BA - 44640-000',
-                'link_mapa' => 'https://maps.google.com/?q=Rua+2+Lot.+Maria+Luiza+I+e+II,+49+-+Mandacaru,+Riachão+do+Jacuípe,+BA'
-            ],
-            'filiais' => [
-                'Feira de Santana' => [
-                    [
-                        'nome_local' => 'Loja Campo Limpo',
-                        'endereco_completo' => 'Rua Monsenhor Moisés Gonçalves do Couto, 2246, Campo Limpo, Feira de Santana/BA - 44032-491',
-                        'link_mapa' => 'https://maps.google.com/?q=Rua+Monsenhor+Moisés+Gonçalves+do+Couto,+2246,+Campo+Limpo,+Feira+de+Santana,+BA'
-                    ],
-                    [
-                        'nome_local' => 'Escritório Sawaya',
-                        'endereco_completo' => 'Av Sampaio, 1120 - Sawaya, Sala 806, Feira de Santana/BA - 44025-280',
-                        'link_mapa' => 'https://maps.google.com/?q=Av+Sampaio,+1120+-+Sawaya,+Sala+806,+Feira+de+Santana,+BA'
-                    ],
-                     [
-                        'nome_local' => 'Loja Feira IX',
-                        'endereco_completo' => 'Rua E, Feira IX, 64, Feira de Santana/BA - 44024-056', // CEP CORRIGIDO (Exemplo, verifique o CEP correto para Feira IX)
-                        'link_mapa' => 'https://www.google.com/maps/place/R.+E,+64+-+Calumbi,+Feira+de+Santana+-+BA,+44009-180'
-                    ],
-                ],
-                'Riachão do Jacuípe' => [
-                    [
-                        'nome_local' => 'Loja Centro',
-                        'endereco_completo' => 'Rua Alexandre Carneiro Figueiredo, 138, Centro, Riachão do Jacuípe/BA - 44640-000',
-                        'link_mapa' => 'https://maps.google.com/?q=Rua+Alexandre+Carneiro+Figueiredo,+138,+Centro,+Riachão+do+Jacuípe,+BA'
-                    ]
-                ],
-                'Santaluz' => [
-                    [
-                        'nome_local' => 'Loja Centro',
-                        'endereco_completo' => 'Praça Major Benicio Viana, 7, Centro, Santaluz/BA - 48880-000',
-                        'link_mapa' => 'https://maps.google.com/?q=Praça+Major+Benicio+Viana,+7,+Centro,+Santaluz,+BA'
-                    ]
-                ],
-                'Valente' => [
-                    [
-                        'nome_local' => 'Loja Centro',
-                        'endereco_completo' => 'Praça Professor Borges, 6 - Centro, Valente/BA - 48890-000',
-                        'link_mapa' => 'https://maps.google.com/?q=Praça+Professor+Borges,+6+-+Centro,+Valente,+BA'
-                    ]
-                ],
-                'Retirolândia' => [
-                    [
-                        'nome_local' => 'Loja Centro',
-                        'endereco_completo' => 'Praça 27 de julho, Centro, Retirolândia/BA - 48750-000',
-                        'link_mapa' => 'https://maps.google.com/?q=Praça+27+de+julho,+Centro,+Retirolândia,+BA'
-                    ]
-                ]
-                // Adicionar Ichu, Pé de Serra, São Domingos, Serra Preta quando tiver os endereços
-            ]
-        ];
+        
 
-        return view('sobre', compact('empresa', 'valoresDetalhados', 'faq', 'lojas'));
+        return view('sobre', compact('empresa', 'valoresDetalhados', 'faq', ));
     }
 }

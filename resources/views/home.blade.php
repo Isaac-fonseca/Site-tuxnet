@@ -235,38 +235,50 @@
 
 
 
-    <section id="app-tuxnet" class="section-padding">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0 text-center animate-on-scroll fade-in-right">
-                    <img src="{{ asset('img/celular.png') }}" class="img-fluid rounded shadow-lg app-tuxnet-image" alt="Aplicativo Tuxnet">
-                </div>
-                <div class="col-lg-6 order-lg-1 animate-on-scroll fade-in-left">
-                    <h2 class="font-montserrat mb-3">Gerencie Tudo na <span class="text-primary-tuxnet">Palma da Sua Mão</span></h2>
-                    <p class="lead mb-3">Com o aplicativo Tuxnet, você tem o controle total dos seus serviços de forma rápida e fácil!</p>
-                    <ul class="list-unstyled app-features-list mb-4">
-                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>Acompanhe seu consumo de dados.</li>
-                        <li><i class="bi bi-receipt-cutoff text-success me-2"></i>Acesse e pague suas faturas.</li>
-                        <li><i class="bi bi-tools text-success me-2"></i>Solicite suporte técnico simplificado.</li>
-                        <li><i class="bi bi-bell-fill text-success me-2"></i>Fique por dentro das novidades e promoções.</li>
-                        <li><i class="bi bi-pencil-square text-success me-2"></i>Altere dados cadastrais e muito mais!</li>
-                    </ul>
-                    <div class="row align-items-center">
-                        <div class="col-md-7 col-lg-12 col-xl-7">
-                            <p class="fw-bold">Baixe agora e facilite seu dia a dia:</p>
-                            <div class="d-flex align-items-center justify-content-center justify-content-md-start">
-                                <a href="https://play.google.com/store/apps/details?id=com.hubsoft_client_app.tuxnet&hl=pt_BR" class="me-3"><img src="https://placehold.co/150x50/FCB62E/FFFFFF?text=Play+Store" alt="Disponível no Play Store" style="height: 50px;"></a>
-                                <a href="https://apps.apple.com/br/app/tuxnet/id1530094992"><img src="https://placehold.co/150x50/FCB62E/FFFFFF?text=Apple+Store" alt="Disponível na Apple Store" style="height: 50px;"></a>
-                            </div>
+<section id="app-tuxnet" class="section-padding">
+    <div class="container">
+        <div class="row align-items-center">
+           <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0 d-flex justify-content-center animate-on-scroll fade-in-right">
+                <img src="{{ asset('img/celular.png') }}" class="img-fluid rounded shadow-lg app-tuxnet-image" alt="Aplicativo Tuxnet">
+            </div>
+            <div class="col-lg-6 order-lg-1 animate-on-scroll fade-in-left">
+                <h2 class="font-montserrat mb-3">Gerencie Tudo na <span class="text-primary-tuxnet">Palma da Sua Mão</span></h2>
+                <p class="lead mb-3">Com o aplicativo Tuxnet, você tem o controle total dos seus serviços de forma rápida e fácil!</p>
+                <ul class="list-unstyled app-features-list mb-4">
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i>Acompanhe seu consumo de dados.</li>
+                    <li><i class="bi bi-receipt-cutoff text-success me-2"></i>Acesse e pague suas faturas.</li>
+                    <li><i class="bi bi-tools text-success me-2"></i>Solicite suporte técnico simplificado.</li>
+                    <li><i class="bi bi-bell-fill text-success me-2"></i>Fique por dentro das novidades e promoções.</li>
+                    <li><i class="bi bi-pencil-square text-success me-2"></i>Altere dados cadastrais e muito mais!</li>
+                </ul>
+                <div class="row align-items-center">
+                    <div class="col-md-7">
+                        <p class="fw-bold mb-2">Baixe agora e facilite seu dia a dia:</p>
+                        <div class="app-buttons-container">
+                            <a href="https://play.google.com/store/apps/details?id=com.hubsoft_client_app.tuxnet&hl=pt_BR" target="_blank" class="btn-app-store">
+                                <i class="bi bi-google-play"></i>
+                                <div>
+                                    <span>Disponível no</span>
+                                    Google Play
+                                </div>
+                            </a>
+                            <a href="https://apps.apple.com/br/app/tuxnet/id1530094992" target="_blank" class="btn-app-store">
+                                <i class="bi bi-apple"></i>
+                                <div>
+                                    <span>Baixar na</span>
+                                    App Store
+                                </div>
+                            </a>
                         </div>
-                        <div class="col-md-5 col-lg-12 col-xl-5 mt-3 mt-md-0 text-center text-md-end">
-                            <img src="{{ asset('img/playstore.png') }}" class="img-fluid app-qrcode" alt="QR Code para baixar o aplicativo Tuxnet">
-                        </div>
+                    </div>
+                    <div class="col-md-5 mt-4 mt-md-0 d-flex justify-content-center justify-content-md-end">
+                        <img src="{{ asset('img/playstore.png') }}" class="img-fluid app-qrcode" alt="QR Code para baixar o aplicativo Tuxnet">
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
     <section id="porque-tuxnet" class="section-padding bg-white">
@@ -325,40 +337,61 @@
     </section>
 
     <section id="cidades-atendidas" class="section-padding cidades-atendidas">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="font-montserrat">Cidades <span class="text-primary-tuxnet">Atendidas na Bahia</span></h2>
-                    <p class="lead">Levamos nossa conexão de alta qualidade para diversas localidades. Clique na sua cidade para ver no mapa!</p>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                @php
-                    $cidades = [
-                        'Feira de Santana', 'Ichu', 'Pé de Serra', 'Riachão do Jacuípe',
-                        'Retirolândia', 'Santaluz', 'São Domingos', 'Serra Preta'
-                    ];
-                @endphp
-                @foreach($cidades as $cidade)
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                    <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($cidade . ', Bahia, Brazil') }}" target="_blank" class="cidade-card-link text-decoration-none">
-                        <div class="card h-100 text-center cidade-card">
-                            <div class="card-body">
-                                <i class="bi bi-geo-alt-fill display-4 text-secondary-tuxnet mb-3"></i>
-                                <h5 class="card-title font-montserrat">{{ $cidade }}</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                @endforeach
-            </div>
-            <div class="row mt-4">
-                <div class="col-12 text-center">
-                    <p>Não encontrou sua cidade? <a href="{{ route('home') }}#cta-whatsapp" class="text-primary-tuxnet fw-bold">Entre em contato</a> para verificar a disponibilidade.</p>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="font-montserrat">Cidades <span class="text-primary-tuxnet">Atendidas na Bahia</span></h2>
+                <p class="lead">Levamos nossa conexão de alta qualidade para diversas localidades. Clique na sua cidade para ver nossos endereços!</p>
             </div>
         </div>
-    </section>
+        <div class="row justify-content-center">
+            {{-- Loop para criar os cards de cada cidade --}}
+            @foreach($lojasPorCidade as $cidade => $enderecos)
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card h-100 text-center cidade-card"
+                     data-bs-toggle="modal"
+                     data-bs-target="#modalEnderecos"
+                     data-cidade="{{ $cidade }}"
+                     data-enderecos="{{ json_encode($enderecos) }}"
+                     style="cursor: pointer;">
+                     {{-- Selo de destaque para a Matriz --}}
+                    @if ($cidade == 'Riachão do Jacuípe')
+                        <span class="selo-matriz">MATRIZ <i class="bi bi-star-fill ms-1"></i></span>
+                    @endif
+
+                    <div class="card-body">
+                        <i class="bi bi-geo-alt-fill display-4 text-secondary-tuxnet mb-3"></i>
+                        <h5 class="card-title font-montserrat">{{ $cidade }}</h5>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <p>Não encontrou sua cidade? <a href="{{ route('home') }}#cta-whatsapp" class="text-primary-tuxnet fw-bold">Entre em contato</a> para verificar a disponibilidade.</p>
+            </div>
+        </div>
+    </div>
+</section>  
+
+<div class="modal fade" id="modalEnderecos" tabindex="-1" aria-labelledby="modalEnderecosLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-montserrat" id="modalEnderecosLabel">Endereços em <span id="modal-cidade-nome"></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    <div id="modal-lista-enderecos">
+        </div>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <section id="cta-whatsapp" class="section-padding bg-light">

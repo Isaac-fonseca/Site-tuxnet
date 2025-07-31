@@ -107,3 +107,80 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const modalEnderecos = document.getElementById('modalEnderecos');
+
+    modalEnderecos.addEventListener('show.bs.modal', function (event) {
+        const cardClicado = event.relatedTarget;
+        const nomeCidade = cardClicado.getAttribute('data-cidade');
+        const lojas = JSON.parse(cardClicado.getAttribute('data-enderecos'));
+
+        const modalTitulo = modalEnderecos.querySelector('#modal-cidade-nome');
+        const modalLista = modalEnderecos.querySelector('#modal-lista-enderecos');
+
+        modalTitulo.textContent = nomeCidade;
+        modalLista.innerHTML = ''; // Limpa o conteúdo anterior
+
+        if (lojas && lojas.length > 0) {
+            // Loop para criar um card para cada loja
+            lojas.forEach(function(loja) {
+                // Cria o HTML do card para cada loja
+                const cardHtml = `
+                    <div class="card loja-card-modal shadow-sm mb-3">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 font-montserrat fw-semibold">${loja.nome_local}</h6>
+                            <p class="card-text small mb-2">
+                                <i class="bi bi-geo-alt-fill me-2 text-secondary-tuxnet"></i>
+                                ${loja.endereco_completo}
+                            </p>
+                            <a href="${loja.link_mapa}" target="_blank" class="btn btn-sm btn-outline-primary-tuxnet mt-2">Ver no Mapa</a>
+                        </div>
+                    </div>
+                `;
+                // Adiciona o HTML do card ao corpo do modal
+                modalLista.insertAdjacentHTML('beforeend', cardHtml);
+            });
+        } else {
+            // Mensagem para cidades sem lojas cadastradas
+            modalLista.innerHTML = '<p class="text-center text-muted">Nenhuma loja física cadastrada nesta cidade.</p>';
+        }
+    });
+});
+ const swiper = new Swiper('.plans-carousel', {
+    // Quantidade de slides visíveis por padrão (mobile)
+    slidesPerView: 1,
+    // Espaço entre os slides
+    spaceBetween: 30,
+    // Habilita o loop infinito
+    loop: true,
+
+    // Configurações para diferentes tamanhos de tela (responsividade)
+    breakpoints: {
+      // Quando a largura da tela for >= 768px
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 30
+      },
+      // Quando a largura da tela for >= 992px
+      992: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      },
+       // Quando a largura da tela for >= 1200px (opcional, para telas maiores)
+      1200: {
+          slidesPerView: 3,
+          spaceBetween: 40,
+          // centraliza o slide em destaque
+          centeredSlides: true,
+      }
+    },
+
+
+    // Navegação (setas)
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });

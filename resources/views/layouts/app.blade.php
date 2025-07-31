@@ -30,44 +30,12 @@
     <a href="https://wa.me/5508007226662?text=Olá! Gostaria de mais informações sobre os planos da Tuxnet." target="_blank" class="whatsapp-float" title="Fale Conosco pelo WhatsApp">
     <i class="bi bi-whatsapp"></i>
 </a>
+<a href="tel:08007226662" class="phone-float" title="Ligue para nós">
+    <i class="bi bi-telephone-fill"></i>
+</a>
     @stack('scripts')
 <script>
-  const swiper = new Swiper('.plans-carousel', {
-    // Quantidade de slides visíveis por padrão (mobile)
-    slidesPerView: 1,
-    // Espaço entre os slides
-    spaceBetween: 30,
-    // Habilita o loop infinito
-    loop: true,
-
-    // Configurações para diferentes tamanhos de tela (responsividade)
-    breakpoints: {
-      // Quando a largura da tela for >= 768px
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 30
-      },
-      // Quando a largura da tela for >= 992px
-      992: {
-        slidesPerView: 3,
-        spaceBetween: 30
-      },
-       // Quando a largura da tela for >= 1200px (opcional, para telas maiores)
-      1200: {
-          slidesPerView: 3,
-          spaceBetween: 40,
-          // centraliza o slide em destaque
-          centeredSlides: true,
-      }
-    },
-
-
-    // Navegação (setas)
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
+ 
 </script>
 </body>
 </html>
