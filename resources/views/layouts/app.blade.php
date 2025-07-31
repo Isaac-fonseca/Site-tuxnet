@@ -19,14 +19,15 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
+     <div id="page-wrapper">
     <div id="app">
         @include('layouts.nav') <main class="main-content py-4"> @yield('content') </main>
 
         @include('layouts.footer') </div>
+    </div> @stack('modals')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
+
     <a href="https://wa.me/5508007226662?text=Olá! Gostaria de mais informações sobre os planos da Tuxnet." target="_blank" class="whatsapp-float" title="Fale Conosco pelo WhatsApp">
     <i class="bi bi-whatsapp"></i>
 </a>
@@ -35,7 +36,7 @@
 </a>
     @stack('scripts')
 <script>
- 
+
 </script>
 </body>
 </html>

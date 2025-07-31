@@ -330,18 +330,23 @@ body {
     /* Overlay de tela cheia */
     .navbar-collapse.collapsing,
     .navbar-collapse.show {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh !important;
-        z-index: 1050;
-        background-color: #4a145a8c;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Corrigido de 100vw para 100% */
+    height: 100vh !important;
+    z-index: 1050;
+    background-color: #4a145a8c;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    /* --- MUDANÇAS APLICADAS AQUI --- */
+    display: flex;
+    flex-direction: column;   /* Empilha os itens verticalmente */
+    justify-content: center;  /* Centraliza o bloco de itens na vertical */
+    align-items: center;      /* Centraliza os itens na horizontal */
+    padding: 6rem 1rem 3rem;  /* Adiciona espaçamento interno (topo, lados, fundo) */
+    overflow-y: auto;
     }
 
     .navbar-collapse {
@@ -423,10 +428,8 @@ body {
 
     /* Logo no rodapé do menu */
     .mobile-menu-logo {
-        position: absolute;
-        bottom: 3rem;
-        left: 50%;
-        transform: translateX(-50%);
+         margin-top: auto; /* Truque de Flexbox para empurrá-lo para o final do espaço disponível */
+    padding-top: 2rem; /* Garante um espaço mínimo acima do logo */
     }
 
     .mobile-menu-logo img {
@@ -435,6 +438,7 @@ body {
         opacity: 0.7;
     }
 }
+
 /* --- footer --- */
 
 footer.bg-primary-tuxnet .footer-logo img {
@@ -452,4 +456,7 @@ footer.bg-primary-tuxnet a:hover .bi { color: var(--tuxnet-secondary); }
 
 .btn:hover, .btn:focus {
     text-decoration: none !important;
+}
+.body-no-scroll {
+    overflow: hidden;
 }

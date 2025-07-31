@@ -168,10 +168,10 @@
     /* --- Centralização com Flexbox (reforçado) --- */
     display: flex !important; /* Força o modo flex */
     justify-content: center !important; /* Força centralização horizontal */
-    align-items: center !important;    
-  
+    align-items: center !important;
+
     padding: 0;
-    line-height: 1; 
+    line-height: 1;
 }
 
 
@@ -675,8 +675,8 @@
     transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
     background-color: var(--tuxnet-white);
     border-radius: 0.75rem;
-    position: relative; 
-    overflow: hidden; 
+    position: relative;
+    overflow: hidden;
 }
 
 
@@ -700,13 +700,27 @@
 .cidades-atendidas .bi-geo-alt-fill {
     font-size: 2.8rem;
 }
+.content-ofuscado {
+    /* Aplica um desfoque e diminui um pouco o brilho */
+    filter: blur(5px) brightness(0.8);
 
+    /* Efeito sutil de "encolher" para dar profundidade */
+    transform: scale(0.98);
+
+    /* Impede que o usuário clique no fundo ofuscado */
+    pointer-events: none;
+
+    /* Animação suave para a transição */
+    transition: all 0.35s ease-out;
+
+    transform-origin: center center;
+}
 
 .selo-matriz {
     position: absolute;
     top: 18px;
     right: -34px;
-    background-color: var(--tuxnet-primary); 
+    background-color: var(--tuxnet-primary);
     color: white;
     padding: 6px 40px;
     font-size: 0.8rem;
@@ -790,9 +804,13 @@
         /* Força a imagem a ocupar no máximo 90% da largura da tela.
            Isso cria as "bordas" ou margens laterais que faltavam.
         */
-        width: 90%; 
-        
+        width: 90%;
+
         display: block;   /* Necessário para a margem funcionar */
         margin: 0 auto;   /* Garante a centralização perfeita */
     }
+}
+
+#app-tuxnet {
+    overflow-x: hidden;
 }

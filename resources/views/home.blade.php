@@ -234,7 +234,6 @@
 </section>
 
 
-
 <section id="app-tuxnet" class="section-padding">
     <div class="container">
         <div class="row align-items-center">
@@ -373,25 +372,8 @@
             </div>
         </div>
     </div>
-</section>  
+</section>
 
-<div class="modal fade" id="modalEnderecos" tabindex="-1" aria-labelledby="modalEnderecosLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title font-montserrat" id="modalEnderecosLabel">Endereços em <span id="modal-cidade-nome"></span></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-    <div id="modal-lista-enderecos">
-        </div>
-</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
     <section id="cta-whatsapp" class="section-padding bg-light">
@@ -461,3 +443,22 @@
 @endsection
 
 
+@push( 'modals')
+<div class="modal fade" id="modalEnderecos" tabindex="-1" aria-labelledby="modalEnderecosLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-montserrat" id="modalEnderecosLabel">Endereços em <span id="modal-cidade-nome"></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    <div id="modal-lista-enderecos">
+        </div>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endpush

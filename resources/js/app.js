@@ -1,20 +1,34 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-   
-   const navMenu = document.getElementById('navbarNavDropdown');
+
+ const navMenu = document.getElementById('navbarNavDropdown');
     const closeNavButton = document.querySelector('.btn-close-nav');
 
-    // A única coisa que nosso JS precisa fazer é fechar o menu
-    // ao clicar no nosso botão "X" personalizado.
-    if (navMenu && closeNavButton) {
-        closeNavButton.addEventListener('click', function () {
-            // Usamos o objeto Collapse do Bootstrap para fechar o menu programaticamente
-            const bsCollapse = new bootstrap.Collapse(navMenu, {
-                toggle: false // importante para não re-abrir se já estiver fechando
-            });
-            bsCollapse.hide();
+    // Verifica se o elemento do menu existe na página para evitar erros
+    if (navMenu) {
+
+        // --- CÓDIGO NOVO PARA TRAVAR/LIBERAR A ROLAGEM ---
+        // Adicionado para escutar quando o menu abre
+        navMenu.addEventListener('show.bs.collapse', function () {
+            document.body.classList.add('body-no-scroll');
         });
+
+        // Adicionado para escutar quando o menu fecha
+        navMenu.addEventListener('hidden.bs.collapse', function () {
+            document.body.classList.remove('body-no-scroll');
+        });
+
+        // --- SEU CÓDIGO EXISTENTE PARA O BOTÃO DE FECHAR (integrado aqui) ---
+        // Ele continua funcionando exatamente como antes
+        if (closeNavButton) {
+            closeNavButton.addEventListener('click', function () {
+                const bsCollapse = new bootstrap.Collapse(navMenu, {
+                    toggle: false
+                });
+                bsCollapse.hide();
+            });
+        }
     }
 
     // ===============================================
@@ -112,7 +126,17 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     const modalEnderecos = document.getElementById('modalEnderecos');
 
+    // NOVO: Selecionamos o elemento principal do seu site para aplicar o efeito.
+    // Usar 'main' é uma boa prática. Se não houver <main>, ele usará o <body>.
+    const mainContent = document.getElementById('page-wrapper');
+
+    // Seu listener existente foi modificado para incluir a nova lógica
     modalEnderecos.addEventListener('show.bs.modal', function (event) {
+        console.log("MODAL ABRINDO - Tentando ofuscar...");
+        // NOVO: Adiciona a classe que ofusca o fundo QUANDO O MODAL ABRE
+        mainContent.classList.add('content-ofuscado');
+
+        // ----- SEU CÓDIGO ORIGINAL (permanece o mesmo) -----
         const cardClicado = event.relatedTarget;
         const nomeCidade = cardClicado.getAttribute('data-cidade');
         const lojas = JSON.parse(cardClicado.getAttribute('data-enderecos'));
@@ -121,12 +145,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const modalLista = modalEnderecos.querySelector('#modal-lista-enderecos');
 
         modalTitulo.textContent = nomeCidade;
-        modalLista.innerHTML = ''; // Limpa o conteúdo anterior
+        modalLista.innerHTML = '';
 
         if (lojas && lojas.length > 0) {
-            // Loop para criar um card para cada loja
             lojas.forEach(function(loja) {
-                // Cria o HTML do card para cada loja
                 const cardHtml = `
                     <div class="card loja-card-modal shadow-sm mb-3">
                         <div class="card-body">
@@ -139,13 +161,20 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     </div>
                 `;
-                // Adiciona o HTML do card ao corpo do modal
                 modalLista.insertAdjacentHTML('beforeend', cardHtml);
             });
         } else {
-            // Mensagem para cidades sem lojas cadastradas
             modalLista.innerHTML = '<p class="text-center text-muted">Nenhuma loja física cadastrada nesta cidade.</p>';
         }
+
+    });
+
+    // NOVO: Adicionamos um novo listener para QUANDO O MODAL FECHA
+    modalEnderecos.addEventListener('hidden.bs.modal', function (event) {
+        // Remove a classe para que o site volte ao normal
+
+        console.log("MODAL FECHANDO - Removendo ofuscamento...");
+        mainContent.classList.remove('content-ofuscado');
     });
 });
  const swiper = new Swiper('.plans-carousel', {
