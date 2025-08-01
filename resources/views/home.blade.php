@@ -13,125 +13,134 @@
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            {{-- Slides adicionados --}}
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
 
-
-
+            {{-- Slide 1 --}}
+            <div class="carousel-item active">
+                <img src="{{ asset('img/dogtuxnet.png') }}" class="d-block w-100" alt="Banner 1">
             </div>
 
-            <div class="carousel-item active">
-                <img src="{{ asset('img/dogtuxnet.png') }}" class="d-block w-100" alt="Banner Novos Serviços">
+            {{-- Slide 2 --}}
+            <div class="carousel-item">
+                <img src="{{ asset('img/tartaruga200.png') }}" class="d-block w-100" alt="Banner 2">
+            </div>
 
+            {{-- NOVO SLIDE 3 --}}
+            <div class="carousel-item">
+                <img src="{{ asset('img/preguiça200.png') }}" class="d-block w-100" alt="Banner 3">
             </div>
 
 
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Anterior</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Próximo</span>
         </button>
     </div>
 </section>
 
-<section id="planos-destaque" class="section-padding bg-light">
+<section id="planos-destaque" class="section-padding">
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="display-5 fw-bold">A ultravelocidade que você precisa!</h2>
             <p class="lead text-muted">com o plano que cabe no seu bolso.</p>
         </div>
 
+        <!-- O container do carrossel -->
         <div class="swiper plans-carousel">
             <div class="swiper-wrapper">
 
+                <!-- Slide 1 -->
                 <div class="swiper-slide">
                     <div class="card plan-card-new h-100">
                         <div class="card-body d-flex flex-column text-center p-4">
                             <p class="plan-title">COMBO BÁSICO</p>
-                             <div class="plan-speed my-2">
-                                 <span class="speed-number">100</span>
-                                 <span class="speed-unit">MEGA</span>
-                             </div>
-                             <div class="installation-banner my-3">
-                                 INSTALAÇÃO GRATUITA 100% FIBRA
-                             </div>
-                             <p class="viability-text small my-2">*SOB CONSULTA DE VIABILIDADE</p>
-                             <div class="price-separator my-3">
-                                 <span>POR APENAS</span>
-                             </div>
-                             <div class="price-display-new mb-2">
-                                 <span class="currency">R$</span>
-                                 <span class="main-price">69</span>
-                                 <span class="cents">,99</span>
-                                 <span class="period">/MÊS</span>
-                             </div>
-                             <div class="payment-method d-flex justify-content-center align-items-center gap-2 small">
-                                 <i class="bi bi-upc-scan"></i>
-                                 <span>Boleto</span>
-                             </div>
-                             <a href="#" class="btn btn-contratar mt-4">Contratar Agora</a>
-                             <div class="slogan-container mt-auto pt-4">
-                                 <p class="slogan-text">Internet <span class="highlight">sem dor de cabeça</span></p>
-                                 <img src="{{ asset('img/cachorro-dor.png') }}" alt="Internet sem dor de cabeça" class="slogan-image">
-                             </div>
+                            <div class="plan-speed my-2">
+                                <span class="speed-number">100</span>
+                                <span class="speed-unit">MEGA</span>
+                            </div>
+                            <div class="installation-banner my-3">
+    <i class="bi bi-check-circle-fill"></i>
+    <span>INSTALAÇÃO GRATUITA 100% FIBRA</span>
+</div>
+                            <p class="viability-text small my-2">*SOB CONSULTA DE VIABILIDADE</p>
+                            <div class="price-separator my-3"><span>POR APENAS</span></div>
+                            <div class="price-display-new mb-2">
+                                <span class="currency">R$</span>
+                                <span class="main-price">69</span>
+                                <span class="cents">,99</span>
+                                <span class="period">/MÊS</span>
+                            </div>
+                            <div class="payment-method d-flex justify-content-center align-items-center gap-2 small">
+                                <i class="bi bi-upc-scan"></i>
+                                <span>Boleto</span>
+                            </div>
+                            <a href="#" class="btn btn-contratar mt-4">Contratar Agora</a>
+                            <div class="slogan-container mt-auto pt-4">
+                                <p class="slogan-text">Internet <span class="highlight">sem dor de cabeça</span></p>
+                                <img src="{{ asset('img/cachorro-dor.png') }}" alt="Internet sem dor de cabeça" class="slogan-image">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="swiper-slide">
-                    <div class="card plan-card-new  h-100">
-                         <div class="card-body d-flex flex-column text-center p-4">
-                            <p class="plan-title">COMBO PLUS</p>
-                             <div class="plan-speed my-2">
-                                 <span class="speed-number">400</span>
-                                 <span class="speed-unit">MEGA</span>
-                             </div>
-                             <div class="installation-banner my-3">
-                                 INSTALAÇÃO GRATUITA 100% FIBRA
-                             </div>
-                             <p class="viability-text small my-2">*SOB CONSULTA DE VIABILIDADE</p>
-                             <div class="price-separator my-3">
-                                 <span>POR APENAS</span>
-                             </div>
-                             <div class="price-display-new mb-2">
-                                 <span class="currency">R$</span>
-                                 <span class="main-price">79</span>
-                                 <span class="cents">,99</span>
-                                 <span class="period">/MÊS</span>
-                             </div>
-                             <div class="payment-method d-flex justify-content-center align-items-center gap-2 small">
-                                 <i class="bi bi-upc-scan"></i>
-                                 <span>BOLETO</span>
-                             </div>
-                             <a href="#" class="btn btn-contratar mt-4">Contratar Agora</a>
-                             <div class="slogan-container mt-auto pt-4">
-                                 <p class="slogan-text">Internet <span class="highlight">sem dor de cabeça</span></p>
-                                 <img src="{{ asset('img/cachorro-dor.png') }}" alt="Internet sem dor de cabeça" class="slogan-image">
-                             </div>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- Slide 2 -->
                 <div class="swiper-slide">
                     <div class="card plan-card-new h-100">
+                        <div class="card-body d-flex flex-column text-center p-4">
+                            <p class="plan-title">COMBO PLUS</p>
+                            <div class="plan-speed my-2">
+                                <span class="speed-number">400</span>
+                                <span class="speed-unit">MEGA</span>
+                            </div>
+                            <div class="installation-banner my-3">
+    <i class="bi bi-check-circle-fill"></i>
+    <span>INSTALAÇÃO GRATUITA 100% FIBRA</span>
+</div>
+
+                            <p class="viability-text small my-2">*SOB CONSULTA DE VIABILIDADE</p>
+                            <div class="price-separator my-3"><span>POR APENAS</span></div>
+                            <div class="price-display-new mb-2">
+                                <span class="currency">R$</span>
+                                <span class="main-price">79</span>
+                                <span class="cents">,99</span>
+                                <span class="period">/MÊS</span>
+                            </div>
+                            <div class="payment-method d-flex justify-content-center align-items-center gap-2 small">
+                                <i class="bi bi-upc-scan"></i>
+                                <span>BOLETO</span>
+                            </div>
+                            <a href="#" class="btn btn-contratar mt-4">Contratar Agora</a>
+                            <div class="slogan-container mt-auto pt-4">
+                                <p class="slogan-text">Internet <span class="highlight">sem dor de cabeça</span></p>
+                                <img src="{{ asset('img/cachorro-dor.png') }}" alt="Internet sem dor de cabeça" class="slogan-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                     <div class="card plan-card-new h-100">
                         <div class="card-body d-flex flex-column text-center p-4">
                            <p class="plan-title">COMBO SUPER</p>
                             <div class="plan-speed my-2">
                                 <span class="speed-number">600</span>
                                 <span class="speed-unit">MEGA</span>
                             </div>
-                            <div class="installation-banner my-3">
-                                INSTALAÇÃO GRATUITA 100% FIBRA
-                            </div>
+                                                        <div class="installation-banner my-3">
+    <i class="bi bi-check-circle-fill"></i>
+    <span>INSTALAÇÃO GRATUITA 100% FIBRA</span>
+</div>
                             <p class="viability-text small my-2">*SOB CONSULTA DE VIABILIDADE</p>
-                            <div class="price-separator my-3">
-                                <span>POR APENAS</span>
-                            </div>
+                            <div class="price-separator my-3"><span>POR APENAS</span></div>
                             <div class="price-display-new mb-2">
                                 <span class="currency">R$</span>
                                 <span class="main-price">89</span>
@@ -139,7 +148,7 @@
                                 <span class="period">/MÊS</span>
                             </div>
                             <div class="payment-method d-flex justify-content-center align-items-center gap-2 small">
-                                <i class="bi-upc-scan"></i>
+                                <i class="bi bi-upc-scan"></i>
                                 <span>boleto</span>
                             </div>
                             <a href="#" class="btn btn-contratar mt-4">Contratar Agora</a>
@@ -151,21 +160,21 @@
                     </div>
                 </div>
 
+                <!-- Slide 4 -->
                 <div class="swiper-slide">
                     <div class="card plan-card-new h-100">
                         <div class="card-body d-flex flex-column text-center p-4">
-                           <p class="plan-title">COMBO SUPER</p>
+                            <p class="plan-title">COMBO SUPER</p>
                             <div class="plan-speed my-2">
                                 <span class="speed-number">800</span>
                                 <span class="speed-unit">MEGA</span>
                             </div>
-                            <div class="installation-banner my-3">
-                                INSTALAÇÃO GRATUITA 100% FIBRA
-                            </div>
+                                                       <div class="installation-banner my-3">
+    <i class="bi bi-check-circle-fill"></i>
+    <span>INSTALAÇÃO GRATUITA 100% FIBRA</span>
+</div>
                             <p class="viability-text small my-2">*SOB CONSULTA DE VIABILIDADE</p>
-                            <div class="price-separator my-3">
-                                <span>POR APENAS</span>
-                            </div>
+                            <div class="price-separator my-3"><span>POR APENAS</span></div>
                             <div class="price-display-new mb-2">
                                 <span class="currency">R$</span>
                                 <span class="main-price">109</span>
@@ -173,7 +182,7 @@
                                 <span class="period">/MÊS</span>
                             </div>
                             <div class="payment-method d-flex justify-content-center align-items-center gap-2 small">
-                                <i class="bi-upc-scan"></i>
+                                <i class="bi bi-upc-scan"></i>
                                 <span>boleto</span>
                             </div>
                             <a href="#" class="btn btn-contratar mt-4">Contratar Agora</a>
@@ -185,6 +194,7 @@
                     </div>
                 </div>
 
+                <!-- Slide 5 -->
                 <div class="swiper-slide">
                     <div class="card plan-card-new h-100">
                         <div class="card-body d-flex flex-column text-center p-4">
@@ -193,13 +203,12 @@
                                 <span class="speed-number">1.0</span>
                                 <span class="speed-unit">GIGA</span>
                             </div>
-                            <div class="installation-banner my-3">
-                                INSTALAÇÃO GRATUITA 100% FIBRA
-                            </div>
+                                                        <div class="installation-banner my-3">
+    <i class="bi bi-check-circle-fill"></i>
+    <span>INSTALAÇÃO GRATUITA 100% FIBRA</span>
+</div>
                             <p class="viability-text small my-2">*SOB CONSULTA DE VIABILIDADE</p>
-                            <div class="price-separator my-3">
-                                <span>POR APENAS</span>
-                            </div>
+                            <div class="price-separator my-3"><span>POR APENAS</span></div>
                             <div class="price-display-new mb-2">
                                 <span class="currency">R$</span>
                                 <span class="main-price">134</span>
@@ -207,7 +216,7 @@
                                 <span class="period">/MÊS</span>
                             </div>
                             <div class="payment-method d-flex justify-content-center align-items-center gap-2 small">
-                                <i class="bi-upc-scan"></i>
+                                <i class="bi bi-upc-scan"></i>
                                 <span>boleto</span>
                             </div>
                             <a href="#" class="btn btn-contratar mt-4">Contratar Agora</a>
@@ -219,17 +228,19 @@
                     </div>
                 </div>
 
-                </div><div class="swiper-navigation-wrapper">
+            </div>
+        </div>
+
+        <!-- Container para as setas de navegação -->
+        <div class="swiper-navigation-wrapper">
             <div class="swiper-button-prev">
                 <i class="bi bi-chevron-left"></i>
             </div>
             <div class="swiper-button-next">
                 <i class="bi bi-chevron-right"></i>
             </div>
-
-
-
         </div>
+
     </div>
 </section>
 
@@ -359,7 +370,7 @@
                     @endif
 
                     <div class="card-body">
-                        <i class="bi bi-geo-alt-fill display-4 text-secondary-tuxnet mb-3"></i>
+                      <img src="img/logos/tlogo.svg" alt="Ícone de localização Tuxo" class="icone-localizacao mb-3">
                         <h5 class="card-title font-montserrat">{{ $cidade }}</h5>
                     </div>
                 </div>
@@ -402,6 +413,7 @@
             </div>
         </div>
     </section>
+    {{--
  <section id="sobre-empresa" class="section-padding bg-white">
 
  <div class="container">
@@ -435,6 +447,7 @@
  </div>
 
 </section>
+--}}
     <a href="https://wa.me/5508007226662?text=Olá! Gostaria de mais informações sobre os planos da Tuxnet." target="_blank" class="whatsapp-float" title="Fale Conosco pelo WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>

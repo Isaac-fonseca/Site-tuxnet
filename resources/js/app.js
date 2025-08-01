@@ -177,39 +177,73 @@ document.addEventListener('DOMContentLoaded', function () {
         mainContent.classList.remove('content-ofuscado');
     });
 });
- const swiper = new Swiper('.plans-carousel', {
-    // Quantidade de slides visíveis por padrão (mobile)
-    slidesPerView: 1,
-    // Espaço entre os slides
-    spaceBetween: 30,
-    // Habilita o loop infinito
-    loop: true,
+const swiper = new Swiper('.plans-carousel', {
 
-    // Configurações para diferentes tamanhos de tela (responsividade)
-    breakpoints: {
-      // Quando a largura da tela for >= 768px
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 30
-      },
-      // Quando a largura da tela for >= 992px
-      992: {
-        slidesPerView: 3,
-        spaceBetween: 30
-      },
-       // Quando a largura da tela for >= 1200px (opcional, para telas maiores)
-      1200: {
-          slidesPerView: 3,
-          spaceBetween: 40,
-          // centraliza o slide em destaque
-          centeredSlides: true,
-      }
-    },
+        loop: true,
+        loopedSlides: 5,
 
 
-    // Navegação (setas)
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
+        centeredSlides: true,
+
+
+        grabCursor: true,
+
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // --- RESPONSIVIDADE ---
+        // Configuração padrão (Mobile)
+        slidesPerView: 1.4,
+        spaceBetween: 20,
+
+        breakpoints: {
+            // Para tablets (>= 768px)
+            768: {
+                slidesPerView: 2.4,
+                spaceBetween: 30
+            },
+            // Para desktops (>= 992px)
+            992: {
+                slidesPerView: 3.1,
+                spaceBetween: 30
+            },
+            // Para desktops maiores (>= 1200px)
+            1200: {
+                slidesPerView: 3.0,
+                spaceBetween: 40,
+            }
+        }
+
+});
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Seleciona todos os cards que queremos animar
+    const cards = document.querySelectorAll('.cidade-card');
+
+    // Configura o Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            // Se o elemento estiver na tela (intersecting)
+            if (entry.isIntersecting) {
+                // Adiciona um pequeno atraso para cada card, criando um efeito cascata
+                setTimeout(() => {
+                    entry.target.classList.add('is-visible');
+                }, index * 100); // 100ms de atraso entre cada card
+
+                // Para de observar o elemento para a animação não repetir
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1 // Aciona quando 10% do card estiver visível
+    });
+
+    // Inicia a observação para cada card
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+
+});

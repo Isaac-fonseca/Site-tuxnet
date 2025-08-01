@@ -1,18 +1,29 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const select = document.getElementById("cidade-select");
-  const cards = document.querySelectorAll(".cidade-card");
+document.addEventListener('DOMContentLoaded', () => {
 
-  select.addEventListener("change", function () {
-    cards.forEach(card => {
-      card.classList.remove("show");
-      card.classList.add("hidden");
+    // Seleciona todos os cards que queremos animar
+    const cards = document.querySelectorAll('.cidade-card');
+
+    // Configura o Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            // Se o elemento estiver na tela (intersecting)
+            if (entry.isIntersecting) {
+                // Adiciona um pequeno atraso para cada card, criando um efeito cascata
+                setTimeout(() => {
+                    entry.target.classList.add('is-visible');
+                }, index * 100); // 100ms de atraso entre cada card
+
+                // Para de observar o elemento para a animação não repetir
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1 // Aciona quando 10% do card estiver visível
     });
 
-    const selected = document.getElementById(this.value);
-    if (selected) {
-      selected.classList.remove("hidden");
-      void selected.offsetWidth;
-      selected.classList.add("show");
-    }
-  });
+    // Inicia a observação para cada card
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+
 });

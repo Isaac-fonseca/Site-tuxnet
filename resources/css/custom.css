@@ -188,7 +188,7 @@
 
 .phone-float {
     bottom: 100px;
-    background-color: #7F57F1;
+    background-color: #A428FF;
 }
 
 .tuxnet-plan-filters { border-bottom: none; margin-bottom: 3.5rem !important; padding-bottom: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
@@ -359,257 +359,231 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
 }
+.section-padding {
+            padding: 10px 0;
+        }
 
-/* ================================================================ */
-/* == ESTILOS PARA O NOVO CARD DE PLANO (BASEADO NA IMAGEM) == */
-/* ================================================================ */
 
-/* --- Estrutura Principal do Card --- */
 .plan-card-new {
-    border: none;
-    border-radius: 1.5rem;
-    overflow: hidden;
-    background-image: linear-gradient(to bottom, #6E3F91, #340667);
-    color: #fff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    transition: all 0.3s ease-in-out;
-}
+            border: none;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            background-image: linear-gradient(to bottom, #A428FF, #340667);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            font-family: 'Inter', sans-serif;
+        }
 
-.plan-card-new.highlight {
-
-    transform: scale(1.05);
-    box-shadow: 0 15px 45px rgba(var(--tuxnet-primary-rgb), 0.3);
-
-}
-
-
-.plan-card-new:not(.highlight):hover {
-    transform: none;
-}
-
-.plan-card-new.highlight:hover {
-    transform: scale(1.05);
-}
-
-
-
-
-.plan-card-new .plan-title {
-    font-weight: 600;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.9;
-    margin-bottom: 0;
-}
-.plan-card-new .plan-speed .speed-number {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 6rem;
-    font-weight: 800;
-    line-height: 1;
-    display: block;
-}
-.plan-card-new .plan-speed .speed-unit {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-.plan-card-new .included-text {
-    font-size: 0.8rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.8;
-}
-.plan-card-new .service-item {
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 0.3rem 0.8rem;
-    border-radius: 2rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-.installation-banner {
+        .plan-card-new .plan-title {
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        .plan-card-new .plan-speed .speed-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1;
+            display: block;
+        }
+        .plan-card-new .plan-speed .speed-unit {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .installation-banner {
     background-color: var(--tuxnet-secondary);
     color: var(--tuxnet-primary);
-    padding: 0.8rem;
-    border-radius: 0.5rem;
+    padding: 0.7rem;
+    border-radius: 0;
     font-weight: 700;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+
+
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
 }
-.viability-text {
-    color: rgba(255, 255, 255, 0.7);
+        .viability-text {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .price-separator {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--tuxnet-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .price-separator::before,
+        .price-separator::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--tuxnet-secondary);
+            opacity: 0.5;
+        }
+        .price-display-new {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1;
+            /* Impede que os elementos inline (preço, /mês) quebrem a linha */
+            white-space: nowrap;
+            text-align: center;
+            margin-bottom: 0.5rem !important;
+        }
+        .price-display-new .currency,
+        .price-display-new .period {
+            color: var(--tuxnet-secondary);
+            font-weight: 600;
+        }
+        .price-display-new .currency {
+            font-size: 1.5rem;
+            vertical-align: top;
+        }
+        .price-display-new .main-price {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        .price-display-new .cents {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .price-display-new .period {
+            font-size: 1.5rem;
+
+        }
+        .payment-method {
+            opacity: 0.8;
+        }
+        .slogan-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            line-height: 1.2;
+            margin-top: auto;
+            padding-top: 1rem;
+        }
+        .slogan-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            margin: 0;
+            text-align: center;
+        }
+        .slogan-text .highlight {
+            color: var(--tuxnet-secondary);
+        }
+        .slogan-image {
+            max-width: 90px;
+            margin-top: 0;
+        }
+        .btn-contratar {
+            background-color: var(--tuxnet-secondary);
+            color: var(--tuxnet-primary);
+            border-radius: 50rem;
+            padding: 0.8rem 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+        .btn-contratar:hover {
+            background-color: #fff;
+            color: var(--tuxnet-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        @media (max-width: 767px) {
+            .plan-card-new .card-body { padding: 1.5rem; }
+            .plan-card-new .plan-speed .speed-number { font-size: 4.5rem; }
+            .plan-card-new .plan-speed .speed-unit { font-size: 1.2rem; }
+            .installation-banner { font-size: 0.8rem; padding: 0.6rem; }
+            .price-display-new .main-price { font-size: 3.5rem; }
+            .price-display-new .currency, .price-display-new .period { font-size: 1rem; }
+            .price-display-new .cents { font-size: 2rem; }
+        }
+
+        /* ================================================================ */
+        /* == CSS CORRIGIDO PARA O CARROSSEL (APENAS EFEITO DE TAMANHO) == */
+        /* ================================================================ */
+
+        /* 1. Container principal do carrossel */
+     #planos-destaque .plans-carousel { /* <-- Usando o ID para aumentar a especificidade */
+    padding-top: 20px;    /* <-- Aumentei bastante para a mudança ser óbvia */
+    padding-bottom: 20px;
+    overflow: hidden;
+    background-color: var(--tuxnet-light);
+
 }
-.price-separator {
+
+        /* 2. Estilo de transição para TODOS os slides */
+        .plans-carousel .swiper-slide {
+            /* A transição suave é essencial para o efeito de escala não ser brusco */
+            transition: transform 0.4s ease-in-out;
+            position: relative;
+            z-index: 1;
+            /* Por padrão, todos os slides têm tamanho normal e opacidade total */
+        }
+
+        /* 3. Estilo APENAS para o slide ativo (o do centro) */
+        .plans-carousel .swiper-slide-active {
+            /* O único efeito agora é o aumento de tamanho do slide central */
+            transform: scale(1.05); /* Você pode ajustar este valor (ex: 1.1 para maior) */
+            z-index: 2; /* Garante que ele fique na frente dos outros */
+        }
+
+        /* ================================================================ */
+        /* == SETAS DO CARROSSEL (Seu código original, já está bom) == */
+        /* ================================================================ */
+       #planos-destaque .swiper-button-prev,
+#planos-destaque .swiper-button-next {
+    position: static !important;
+    margin: 0 !important;
+    width: 56px;  /* Maior */
+    height: 56px; /* Maior */
+    background-color: #A428FF;
+    border-radius: 16px;
+    color: #fff;
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
-    color: var(--tuxnet-secondary);
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
-.price-separator::before,
-.price-separator::after {
-    content: '';
-    flex-grow: 1;
-    height: 1px;
-    background-color: var(--tuxnet-secondary);
-    opacity: 0.5;
-}
-.price-display-new {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1;
-}
-.price-display-new .currency,
-.price-display-new .period {
-    color: var(--tuxnet-secondary);
-    font-weight: 600;
-}
-.price-display-new .currency {
-    font-size: 1.5rem;
-    vertical-align: top;
-}
-.price-display-new .main-price {
-    font-size: 4.5rem;
-    font-weight: 800;
-    color: #fff;
-}
-.price-display-new .cents {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #fff;
-}
-.price-display-new .period {
-    font-size: 1.5rem;
-}
-.payment-method {
-    opacity: 0.8;
-}
-.slogan-container {
-    /* ATIVA O FLEXBOX */
-    display: flex;
-    align-items: center;      /* Alinha o texto e a imagem verticalmente no centro */
-    justify-content: center;  /* Centraliza o conjunto (texto + imagem) no card */
-    gap: 1rem;                /* Cria um espaço entre o texto e a imagem */
-    line-height: 1.2;
-    /* Mantém os espaçamentos que você já tinha */
-    margin-top: auto;
-    padding-top: 1.5rem; /* Ajustei um pouco o padding para o novo layout */
+    box-shadow: 0 4px 15px rgba(164, 40, 255, 0.3); /* Sombra suave da cor do botão */
+    transition: all 0.3s ease-in-out; /* Transição suave para tudo */
 }
 
-.slogan-text {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    /* Tamanho de fonte reduzido para caber ao lado da imagem */
-    font-size: 1.2rem;
-    margin: 0; /* Remove margens padrão do parágrafo */
-    text-align: center; /* Alinha o texto à direita, perto da imagem */
-
+#planos-destaque .swiper-button-prev i,
+#planos-destaque .swiper-button-next i {
+    font-size: 1.5rem; /* Ícone maior */
+    font-weight: bold;
 }
 
-.slogan-text .highlight {
-    color: var(--tuxnet-secondary);
+#planos-destaque .swiper-button-prev:not(.swiper-button-disabled):hover,
+#planos-destaque .swiper-button-next:not(.swiper-button-disabled):hover {
+    background-color: #340667;
+    transform: scale(1.1) translateY(-2px); /* Aumenta e levanta um pouco */
+    box-shadow: 0 6px 20px rgba(52, 6, 103, 0.4); /* Sombra mais forte */
 }
 
-.slogan-image {
-    /* Tamanho da imagem reduzido para o novo layout */
-    max-width: 90px;
-    margin-top: 0; /* Remove a margem anterior */
+#planos-destaque .swiper-button-disabled {
+    background-color: #6214A6;
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none; /* Remove a sombra quando desabilitado */
 }
 
-
-/* --- AJUSTE RESPONSIVO --- */
-/* Para telas muito pequenas, voltamos ao layout de pilha para melhor leitura */
-@media (max-width: 400px) {
-    .slogan-container {
-        flex-direction: column; /* Coloca a imagem embaixo do texto */
-        gap: 0.5rem; /* Diminui o espaço entre eles */
-        text-align: center; /* Centraliza tudo */
-    }
-
-    .slogan-text {
-        text-align: center; /* Centraliza o texto */
-    }
-}
-
-/* ================================================================ */
-/* == AJUSTES PARA TELAS MENORES (MOBILE) == */
-/* ================================================================ */
-
-@media (max-width: 767px) {
-
-    .plan-card-new .card-body {
-        padding: 1.5rem; /* Reduz o espaçamento interno geral */
-    }
-
-    /* Remove o efeito de "levantar" o card de destaque no mobile para não ocupar espaço lateral */
-    .plan-card-new.highlight {
-        transform: none;
-    }
-
-    .plan-card-new .plan-speed .speed-number {
-        font-size: 4.5rem; /* <<< GRANDE MUDANÇA */
-    }
-
-    .plan-card-new .plan-speed .speed-unit {
-        font-size: 1.2rem;
-    }
-
-    .installation-banner {
-        font-size: 0.8rem;
-        padding: 0.6rem;
-    }
-
-    .price-display-new .main-price {
-        font-size: 3.5rem; /* <<< GRANDE MUDANÇA */
-    }
-
-    .price-display-new .currency,
-    .price-display-new .period {
-        font-size: 1rem;
-    }
-
-    .price-display-new .cents {
-        font-size: 2rem;
-    }
-
-
-}
-.btn-contratar {
-    background-color: var(--tuxnet-secondary); /* Usa sua cor secundária */
-    color: var(--tuxnet-primary); /* Usa sua cor primária */
-    border-radius: 50rem;
-    padding: 0.8rem 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: block; /* Garante que ocupe a largura */
-    width: 100%;
-}
-
-.btn-contratar:hover {
-    background-color: #fff; /* Efeito hover, pode ajustar */
-    color: var(--tuxnet-primary);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-/* Estilo para o carrossel de planos */
-.plans-carousel {
-  padding-top: 20px; /* Adiciona espaço no topo para o card aumentado */
-    padding-bottom: 50px; /* Mantém o espaço para a paginação */
-    overflow: hidden; /* Garante que o conteúdo não vaze nas laterais */
-}
-
-/* ================================================================ */
-/* == CSS CORRIGIDO E REFORÇADO PARA AS SETAS DO CARROSSEL == */
-/* ================================================================ */
-
-/* 1. Container que agrupa as setas (sem alterações) */
-.swiper-navigation-wrapper {
+/* O resto do seu código permanece igual */
+#planos-destaque .swiper-navigation-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -617,49 +591,9 @@
     margin-top: 1.5rem;
 }
 
-/* 2. Regra REFORÇADA para os botões */
-/* Usamos o ID da seção para aumentar a especificidade */
-#planos-destaque .swiper-button-prev,
-#planos-destaque .swiper-button-next {
-    /* A regra mais IMPORTANTE: garante que as setas fiquem no fluxo da página */
-    position: static !important;
-
-    margin: 0 !important; /* Reseta margens */
-
-    /* Mantém o tamanho e o visual que já definimos */
-    width: 48px;
-    height: 48px;
-    background-color: var(--tuxnet-primary, #6E3F91);
-    border-radius: 12px;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.3s ease, background-color 0.3s ease;
-}
-
 #planos-destaque .swiper-button-prev::after,
 #planos-destaque .swiper-button-next::after {
     display: none !important;
-}
-
-
-#planos-destaque .swiper-button-prev i,
-#planos-destaque .swiper-button-next i {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-#planos-destaque .swiper-button-prev:not(.swiper-button-disabled):hover,
-#planos-destaque .swiper-button-next:not(.swiper-button-disabled):hover {
-    background-color: #340667;
-}
-
-
-#planos-destaque .swiper-button-disabled {
-    background-color: var(--tuxnet-primary, #6E3F91);
-    opacity: 0.4;
-    cursor: not-allowed;
 }
 /* ===============================================
    CSS Final para a Seção Cidades Atendidas
@@ -668,12 +602,25 @@
 .cidades-atendidas h2.font-montserrat {
     text-shadow: var(--tuxnet-text-shadow);
 }
+.cidade-card {
+    /* Estado inicial: invisível e movido para baixo */
+    opacity: 0;
+    transform: translateY(20px);
 
+    /* A transição suave que acontecerá quando a classe .is-visible for adicionada */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Estado final: visível e na posição original */
+.cidade-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 .cidades-atendidas .cidade-card {
     border: 1px solid #e9ecef;
     transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-    background-color: var(--tuxnet-white);
+    background-image: linear-gradient(to bottom, #A428FF, #6E3F91);
     border-radius: 0.75rem;
     position: relative;
     overflow: hidden;
@@ -691,7 +638,7 @@
 }
 
 .cidades-atendidas .cidade-card .card-title {
-    color: var(--tuxnet-primary);
+    color: var(--tuxnet-white);
     font-size: 1.15rem;
     font-weight: 600;
     text-shadow: var(--tuxnet-text-shadow-light);
@@ -720,7 +667,7 @@
     position: absolute;
     top: 18px;
     right: -34px;
-    background-color: var(--tuxnet-primary);
+    background-color: var(--tuxnet-secondary);
     color: white;
     padding: 6px 40px;
     font-size: 0.8rem;
@@ -730,6 +677,13 @@
     text-align: center;
     z-index: 2;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+.icone-localizacao {
+  display: block;      /* Trata a imagem como um bloco para poder centralizá-la */
+  width: 45px;         /* Define um tamanho fixo e pequeno. Ajuste se precisar! */
+  height: auto;        /* Mantém a proporção da imagem */
+  margin-left: auto;   /* Mágica da centralização */
+  margin-right: auto;  /* Mágica da centralização */
 }
 
 /* ===============================================
