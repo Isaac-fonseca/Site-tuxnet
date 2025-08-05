@@ -21,7 +21,7 @@
                 </li>
                 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle {{ request()->routeIs('planos.servicos') ? 'active' : '' }}" href="#" id="navbarDropdownPlanos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Conhecer Planos
+       Planos
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdownPlanos">
         <div class="dropdown-menu-inner">

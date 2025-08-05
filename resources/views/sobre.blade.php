@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-   
+
     <section class="page-header   text-center py-5">
         <div class="container">
             <h1 class="display-4 font-montserrat fw-bold">Conheça a Tuxnet</h1>
@@ -32,7 +32,7 @@
                     @endif
                 </div>
             </div>
-            
+
             <div class="row mt-5 pt-4 border-top">
                 <div class="col-md-6 mb-4 mb-md-0 text-center text-md-start">
                     <div class="d-flex align-items-center mb-3 justify-content-center justify-content-md-start">
@@ -54,7 +54,7 @@
 
     <hr class="my-4">
 
-    
+
     <section id="nossos-valores" class="section-padding bg-light">
         <div class="container">
             <div class="row">
@@ -83,7 +83,7 @@
 
     <hr class="my-4">
 
-   
+
     <section id="faq" class="section-padding">
         <div class="container">
             <div class="row">
@@ -118,65 +118,10 @@
             </div>
         </div>
     </section>
-    
-    <hr class="my-4">
 
-    
-    <section id="nossas-lojas" class="section-padding bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="font-montserrat h2-style">Nossas <span class="text-primary-tuxnet">Lojas</span></h2>
-                    <p class="lead text-muted">Encontre a unidade Tuxnet mais próxima de você.</p>
-                </div>
-            </div>
 
-            @if(isset($lojas['matriz']))
-            <div class="row mb-5 justify-content-center"> 
-                <div class="col-md-8 col-lg-6">
-                    <div class="loja-card-wrapper">
-                        <h4 class="font-montserrat text-center text-md-start mb-3 h4-style">Matriz</h4>
-                        <div class="card loja-card shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title mb-1"><i class="bi bi-building me-2 text-primary-tuxnet"></i>{{ $lojas['matriz']['nome'] }}</h5>
-                                <p class="card-text mb-2"><i class="bi bi-geo-alt-fill me-2 text-secondary-tuxnet"></i>{{ $lojas['matriz']['endereco_completo'] }}</p>
-                                <a href="{{ $lojas['matriz']['link_mapa'] }}" target="_blank" class="btn btn-sm btn-outline-primary-tuxnet">Ver no Mapa</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
 
-            @if(isset($lojas['filiais']) && count($lojas['filiais']) > 0)
-                <div class="row">
-                    <div class="col-12 text-center text-md-start mb-4">
-                        <h4 class="font-montserrat h4-style">Lojas</h4>
-                    </div>
-                </div>
-                @foreach($lojas['filiais'] as $cidade => $unidades)
-                    <div class="mb-5"> 
-                         <h5 class="font-montserrat text-primary-tuxnet mb-3 ms-1"><i class="bi bi-pin-map-fill me-2"></i>{{ $cidade }}</h5>
-                         <div class="row"> 
-                            @foreach($unidades as $unidade)
-                            <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
-                                <div class="card loja-card shadow-sm h-100">
-                                    <div class="card-body d-flex flex-column">
-                                        @if(!empty($unidade['nome_local']))
-                                        <h6 class="card-subtitle mb-2 font-montserrat fw-semibold">{{ $unidade['nome_local'] }}</h6>
-                                        @endif
-                                        <p class="card-text small flex-grow-1"><i class="bi bi-geo-alt-fill me-2 text-secondary-tuxnet"></i>{{ $unidade['endereco_completo'] }}</p>
-                                        <a href="{{ $unidade['link_mapa'] }}" target="_blank" class="btn btn-sm btn-outline-primary-tuxnet mt-auto">Ver no Mapa</a>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                @endforeach
-            @endif
-        </div>
-    </section>
+
 
 @endsection
 

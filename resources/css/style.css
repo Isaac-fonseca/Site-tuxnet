@@ -248,7 +248,7 @@ body {
 
     /* --- Links Principais (Amarelo) --- */
     .navbar-expand-lg .navbar-nav.mx-auto .nav-link {
-        color: #ffc107;
+        color: #fff;
         font-size: 1.1rem;
         font-weight: 500;
         position: relative;

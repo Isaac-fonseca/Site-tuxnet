@@ -191,117 +191,9 @@
     background-color: #A428FF;
 }
 
-.tuxnet-plan-filters { border-bottom: none; margin-bottom: 3.5rem !important; padding-bottom: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
-.tuxnet-plan-filters .nav-item { margin-bottom: 0.5rem; }
-.tuxnet-plan-filters .nav-link { color: var(--tuxnet-primary); background-color: var(--tuxnet-white); border: 1px solid var(--tuxnet-primary-lighter, #d3c1d8); font-weight: 500; font-family: 'Montserrat', sans-serif; padding: 0.75rem 1.5rem; border-radius: 8px; transition: all 0.2s ease-in-out; font-size: 0.9rem; white-space: nowrap; box-shadow: 0 3px 6px rgba(0,0,0,0.08); line-height: 1.5; }
-.tuxnet-plan-filters .nav-link:hover { color: var(--tuxnet-white); background-color: var(--tuxnet-primary-darker, #4a145a); border-color: var(--tuxnet-primary-darker, #4a145a); transform: translateY(-2px); box-shadow: 0 5px 10px rgba(var(--tuxnet-primary-rgb, 95,25,112),0.25); }
-.tuxnet-plan-filters .nav-link:hover span { color: var(--tuxnet-white) !important; }
-.tuxnet-plan-filters .nav-link.active { color: var(--tuxnet-white); background-color: var(--tuxnet-primary); border-color: var(--tuxnet-primary); font-weight: 600; box-shadow: 0 4px 10px rgba(var(--tuxnet-primary-rgb, 95,25,112),0.4); }
-.tuxnet-plan-filters .nav-link.active span { color: var(--tuxnet-white) !important; }
-.tuxnet-plan-filters #planos-globoplay-tab { background-color: var(--tuxnet-white); border-color: var(--tuxnet-primary-lighter, #d3c1d8); color: var(--tuxnet-primary); }
-.tuxnet-plan-filters #planos-globoplay-tab span.text-success { color: var(--tuxnet-secondary) !important; text-shadow: none; }
-.tuxnet-plan-filters #planos-globoplay-tab:hover, .tuxnet-plan-filters #planos-globoplay-tab.active { background-color: var(--tuxnet-primary); border-color: var(--tuxnet-primary); color: var(--tuxnet-white); }
-.tuxnet-plan-filters #planos-globoplay-tab:hover span.text-success, .tuxnet-plan-filters #planos-globoplay-tab.active span.text-success { color: var(--tuxnet-white) !important; }
-
-
-.plan-category-section .row.justify-content-center > [class*="col-"] {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.plan-category-section .h2-style { margin-bottom: 0.75rem; font-size: 2rem; text-shadow: var(--tuxnet-text-shadow); }
-.plan-category-section p.lead, .plan-category-section > .row > .col-12 > p { font-size: 1.1rem; color: #495057; margin-bottom: 2rem; }
-.texto-adicional-categoria { max-width: 750px; margin-left: auto; margin-right: auto; font-size: 0.95rem; line-height: 1.65; background-color: var(--tuxnet-light); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid #e0e0e0; margin-top: -1rem; margin-bottom: 2.5rem !important; }
-
-
-.plano-card {
-    border: 2px solid var(--tuxnet-primary-lighter, #e0e0e0);
-    border-radius: 0.85rem;
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    background-color: var(--tuxnet-white);
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    width: 100%;
-    max-width: 360px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1.5rem;
-}
-.plano-card.border-secondary-tuxnet {
-    border-width: 2px;
-    border-color: var(--tuxnet-secondary) !important;
-    box-shadow: 0 8px 20px rgba(var(--tuxnet-secondary-rgb, 252, 182, 46), 0.35);
-}
-
-
-.plano-card .card-header {
-    border-top-left-radius: calc(0.85rem - 2px);
-    border-top-right-radius: calc(0.85rem - 2px);
-    padding: 1.25rem 1rem;
-    position: relative;
-    background-color: var(--tuxnet-primary);
-}
-.plano-card .card-header h3 {
-    font-weight: 600;
-    font-size: 1.4rem;
-    color: var(--tuxnet-white);
-    text-shadow: var(--tuxnet-text-outline-white);
-}
-.plano-card .preco-container { margin-bottom: 0.75rem; padding-top: 0.75rem; }
-.plano-card .preco-container .preco-simbolo {
-    font-size: 1.4rem; vertical-align: text-top; margin-right: -0.1em;
-    color: var(--tuxnet-secondary); font-weight: 500;
-    text-shadow: var(--tuxnet-text-outline-subtle);
-}
-.plano-card .preco-container .preco-valor {
-    font-weight: 700; line-height: 1; font-size: 3.5rem;
-    color: var(--tuxnet-secondary);
-    text-shadow: var(--tuxnet-text-outline-subtle);
-}
-.plano-card .preco-container .preco-periodo { font-size: 1rem; font-weight: 500; color: #6c757d; }
-.plano-card .tipo-pagamento { font-weight: 500; color: var(--tuxnet-primary) !important; font-size: 0.9rem; margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
-.plano-card .plano-inclusos { padding-left: 1rem; font-size: 0.95rem; text-align: left; margin-left: auto; margin-right: auto; max-width: 95%; flex-grow: 1; margin-bottom: 1.25rem; }
-.plano-card .plano-inclusos li { margin-bottom: 0.65rem; display: flex; align-items: center; color: var(--tuxnet-dark); font-size: 0.95rem; }
-.plano-card .plano-inclusos li .bi { margin-right: 0.6rem; flex-shrink: 0; color: var(--tuxnet-success); font-size: 1.15em; }
-.plano-card .plano-inclusos li .bi-gear-fill, .plano-card .plano-inclusos li .bi-star-fill, .plano-card .plano-inclusos li .bi-broadcast-pin, .plano-card .plano-inclusos li .bi-chat-dots-fill {
-    color: var(--tuxnet-secondary);
-}
-.plano-card .instalacao-info { font-weight: bold; font-size: 0.9rem; color: var(--tuxnet-primary); margin-top: 1rem; text-shadow: var(--tuxnet-text-shadow-light); }
-.plano-card .observacao-plano { font-style: italic; font-size: 0.85rem; color: #6c757d; margin-top: 0.5rem; }
-.plano-card .card-footer { padding-top: 0.75rem; padding-bottom: 1.5rem !important; }
-.plano-card .card-footer .btn.contratar-btn { font-weight: 600; padding: 0.85rem 1.75rem; font-size: 1.1rem; }
-.plano-card:not(.border-secondary-tuxnet):hover { transform: translateY(-8px); box-shadow: 0 .85rem 2rem rgba(0,0,0,.14)!important; }
-
-
-.plano-imagem-card { padding: 0; border: none; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-.plano-imagem-card img { border-radius: 0.75rem; }
-
-
-.plano-chip-card .chip-dados-total { line-height: 1; font-size: 2.8rem; text-shadow: var(--tuxnet-text-outline-subtle); }
-.plano-chip-card .plano-inclusos li i { color: var(--tuxnet-primary); }
-.plano-chip-card .card-header h3 { font-size: 1.3rem; text-shadow: var(--tuxnet-text-outline-white); }
-.plano-chip-card .preco-valor { font-size: 2.8rem; text-shadow: var(--tuxnet-text-outline-subtle); }
 
 
 
-.plano-pabx-card .card-header small { font-size: 0.8rem; font-weight: 400; opacity: 0.8; }
-.plano-pabx-card h6.text-muted { font-weight: 600; color: var(--tuxnet-primary) !important; opacity: 0.7; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
-.plano-pabx-card .plano-inclusos li { font-size: 0.85rem; }
-.plano-pabx-card .card-header h3 { text-shadow: var(--tuxnet-text-outline-white); }
-.plano-pabx-card .preco-valor { text-shadow: var(--tuxnet-text-outline-subtle); }
-
-
-
-
-
-.btn:hover, .btn:focus,
-.btn-primary-tuxnet:hover, .btn-primary-tuxnet:focus,
-.btn-secondary-tuxnet:hover, .btn-secondary-tuxnet:focus,
-.btn-outline-secondary-tuxnet:hover, .btn-outline-secondary-tuxnet:focus {
-    text-decoration: none !important;
-}
 
 
 #apresentacao-empresa .display-4 { margin-bottom: 0.5rem; }
@@ -359,19 +251,74 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
 }
+
+.modal-footer .btn-secondary {
+    background-color: #A428FF; /* Um tom de roxo */
+    border-color: #A428FF;
+    color: white; /* Cor do texto para melhor contraste */
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #8c1ebf; /* Um tom de roxo mais escuro para o efeito hover */
+    border-color: #8c1ebf;
+}
+
+.btn-mapa-amarelo {
+    background-color: #8c1ebf; /* Cor de fundo amarela */
+    color: #ffffff !important; /* Cor do texto branca, !important para garantir */
+    border-color: #8c1ebf;  /* Cor da borda amarela */
+    font-weight: 700;          /* Fonte grossa (bold) */
+    border-radius: 50rem;      /* Deixa o botão totalmente arredondado (pílula) */
+    padding: 0.25rem 0.75rem;  /* Ajusta o espaçamento interno */
+    transition: all 0.3s ease; /* Adiciona uma transição suave */
+}
+
+/* Efeito ao passar o mouse por cima */
+.btn-mapa-amarelo:hover {
+    background-color: #8c1ebf; /* Um amarelo um pouco mais escuro */
+    border-color: #8c1ebf;
+    color: #ffffff;
+    transform: scale(1.05);    /* Efeito de leve aumento */
+}
 .section-padding {
-            padding: 10px 0;
+            padding: 40px ;
         }
 
 
 .plan-card-new {
             border: none;
             border-radius: 1.5rem;
-            overflow: hidden;
+
             background-image: linear-gradient(to bottom, #A428FF, #340667);
             color: #fff;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             font-family: 'Inter', sans-serif;
+            position: relative;
+        }
+
+        .plan-card-new.bg-globoplay {
+background-image: linear-gradient(to bottom, #ff8c00, #e64a19);
+color: #fff;}
+
+
+.plan-card-new.bg-max {
+background-image: linear-gradient(to bottom,#011093, #020a32);
+color: #fff;
+}
+
+         .selo-popular {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--tuxnet-secondary);
+            color: var(--tuxnet-primary);
+            padding: 5px 20px;
+            border-radius: 50rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            z-index: 3;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .plan-card-new .plan-title {
@@ -395,6 +342,28 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
+ .plan-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            text-align: left;
+            align-self: center; /* Centraliza a lista no card */
+            width: 85%; /* Define uma largura para a lista */
+        }
+        .plan-benefits li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .plan-benefits li::before {
+            content: '\F26A'; /* Código do ícone de check do Bootstrap Icons */
+            font-family: 'bootstrap-icons';
+            color: var(--tuxnet-secondary);
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
         .installation-banner {
     background-color: var(--tuxnet-secondary);
     color: var(--tuxnet-primary);
@@ -432,7 +401,7 @@
         .price-display-new {
             font-family: 'Montserrat', sans-serif;
             line-height: 1;
-            /* Impede que os elementos inline (preço, /mês) quebrem a linha */
+
             white-space: nowrap;
             text-align: center;
             margin-bottom: 0.5rem !important;
@@ -460,9 +429,7 @@
             font-size: 1.5rem;
 
         }
-        .payment-method {
-            opacity: 0.8;
-        }
+
         .slogan-container {
             display: flex;
             align-items: center;
@@ -582,17 +549,78 @@
     box-shadow: none; /* Remove a sombra quando desabilitado */
 }
 
-/* O resto do seu código permanece igual */
-#planos-destaque .swiper-navigation-wrapper {
+
+#planos-destaque .swiper-navigation-wrapper,
+#todos-os-planos .swiper-navigation-wrapper,
+#planos-especiais .swiper-navigation-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
 }
 
+/* Botões de Seta (Home, Planos Principais E Planos Especiais) */
+#planos-destaque .swiper-button-prev,
+#planos-destaque .swiper-button-next,
+#todos-os-planos .swiper-button-prev,
+#todos-os-planos .swiper-button-next,
+#planos-especiais .swiper-button-prev,
+#planos-especiais .swiper-button-next {
+    position: static !important;
+    margin: 0 !important;
+    width: 56px;
+    height: 56px;
+    background-color: #A428FF;
+    border-radius: 16px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(164, 40, 255, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ícones dentro das Setas */
+#planos-destaque .swiper-button-prev i,
+#planos-destaque .swiper-button-next i,
+#todos-os-planos .swiper-button-prev i,
+#todos-os-planos .swiper-button-next i,
+#planos-especiais .swiper-button-prev i,
+#planos-especiais .swiper-button-next i {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Efeito Hover nas Setas */
+#planos-destaque .swiper-button-prev:not(.swiper-button-disabled):hover,
+#planos-destaque .swiper-button-next:not(.swiper-button-disabled):hover,
+#todos-os-planos .swiper-button-prev:not(.swiper-button-disabled):hover,
+#todos-os-planos .swiper-button-next:not(.swiper-button-disabled):hover,
+#planos-especiais .swiper-button-prev:not(.swiper-button-disabled):hover,
+#planos-especiais .swiper-button-next:not(.swiper-button-disabled):hover {
+    background-color: #340667;
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 6, 103, 0.4);
+}
+
+/* Setas Desabilitadas */
+#planos-destaque .swiper-button-disabled,
+#todos-os-planos .swiper-button-disabled,
+#planos-especiais .swiper-button-disabled {
+    background-color: #6214A6;
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Remove a seta padrão (::after) do Swiper */
 #planos-destaque .swiper-button-prev::after,
-#planos-destaque .swiper-button-next::after {
+#planos-destaque .swiper-button-next::after,
+#todos-os-planos .swiper-button-prev::after,
+#todos-os-planos .swiper-button-next::after,
+#planos-especiais .swiper-button-prev::after,
+#planos-especiais .swiper-button-next::after {
     display: none !important;
 }
 /* ===============================================
@@ -648,16 +676,15 @@
     font-size: 2.8rem;
 }
 .content-ofuscado {
-    /* Aplica um desfoque e diminui um pouco o brilho */
+
     filter: blur(5px) brightness(0.8);
 
-    /* Efeito sutil de "encolher" para dar profundidade */
+
     transform: scale(0.98);
 
-    /* Impede que o usuário clique no fundo ofuscado */
     pointer-events: none;
 
-    /* Animação suave para a transição */
+
     transition: all 0.35s ease-out;
 
     transform-origin: center center;
@@ -690,17 +717,17 @@
    CSS para a Seção do Aplicativo
    =============================================== */
 
-/* Estilo para os novos botões da App Store / Google Play */
+
 .app-buttons-container {
     display: flex;
-    flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas pequenas */
-    gap: 1rem; /* Espaçamento entre os botões */
-    justify-content: center; /* Centraliza em telas pequenas */
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
 }
 
 @media (min-width: 768px) {
     .app-buttons-container {
-        justify-content: flex-start; /* Alinha à esquerda em telas maiores */
+        justify-content: flex-start;
     }
 }
 
@@ -741,30 +768,246 @@
     margin-bottom: 2px;
 }
 
-/* [CORREÇÃO] Limita o tamanho máximo do QR Code */
-.app-qrcode {
-    max-width: 160px; /* Define um tamanho máximo razoável */
-    height: auto;     /* Mantém a proporção da imagem */
-}
 
-.app-tuxnet-image {
-    max-width: 450px; /* O tamanho máximo que você gostou */
+.app-qrcode {
+    max-width: 160px;
     height: auto;
 }
 
-/* 2. Estilo específico para telas de CELULAR */
+.app-tuxnet-image {
+    max-width: 450px;
+    height: auto;
+}
+
+
 @media (max-width: 767px) {
     .app-tuxnet-image {
-        /* Força a imagem a ocupar no máximo 90% da largura da tela.
-           Isso cria as "bordas" ou margens laterais que faltavam.
-        */
+
+
         width: 90%;
 
-        display: block;   /* Necessário para a margem funcionar */
-        margin: 0 auto;   /* Garante a centralização perfeita */
+        display: block;
+        margin: 0 auto;
     }
 }
 
 #app-tuxnet {
     overflow-x: hidden;
+}
+
+.card.shadow-sm {
+    border-radius: 1rem; /* Cantos mais arredondados */
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.08) !important;
+}
+
+/* --- Estilo dos Campos do Formulário (Inputs, Selects, Textarea) --- */
+.form-control,
+.form-select {
+    border-radius: 0.5rem;
+    border: 1px solid var(--tuxnet-border-color);
+    padding: 0.75rem 1rem;
+    color: var(--tuxnet-text-color);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--tuxnet-primary);
+    box-shadow: 0 0 0 0.25rem rgba(110, 63, 145, 0.25);
+    outline: 0
+}
+
+h2.font-montserrat, h4.font-montserrat {
+    color: var(--tuxnet-primary);
+    font-weight: 700;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--tuxnet-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* --- Estilo dos Radio Buttons e Checkboxes --- */
+.form-check-input {
+    border-color: var(--tuxnet-border-color);
+}
+
+/* Altera a cor dos checks para o roxo da marca quando selecionados */
+.form-check-input:checked {
+    background-color: var(--tuxnet-primary);
+    border-color: var(--tuxnet-primary);
+}
+
+/* Altera o brilho de foco (outline) de azul para roxo */
+.form-check-input:focus {
+    border-color: var(--tuxnet-primary);
+    box-shadow: 0 0 0 0.25rem rgba(110, 63, 145, 0.25);
+    outline: 0;
+}
+
+.form-check-label {
+    color: var(--tuxnet-text-color);
+}
+.form-control[type="file"]:focus {
+    border-color: var(--tuxnet-primary);
+    box-shadow: 0 0 0 0.25rem rgba(110, 63, 145, 0.25);
+    outline: 0;
+}
+
+/* --- Estilo do Botão Principal --- */
+.btn-primary-tuxnet {
+    background-color: var(--tuxnet-primary);
+    border-color: var(--tuxnet-primary);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary-tuxnet:hover {
+    background-color: var(--tuxnet-dark);
+    border-color: var(--tuxnet-dark);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.btn-ver-planos {
+    color: var(--tuxnet-primary); /* Texto roxo */
+    background-color: var(--tuxnet-secondary); /* Fundo amarelo */
+    border-color: var(--tuxnet-secondary);
+    font-weight: 700; /* Um pouco mais de peso para destacar */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 50rem; /* Totalmente arredondado */
+    transition: all 0.3s ease;
+}
+
+.btn-ver-planos:hover,
+.btn-ver-planos:focus {
+    color: var(--tuxnet-primary);
+    background-color: #fff; /* Fundo branco no hover */
+    border-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================================================ */
+/* CSS FINAL E SIMPLIFICADO - COMEÇANDO DO ZERO */
+/* ================================================================ */
+
+/* Estilo da imagem do mascote */
+
+
+/* Estilo do botão amarelo */
+.details-button-yellow {
+    background-color: #ffffff00;
+    color: #ffffff;
+    font-weight: 900;
+    border: none;
+    border-radius: 50px;
+}
+
+/* O painel que abre */
+.details-content-styled {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8f9fa;
+    text-align: center;
+}
+
+/* A lista de vantagens */
+.details-content-styled ul {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.details-content-styled ul li {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.details-content-styled .fw-bold {
+    color: #FFC107;
+}
+
+.details-content-styled ul li .bi {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Solução de troca de ícone */
+.btn.details-button-yellow > .bi-chevron-down::before {
+    content: "\F282";
+    display: inline-block;
+}
+.btn.details-button-yellow[aria-expanded="true"] > .bi-chevron-down::before {
+    content: "\F286";
+}
+/* Estilo para as abas de filtro de planos */
+.filter-tabs .nav-link {
+    color: #6c757d; /* Cor do texto padrão */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    padding: 8px 20px;
+    margin: 0 5px;
+}
+
+/* Estilo para as abas de filtro de planos (permanece o mesmo) */
+.filter-tabs .nav-link {
+    color: #6c757d;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    padding: 8px 20px;
+    margin: 0 5px;
+}
+
+.filter-tabs .nav-link.active {
+    color: #fff;
+    background-color: var(--bs-primary); /* Cor primária do seu site */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plan-card-new.bg-playkids {
+    /* Degradê de um rosa vibrante para um tom bem claro, quase branco */
+    background-image: linear-gradient(to bottom, #FF85B2, #FFF0F5);
+
+    /* IMPORTANTE: Altera a cor do texto para escuro para garantir a leitura no fundo claro */
+    color: #495057;
+}
+
+
+.plan-card-new.bg-playkids {
+
+    background-image: linear-gradient(to bottom, #64CCEE, #3399D6);
+    color: #ffffff;
+}
+
+.plan-card-new.bg-playkids .price-display-new .main-price,
+.plan-card-new.bg-playkids .price-display-new .cents {
+    color: #ffffff;
+}
+
+.plan-card-new.bg-playkids .price-display-new .currency,
+.plan-card-new.bg-playkids .price-display-new .period {
+    color: #ffffff;
+}
+
+.plan-card-new.bg-playkids .price-separator {
+    color: #ffffff;
+}
+
+.plan-card-new.bg-playkids .price-separator::before,
+.plan-card-new.bg-playkids .price-separator::after {
+    background-color: #ffffff;
 }
