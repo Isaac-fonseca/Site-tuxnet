@@ -127,7 +127,7 @@ p {
 }
 
 .bg-primary-tuxnet {  background-color: #340667 !important; /* Cor de fallback */
-  background-image: linear-gradient(to bottom, #6E3F91, #340667) !important; }
+  background-image: linear-gradient(to bottom, #340667, #6E3F91 ) !important; }
 .bg-secondary-tuxnet { background-color: var(--tuxnet-secondary) !important; }
 .text-primary-tuxnet { color: var(--tuxnet-primary) !important; }
 .text-secondary-tuxnet { color: var(--tuxnet-secondary) !important; }
@@ -248,7 +248,7 @@ body {
 
     /* --- Links Principais (Amarelo) --- */
     .navbar-expand-lg .navbar-nav.mx-auto .nav-link {
-        color: #ffc107;
+        color: #fff;
         font-size: 1.1rem;
         font-weight: 500;
         position: relative;

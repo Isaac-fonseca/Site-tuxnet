@@ -1,215 +1,185 @@
-
 document.addEventListener('DOMContentLoaded', function () {
 
+    // ===================================================================
+    // SEÇÃO 1: COMPONENTES GLOBAIS (Navbar e Modais)
+    // ===================================================================
 
- const navMenu = document.getElementById('navbarNavDropdown');
-    const closeNavButton = document.querySelector('.btn-close-nav');
 
-    // Verifica se o elemento do menu existe na página para evitar erros
+    const navMenu = document.getElementById('navbarNavDropdown');
     if (navMenu) {
+        navMenu.addEventListener('show.bs.collapse', () => document.body.classList.add('body-no-scroll'));
+        navMenu.addEventListener('hidden.bs.collapse', () => document.body.classList.remove('body-no-scroll'));
 
-        // --- CÓDIGO NOVO PARA TRAVAR/LIBERAR A ROLAGEM ---
-        // Adicionado para escutar quando o menu abre
-        navMenu.addEventListener('show.bs.collapse', function () {
-            document.body.classList.add('body-no-scroll');
-        });
-
-        // Adicionado para escutar quando o menu fecha
-        navMenu.addEventListener('hidden.bs.collapse', function () {
-            document.body.classList.remove('body-no-scroll');
-        });
-
-        // --- SEU CÓDIGO EXISTENTE PARA O BOTÃO DE FECHAR (integrado aqui) ---
-        // Ele continua funcionando exatamente como antes
+        const closeNavButton = document.querySelector('.btn-close-nav');
         if (closeNavButton) {
-            closeNavButton.addEventListener('click', function () {
-                const bsCollapse = new bootstrap.Collapse(navMenu, {
-                    toggle: false
-                });
+            closeNavButton.addEventListener('click', () => {
+                const bsCollapse = new bootstrap.Collapse(navMenu, { toggle: false });
                 bsCollapse.hide();
             });
         }
     }
 
-    // ===============================================
-    // Scripts Anteriores (Carrossel, Animação, etc.)
-    // ===============================================
 
-    // Inicializa o Carrossel do Bootstrap para a página inicial (se existir)
-    const heroCarouselElement = document.querySelector('#carouselExampleCaptions');
-    if (heroCarouselElement) {
-        if (typeof bootstrap !== 'undefined' && bootstrap.Carousel) {
-            const heroCarousel = new bootstrap.Carousel(heroCarouselElement, {
-                interval: 5000, // Muda de slide a cada 5 segundos
-                wrap: true      // Permite que o carrossel volte ao primeiro slide após o último
-            });
-        } else {
-            console.error('Bootstrap Carousel component not found for #carouselExampleCaptions.');
-        }
-    }
+    const modalEnderecos = document.getElementById('modalEnderecos');
+    const mainContent = document.getElementById('page-wrapper');
+    if (modalEnderecos && mainContent) {
+        modalEnderecos.addEventListener('show.bs.modal', function (event) {
+            mainContent.classList.add('content-ofuscado');
 
-    // Inicializa o Carrossel do Bootstrap para a página de planos (se existir)
-    const carouselPlanosElement = document.querySelector('#carouselPlanosParaVoce');
-    if (carouselPlanosElement) {
-        if (typeof bootstrap !== 'undefined' && bootstrap.Carousel) {
-            const carouselPlanos = new bootstrap.Carousel(carouselPlanosElement, {
-                interval: 5000, // Muda de slide a cada 5 segundos
-                wrap: true
-            });
-        } else {
-            console.error('Bootstrap Carousel component not found for #carouselPlanosParaVoce.');
-        }
-    }
 
-    // Animação ao rolar para elementos com a classe .animate-on-scroll
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    if (animatedElements.length > 0) {
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Animar apenas uma vez
-                    }
+            const cardClicado = event.relatedTarget;
+            const nomeCidade = cardClicado.getAttribute('data-cidade');
+            const lojas = JSON.parse(cardClicado.getAttribute('data-enderecos'));
+            const modalTitulo = modalEnderecos.querySelector('#modal-cidade-nome');
+            const modalLista = modalEnderecos.querySelector('#modal-lista-enderecos');
+
+            modalTitulo.textContent = nomeCidade;
+            modalLista.innerHTML = '';
+
+            if (lojas && lojas.length > 0) {
+                lojas.forEach(loja => {
+                    const cardHtml = `
+                        <div class="card loja-card-modal shadow-sm mb-3">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 font-montserrat fw-semibold">${loja.nome_local}</h6>
+                                <p class="card-text small mb-2">
+                                    <i class="bi bi-geo-alt-fill me-2 text-secondary-tuxnet"></i>
+                                    ${loja.endereco_completo}
+                                </p>
+                              <a href="${loja.link_mapa}" target="_blank" class="btn btn-sm btn-mapa-amarelo mt-2">Ver no Mapa</a>
+                            </div>
+                        </div>`;
+                    modalLista.insertAdjacentHTML('beforeend', cardHtml);
                 });
-            }, {
-                threshold: 0.1 // 10% visível
-            });
+            } else {
+                modalLista.innerHTML = '<p class="text-center text-muted">Nenhuma loja física cadastrada nesta cidade.</p>';
+            }
+        });
 
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-        } else {
-            // Fallback para navegadores sem IntersectionObserver
-            console.warn('IntersectionObserver not supported. Animations on scroll will not be as smooth.');
-            animatedElements.forEach(element => {
-                element.classList.add('is-visible');
-            });
-        }
+        modalEnderecos.addEventListener('hidden.bs.modal', () => mainContent.classList.remove('content-ofuscado'));
     }
 
-    // Script para Rolagem Suave para links âncora
+    // ===================================================================
+    // SEÇÃO 2: ANIMAÇÕES E INTERATIVIDADE
+    // ===================================================================
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    if (animatedElements.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        animatedElements.forEach(element => observer.observe(element));
+    }
+
+
+    const cidadeCards = document.querySelectorAll('.cidade-card');
+    if (cidadeCards.length > 0 && 'IntersectionObserver' in window) {
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('is-visible'), index * 100);
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        cidadeCards.forEach(card => cardObserver.observe(card));
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            // Verifica se o link é para uma âncora na MESMA página
-            // e se o href não é apenas "#" (usado por alguns componentes do Bootstrap)
             if (this.hash !== "" && this.pathname === window.location.pathname) {
-                e.preventDefault(); // Previne o comportamento padrão do link
-
-                const hash = this.hash;
-                const targetElement = document.querySelector(hash);
-
+                e.preventDefault();
+                const targetElement = document.querySelector(this.hash);
                 if (targetElement) {
-                    // Calcula a posição do elemento de destino
-                    // Leva em consideração a altura da navbar se ela for fixa no topo (opcional)
-                    let navbarHeight = 0;
-                    const navbar = document.querySelector('.navbar.fixed-top'); // Ajuste o seletor se sua navbar não for .fixed-top ou não tiver essa classe
-                    if (navbar) {
-                        navbarHeight = navbar.offsetHeight;
-                    }
-
+                    const navbar = document.querySelector('.navbar.fixed-top');
+                    const navbarHeight = navbar ? navbar.offsetHeight : 0;
                     const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
                     const offsetPosition = elementPosition - navbarHeight;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth" // Efeito de rolagem suave
-                    });
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                 }
             }
         });
     });
 
-});
+    // ===================================================================
+    // SEÇÃO 3: INICIALIZAÇÃO DE CARROSSÉIS
+    // ===================================================================
 
+    const plansCarouselElement = document.querySelector('.plans-carousel');
+if (plansCarouselElement) {
+    // 1. Contamos quantos slides existem dentro do carrossel
+    const slideCount = plansCarouselElement.querySelectorAll('.swiper-slide').length;
 
-document.addEventListener('DOMContentLoaded', function () {
-    const modalEnderecos = document.getElementById('modalEnderecos');
+    // 2. Definimos um número mínimo de slides para ativar o loop (geralmente o número de slides visíveis + 1)
+    const minSlidesForLoop = 4;
 
-    // NOVO: Selecionamos o elemento principal do seu site para aplicar o efeito.
-    // Usar 'main' é uma boa prática. Se não houver <main>, ele usará o <body>.
-    const mainContent = document.getElementById('page-wrapper');
+    // 3. A mágica acontece aqui: ativamos o loop e a centralização APENAS se tivermos slides suficientes
+    const enableLoop = slideCount >= minSlidesForLoop;
 
-    // Seu listener existente foi modificado para incluir a nova lógica
-    modalEnderecos.addEventListener('show.bs.modal', function (event) {
-        console.log("MODAL ABRINDO - Tentando ofuscar...");
-        // NOVO: Adiciona a classe que ofusca o fundo QUANDO O MODAL ABRE
-        mainContent.classList.add('content-ofuscado');
+    const swiper = new Swiper(plansCarouselElement, {
+        // Opções condicionais
+        loop: enableLoop,
+        centeredSlides: enableLoop, // A centralização só faz sentido com o loop
 
-        // ----- SEU CÓDIGO ORIGINAL (permanece o mesmo) -----
-        const cardClicado = event.relatedTarget;
-        const nomeCidade = cardClicado.getAttribute('data-cidade');
-        const lojas = JSON.parse(cardClicado.getAttribute('data-enderecos'));
-
-        const modalTitulo = modalEnderecos.querySelector('#modal-cidade-nome');
-        const modalLista = modalEnderecos.querySelector('#modal-lista-enderecos');
-
-        modalTitulo.textContent = nomeCidade;
-        modalLista.innerHTML = '';
-
-        if (lojas && lojas.length > 0) {
-            lojas.forEach(function(loja) {
-                const cardHtml = `
-                    <div class="card loja-card-modal shadow-sm mb-3">
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 font-montserrat fw-semibold">${loja.nome_local}</h6>
-                            <p class="card-text small mb-2">
-                                <i class="bi bi-geo-alt-fill me-2 text-secondary-tuxnet"></i>
-                                ${loja.endereco_completo}
-                            </p>
-                            <a href="${loja.link_mapa}" target="_blank" class="btn btn-sm btn-outline-primary-tuxnet mt-2">Ver no Mapa</a>
-                        </div>
-                    </div>
-                `;
-                modalLista.insertAdjacentHTML('beforeend', cardHtml);
-            });
-        } else {
-            modalLista.innerHTML = '<p class="text-center text-muted">Nenhuma loja física cadastrada nesta cidade.</p>';
+        // Suas outras opções permanecem as mesmas
+        grabCursor: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        slidesPerView: 1.4,
+        spaceBetween: 20,
+        breakpoints: {
+            768: { slidesPerView: 2.4, spaceBetween: 30 },
+            992: { slidesPerView: 3.1, spaceBetween: 30 },
+            1200: { slidesPerView: 3.0, spaceBetween: 40 }
         }
-
     });
+}
 
-    // NOVO: Adicionamos um novo listener para QUANDO O MODAL FECHA
-    modalEnderecos.addEventListener('hidden.bs.modal', function (event) {
-        // Remove a classe para que o site volte ao normal
 
-        console.log("MODAL FECHANDO - Removendo ofuscamento...");
-        mainContent.classList.remove('content-ofuscado');
-    });
+    const heroCarouselElement = document.querySelector('#carouselExampleCaptions');
+    if (heroCarouselElement) {
+        new bootstrap.Carousel(heroCarouselElement, { interval: 5000, wrap: true });
+    }
+
+    const carouselPlanosElement = document.querySelector('#carouselPlanosParaVoce');
+    if (carouselPlanosElement) {
+        new bootstrap.Carousel(carouselPlanosElement, { interval: 5000, wrap: true });
+    }
+
+    // ===================================================================
+    // SEÇÃO 4: "TRABALHE CONOSCO"
+    // ===================================================================
+
+
+    const cidadeSelect = document.getElementById('cidade');
+    if (cidadeSelect) {
+        const apiUrl = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/BA/municipios';
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) throw new Error('Falha na resposta da rede');
+                return response.json();
+            })
+            .then(data => {
+                data.sort((a, b) => a.nome.localeCompare(b.nome));
+                cidadeSelect.innerHTML = '<option value="" disabled selected>Selecione sua cidade...</option>';
+                data.forEach(municipio => {
+                    const option = document.createElement('option');
+                    option.value = municipio.nome;
+                    option.textContent = municipio.nome;
+                    cidadeSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao buscar municípios:', error);
+                cidadeSelect.innerHTML = '<option value="" disabled selected>Erro ao carregar cidades</option>';
+            });
+    }
+
 });
- const swiper = new Swiper('.plans-carousel', {
-    // Quantidade de slides visíveis por padrão (mobile)
-    slidesPerView: 1,
-    // Espaço entre os slides
-    spaceBetween: 30,
-    // Habilita o loop infinito
-    loop: true,
 
-    // Configurações para diferentes tamanhos de tela (responsividade)
-    breakpoints: {
-      // Quando a largura da tela for >= 768px
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 30
-      },
-      // Quando a largura da tela for >= 992px
-      992: {
-        slidesPerView: 3,
-        spaceBetween: 30
-      },
-       // Quando a largura da tela for >= 1200px (opcional, para telas maiores)
-      1200: {
-          slidesPerView: 3,
-          spaceBetween: 40,
-          // centraliza o slide em destaque
-          centeredSlides: true,
-      }
-    },
-
-
-    // Navegação (setas)
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
