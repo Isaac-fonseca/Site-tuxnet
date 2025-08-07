@@ -1,15 +1,78 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // ===================================================================
+    // SEÇÃO 1: FUNÇÕES REUTILIZÁVEIS
+    // ===================================================================
+
+    /**
+     * Função genérica para criar um carrossel Swiper com filtros.
+     * Ela destrói e recria o carrossel a cada filtro para garantir a estabilidade.
+     */
+    function createFilterableCarousel(carouselSelector, filterSelector) {
+        const carouselElement = document.querySelector(carouselSelector);
+        if (!carouselElement) return; // Se o carrossel não existir na página, não faz nada
+
+        let swiperInstance = null;
+        const allSlides = Array.from(carouselElement.querySelectorAll('.swiper-slide')).map(slide => slide.cloneNode(true));
+        const swiperWrapper = carouselElement.querySelector('.swiper-wrapper');
+        const filterButtons = document.querySelectorAll(filterSelector);
+        const navigationWrapper = carouselElement.parentElement.querySelector('.swiper-navigation-wrapper');
+
+        function initializeSwiper(slidesToDisplay) {
+            if (swiperInstance) {
+                swiperInstance.destroy(true, true);
+            }
+            swiperWrapper.innerHTML = '';
+            slidesToDisplay.forEach(slide => {
+                swiperWrapper.appendChild(slide);
+            });
+
+            const slideCount = slidesToDisplay.length;
+            const minSlidesForLoop = 3;
+            const enableLoop = slideCount > minSlidesForLoop;
+
+            swiperInstance = new Swiper(carouselSelector, {
+                slidesPerView: 1.25,
+                spaceBetween: 15,
+                loop: enableLoop,
+                centeredSlides: enableLoop,
+                centerInsufficientSlides: true,
+                navigation: {
+                    nextEl: navigationWrapper.querySelector('.swiper-button-next'),
+                    prevEl: navigationWrapper.querySelector('.swiper-button-prev'),
+                },
+                breakpoints: {
+                    768: { slidesPerView: 2, spaceBetween: 30 },
+                    992: { slidesPerView: 3, spaceBetween: 30 }
+                }
+            });
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const filter = this.dataset.filter;
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                const slidesToShow = allSlides.filter(slide => {
+                    const cardCategory = slide.dataset.category;
+                    return filter === 'all' || cardCategory === filter;
+                });
+                initializeSwiper(slidesToShow);
+            });
+        });
+
+        initializeSwiper(allSlides);
+    }
 
     // ===================================================================
-    // SEÇÃO 1: COMPONENTES GLOBAIS (Navbar e Modais)
+    // SEÇÃO 2: LÓGICAS GLOBAIS (Nav, Modais, Animações)
     // ===================================================================
 
-
+    // --- Lógica da Navbar ---
     const navMenu = document.getElementById('navbarNavDropdown');
     if (navMenu) {
         navMenu.addEventListener('show.bs.collapse', () => document.body.classList.add('body-no-scroll'));
         navMenu.addEventListener('hidden.bs.collapse', () => document.body.classList.remove('body-no-scroll'));
-
         const closeNavButton = document.querySelector('.btn-close-nav');
         if (closeNavButton) {
             closeNavButton.addEventListener('click', () => {
@@ -19,23 +82,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
+    // --- Lógica do Modal de Endereços (Home) ---
     const modalEnderecos = document.getElementById('modalEnderecos');
     const mainContent = document.getElementById('page-wrapper');
     if (modalEnderecos && mainContent) {
         modalEnderecos.addEventListener('show.bs.modal', function (event) {
             mainContent.classList.add('content-ofuscado');
-
-
             const cardClicado = event.relatedTarget;
             const nomeCidade = cardClicado.getAttribute('data-cidade');
             const lojas = JSON.parse(cardClicado.getAttribute('data-enderecos'));
             const modalTitulo = modalEnderecos.querySelector('#modal-cidade-nome');
             const modalLista = modalEnderecos.querySelector('#modal-lista-enderecos');
-
             modalTitulo.textContent = nomeCidade;
             modalLista.innerHTML = '';
-
             if (lojas && lojas.length > 0) {
                 lojas.forEach(loja => {
                     const cardHtml = `
@@ -46,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <i class="bi bi-geo-alt-fill me-2 text-secondary-tuxnet"></i>
                                     ${loja.endereco_completo}
                                 </p>
-                              <a href="${loja.link_mapa}" target="_blank" class="btn btn-sm btn-mapa-amarelo mt-2">Ver no Mapa</a>
+                                <a href="${loja.link_mapa}" target="_blank" class="btn btn-sm btn-mapa-amarelo mt-2">Ver no Mapa</a>
                             </div>
                         </div>`;
                     modalLista.insertAdjacentHTML('beforeend', cardHtml);
@@ -55,8 +114,135 @@ document.addEventListener('DOMContentLoaded', function () {
                 modalLista.innerHTML = '<p class="text-center text-muted">Nenhuma loja física cadastrada nesta cidade.</p>';
             }
         });
-
         modalEnderecos.addEventListener('hidden.bs.modal', () => mainContent.classList.remove('content-ofuscado'));
+    }
+
+    // --- Lógica do Modal de Compras (Carrinho) ---
+   const modalComboElement = document.getElementById('modal-combo');
+if (modalComboElement) {
+    const modalCombo = new bootstrap.Modal(modalComboElement);
+    let planoBasePreco = 0;
+    let planoBaseNome = '';
+
+    function calcularTotal() {
+    const planoSelect = document.getElementById('plano-internet-select');
+
+    // CORREÇÃO: Adiciona uma verificação para o caso de nenhuma opção estar selecionada
+    if (planoSelect.selectedIndex >= 0) {
+        planoBasePreco = parseFloat(planoSelect.value);
+        planoBaseNome = planoSelect.options[planoSelect.selectedIndex].text;
+    } else {
+        // Se nenhuma opção estiver selecionada, define um valor padrão para não quebrar
+        planoBasePreco = 0;
+        planoBaseNome = "Nenhum plano selecionado";
+    }
+
+    let totalAdicionais = 0;
+    document.querySelectorAll('#lista-adicionais input[type="checkbox"]:checked').forEach(checkbox => {
+        totalAdicionais += parseFloat(checkbox.dataset.preco);
+    });
+    const totalFinal = planoBasePreco + totalAdicionais;
+    document.getElementById('valor-total').textContent = `R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
+}
+    // Função para abrir e popular o modal
+    function abrirModalCombo(planoInicialId = null, pacoteInicialId = null) {
+    const planoSelect = document.getElementById('plano-internet-select');
+    planoSelect.innerHTML = ''; // Limpa opções antigas
+
+    // CORREÇÃO: Removemos o .filter() para que TODOS os planos apareçam no dropdown
+    planosData.forEach(plano => {
+        const preco = parseFloat(`${plano.preco_inteiro}.${plano.preco_centavos}`);
+        // O texto da opção (ex: "COMBO FIBRA PLUS - R$ 79,99")
+        const optionText = `${plano.nome} - R$ ${preco.toFixed(2).replace('.', ',')}`;
+        // O valor da opção (ex: 79.99)
+        const optionValue = preco;
+
+        const option = new Option(optionText, optionValue);
+        option.dataset.id = plano.id; // Guardamos o ID para referência
+        planoSelect.add(option);
+    });
+
+    // Seleciona o plano inicial clicado, se houver
+    if (planoInicialId) {
+        const planoInicial = planosData.find(p => p.id == planoInicialId);
+        if (planoInicial) {
+            const precoInicial = parseFloat(`${planoInicial.preco_inteiro}.${planoInicial.preco_centavos}`);
+            planoSelect.value = precoInicial;
+        }
+    }
+
+        // Popula a lista de adicionais
+        const listaAdicionaisDiv = document.getElementById('lista-adicionais');
+        listaAdicionaisDiv.innerHTML = '';
+        adicionaisData.forEach(item => {
+            // Verifica se este adicional deve vir pré-selecionado
+            const isChecked = item.id === pacoteInicialId ? 'checked' : '';
+            listaAdicionaisDiv.innerHTML += `
+                <label class="list-group-item d-flex justify-content-between align-items-center">
+                    <div><strong>${item.nome}</strong><small class="d-block text-muted">${item.descricao}</small></div>
+                    <div class="d-flex align-items-center">
+                        <strong class="me-3">+ R$ ${parseFloat(item.preco).toFixed(2).replace('.', ',')}</strong>
+                        <input class="form-check-input" type="checkbox" data-preco="${item.preco}" data-nome="${item.nome}" ${isChecked}>
+                    </div>
+                </label>`;
+        });
+
+        // Adiciona os eventos
+        planoSelect.addEventListener('change', calcularTotal);
+        listaAdicionaisDiv.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', calcularTotal);
+        });
+
+        calcularTotal(); // Calcula o total inicial
+        modalCombo.show(); // Abre o modal
+    }
+
+
+    // Listener de clique principal
+    document.body.addEventListener('click', function (event) {
+        const targetPlano = event.target.closest('.btn-abrir-combo');
+        const targetPacote = event.target.closest('.btn-abrir-combo-pacote');
+
+        if (targetPlano) {
+            event.preventDefault();
+            const planoId = targetPlano.dataset.planoId;
+            abrirModalCombo(planoId, null); // Abre com um plano pré-selecionado
+        }
+
+        if (targetPacote) {
+            event.preventDefault();
+            const pacoteId = targetPacote.dataset.pacoteId;
+            abrirModalCombo(null, pacoteId); // Abre com um pacote pré-selecionado
+        }
+    });
+
+
+        const btnContratarWhatsapp = document.getElementById('btn-contratar-whatsapp');
+        if (btnContratarWhatsapp) {
+            btnContratarWhatsapp.addEventListener('click', function (event) {
+                event.preventDefault();
+                const nomeCliente = document.getElementById('cliente-nome').value.trim();
+                if (nomeCliente === '') {
+                    alert('Por favor, preencha seu nome completo.');
+                    return;
+                }
+                let resumoPedido = `*Plano Principal:*\n- ${planoBaseNome}\n\n`;
+                let totalFinal = planoBasePreco;
+                const adicionaisSelecionados = document.querySelectorAll('#lista-adicionais input[type="checkbox"]:checked');
+                if (adicionaisSelecionados.length > 0) {
+                    resumoPedido += `*Pacotes Adicionais:*\n`;
+                    adicionaisSelecionados.forEach(checkbox => {
+                        resumoPedido += `- ${checkbox.dataset.nome}\n`;
+                        totalFinal += parseFloat(checkbox.dataset.preco);
+                    });
+                }
+                const valorTotalTexto = `*Total Mensal:* R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
+                const mensagem = `Olá! Gostaria de contratar o seguinte combo:\n\n*Nome:* ${nomeCliente}\n\n${resumoPedido}\n${valorTotalTexto}`;
+                const numeroWhatsapp = "5575991697370";
+                const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
+                window.open(urlWhatsapp, '_blank');
+            });
+        }
     }
 
     // ===================================================================
@@ -109,27 +295,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // SEÇÃO 3: INICIALIZAÇÃO DE CARROSSÉIS
     // ===================================================================
 
-    const plansCarouselElement = document.querySelector('.plans-carousel');
-if (plansCarouselElement) {
-    // 1. Contamos quantos slides existem dentro do carrossel
-    const slideCount = plansCarouselElement.querySelectorAll('.swiper-slide').length;
-
-    // 2. Definimos um número mínimo de slides para ativar o loop (geralmente o número de slides visíveis + 1)
-    const minSlidesForLoop = 4;
-
-    // 3. A mágica acontece aqui: ativamos o loop e a centralização APENAS se tivermos slides suficientes
-    const enableLoop = slideCount >= minSlidesForLoop;
-
-    const swiper = new Swiper(plansCarouselElement, {
-        // Opções condicionais
-        loop: enableLoop,
-        centeredSlides: enableLoop, // A centralização só faz sentido com o loop
-
-        // Suas outras opções permanecem as mesmas
+ if (document.querySelector('#planos-destaque .plans-carousel')) {
+    const swiper = new Swiper('#planos-destaque .plans-carousel', {
+        loop: true,
+        loopedSlides: 5,
+        centeredSlides: true,
         grabCursor: true,
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '#planos-destaque .swiper-button-next', // Seletor específico
+            prevEl: '#planos-destaque .swiper-button-prev', // Seletor específico
         },
         slidesPerView: 1.4,
         spaceBetween: 20,
@@ -140,6 +314,20 @@ if (plansCarouselElement) {
         }
     });
 }
+ createFilterableCarousel('.main-plans-carousel', '#main-plans-filter .nav-link');
+    createFilterableCarousel('.special-plans-carousel', '#special-plans-filter .nav-link');
+
+    // --- Carrossel de Pacotes Adicionais da PÁGINA DE PLANOS ---
+    if (document.querySelector('.additional-packages-carousel')) {
+        new Swiper('.additional-packages-carousel', {
+            slidesPerView: 1, spaceBetween: 30, loop: true,
+            autoplay: { delay: 5000, disableOnInteraction: false },
+            navigation: {
+                nextEl: '#pacotes-adicionais .swiper-button-next',
+                prevEl: '#pacotes-adicionais .swiper-button-prev',
+            }
+        });
+    }
 
 
     const heroCarouselElement = document.querySelector('#carouselExampleCaptions');
@@ -180,6 +368,8 @@ if (plansCarouselElement) {
                 cidadeSelect.innerHTML = '<option value="" disabled selected>Erro ao carregar cidades</option>';
             });
     }
+
+
 
 });
 

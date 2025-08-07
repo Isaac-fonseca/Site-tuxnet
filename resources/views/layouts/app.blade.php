@@ -34,10 +34,61 @@
 <a href="tel:08007226662" class="phone-float" title="Ligue para nós">
     <i class="bi bi-telephone-fill"></i>
 </a>
+<div class="modal fade" id="modal-combo" tabindex="-1" aria-labelledby="modalComboLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalComboLabel">Monte seu Combo Personalizado</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                {{-- NOVA SEÇÃO para selecionar o plano de internet --}}
+                <div class="mb-4">
+                    <label for="plano-internet-select" class="form-label"><strong>1. Escolha seu plano de Internet:</strong></label>
+                    <select class="form-select form-select-lg" id="plano-internet-select">
+                        {{-- Opções populadas via JavaScript --}}
+                    </select>
+                </div>
+
+                <hr>
+
+                {{-- Seção para os pacotes adicionais --}}
+                <div class="mb-4">
+                    <label class="form-label"><strong>2. Turbine sua conexão (opcional):</strong></label>
+                    <div id="lista-adicionais" class="list-group">
+                        {{-- Populado via JavaScript --}}
+                    </div>
+                </div>
+
+                <hr>
+
+                {{-- Seção para os dados do cliente --}}
+                <div class="mb-3">
+                    <label for="cliente-nome" class="form-label"><strong>3. Seu nome completo:</strong></label>
+                    <input type="text" class="form-control" id="cliente-nome" placeholder="Digite seu nome aqui" required>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="total-price-wrapper">
+                    <span class="total-label">Total Mensal:</span>
+                    <span id="valor-total" class="total-amount">R$ 0,00</span>
+                </div>
+                <a href="#" id="btn-contratar-whatsapp" class="btn btn-success btn-lg">
+                    <i class="bi bi-whatsapp me-2"></i>Contratar pelo WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
     @stack('scripts')
  <script>
 
- </script>
+       const planosData = @json($planos ?? []);
+        const adicionaisData = @json($adicionais ?? []);
+        const pacotesData = @json($pacotes ?? []);
+    </script>
 </body>
 </html>
 
