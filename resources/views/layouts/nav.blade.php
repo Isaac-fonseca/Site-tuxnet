@@ -45,7 +45,7 @@
 
             <ul class="navbar-nav ms-auto d-none d-lg-flex">
                 <li class="nav-item">
-                    <a class="btn btn-outline-secondary-tuxnet" href="{{ url('/cliente/login') }}">
+                    <a class="btn btn-outline-secondary-tuxnet" href="https://central.tuxnet.hubsoft.com.br/central/login">
                         Área do Cliente
                     </a>
                 </li>

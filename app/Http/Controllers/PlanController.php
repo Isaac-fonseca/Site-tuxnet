@@ -20,8 +20,15 @@ class PlanController extends Controller
 
         $json_data = File::get($path);
         $planos = json_decode($json_data, true);
+$adicionaisPath = storage_path('app/data/adicionais.json');
+        $adicionais = File::exists($adicionaisPath) ? json_decode(File::get($adicionaisPath), true) : [];
+$pacotesPath = storage_path('app/data/adicionais-pacotes.json');
+    $pacotes = File::exists($pacotesPath) ? json_decode(File::get($pacotesPath), true) : [];
 
-        
-        return view('planos', ['planos' => $planos]);
+    return view('planos', [
+        'planos' => $planos,
+        'adicionais' => $adicionais,
+        'pacotes' => $pacotes 
+    ]);
     }
 }

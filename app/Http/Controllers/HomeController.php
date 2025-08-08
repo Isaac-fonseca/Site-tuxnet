@@ -29,14 +29,19 @@ class HomeController extends Controller
             $planos = json_decode($json_data, true);
         }
 
-        $planosDestaque = array_filter($planos, function($plano) {
-            return isset($plano['destaque']) && $plano['destaque'] === true;
-        });
+       $planosDestaque = array_values(array_filter($planos, function($plano) {
+    return isset($plano['destaque']) && $plano['destaque'] === true;
+}));
+         $planosPath = storage_path('app/data/planos.json');
+        $planos = File::exists($planosPath) ? json_decode(File::get($planosPath), true) : [];
 
-       
-        return view('home', [
+  $adicionaisPath = storage_path('app/data/adicionais.json');
+        $adicionais = File::exists($adicionaisPath) ? json_decode(File::get($adicionaisPath), true) : [];
+       return view('home', [
             'lojasPorCidade' => $lojasPorCidade,
-            'planosDestaque' => $planosDestaque
+            'planosDestaque' => $planosDestaque,
+            'planos' => $planos,                 
+            'adicionais' => $adicionais
         ]);
     }
 }

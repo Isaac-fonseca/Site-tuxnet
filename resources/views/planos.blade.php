@@ -8,7 +8,7 @@
 
 {{-- Lógica no topo para separar os planos em dois grupos --}}
 @php
-    
+
     $categoriasEspeciais = ['max', 'globoplay', 'playkids'];
     $planosPrincipais = collect($planos)->whereNotIn('categoria', $categoriasEspeciais)->all();
     $planosEspeciais = collect($planos)->whereIn('categoria', $categoriasEspeciais)->all();
@@ -26,14 +26,15 @@
         </div>
 
         {{-- Abas de Filtro para os planos principais --}}
-        <div class="row justify-content-center my-5">
+        <div class="row justify-content-center ">
             <div class="col-lg-10">
                 <ul class="nav nav-pills justify-content-center filter-tabs" id="main-plans-filter">
                     <li class="nav-item"><a class="nav-link active" href="#" data-filter="all">Todos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-filter="cartao">Exclusivo Cartão</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" data-filter="fibra">Fibra Óptica</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" data-filter="movel">Planos Móvel</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" data-filter="pabx">Soluções PABX</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-filter="cartao">Exclusivo Cartão</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-filter="fixo">Telefone Fixo</a></li>
                 </ul>
             </div>
         </div>
@@ -69,7 +70,7 @@
         </div>
 
     {{-- Abas de Filtro APENAS para os planos especiais --}}
-<div class="row justify-content-center my-5">
+<div class="row justify-content-center">
     <div class="col-lg-10">
         <ul class="nav nav-pills justify-content-center filter-tabs" id="special-plans-filter">
             <li class="nav-item"><a class="nav-link active" href="#" data-filter="all">Todos</a></li>
@@ -100,72 +101,56 @@
     </div>
 </section>
 
+{{-- /resources/views/planos.blade.php --}}
+
+{{-- ================================================================ --}}
+{{--  SEÇÃO DE PACOTES ADICIONAIS - VERSÃO CORRIGIDA --}}
+{{-- ================================================================ --}}
+<section id="pacotes-adicionais" class="section-padding">
+    <div class="container">
+        <div class="text-center text-black mb-5">
+            <h2 class="display-5 fw-bold">Monte o seu combo!</h2>
+            <p class="lead">Faça o plano do seu jeito e adicione os seus pacotes favoritos.</p>
+        </div>
+
+        <div class="position-relative">
+            <div class="swiper additional-packages-carousel">
+                <div class="swiper-wrapper">
+
+                    {{-- Loop para criar os cards de pacotes dinamicamente --}}
+                    @foreach($pacotes as $pacote)
+                        <div class="swiper-slide">
+                            <div class="pacotes-adicionais-card bg-degrade-roxo h-100">
+                                <div class="row align-items-center g-5">
+                                    <div class="col-lg-4 text-center">
+                                        <img src="{{ asset($pacote['imagem']) }}" alt="{{ $pacote['nome'] }}" class="img-fluid p-3">
+                                    </div>
+                                    <div class="col-lg-8 mt-4 mt-lg-0">
+                                        <h2 class="display-5 fw-bold mb-3 text-white">{{ $pacote['nome'] }}</h2>
+                                        <p class="lead">{{ $pacote['descricao'] }}</p>
+                                        {{-- BOTÃO AGORA ABRE O MODAL --}}
+                                        <a href="#" class="btn btn-lg btn-secondary-tuxnet mt-4 px-5 btn-abrir-combo-pacote" data-pacote-id="{{ $pacote['id'] }}">
+                                            {{ $pacote['texto_botao'] }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+            </div>
+
+            <div class="swiper-navigation-wrapper additional-packages-nav">
+                <div class="swiper-button-prev"><i class="bi bi-chevron-left"></i></div>
+                <div class="swiper-button-next"><i class="bi bi-chevron-right"></i></div>
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection
 
 @push('scripts')
-{{-- Script final e corrigido para controlar os DOIS carrosséis com seus próprios filtros --}}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
 
-    // Função genérica para criar um carrossel com filtros
-    function createFilterableCarousel(carouselSelector, filterSelector) {
-        const carouselElement = document.querySelector(carouselSelector);
-        if (!carouselElement) return; // Se o carrossel não existir na página, não faz nada
-
-        let swiperInstance = null;
-        const allSlides = Array.from(carouselElement.querySelectorAll('.swiper-slide')).map(slide => slide.cloneNode(true));
-        const swiperWrapper = carouselElement.querySelector('.swiper-wrapper');
-        const filterButtons = document.querySelectorAll(filterSelector);
-        const navigationWrapper = carouselElement.parentElement.querySelector('.swiper-navigation-wrapper');
-
-        function initializeSwiper(slidesToDisplay) {
-            if (swiperInstance) {
-                swiperInstance.destroy(true, true);
-            }
-            swiperWrapper.innerHTML = '';
-            slidesToDisplay.forEach(slide => {
-                swiperWrapper.appendChild(slide);
-            });
-            swiperInstance = new Swiper(carouselSelector, {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                loop: false,
-                navigation: {
-                    nextEl: navigationWrapper.querySelector('.swiper-button-next'),
-                    prevEl: navigationWrapper.querySelector('.swiper-button-prev'),
-                },
-                breakpoints: {
-                    768: { slidesPerView: 2 },
-                    992: { slidesPerView: 3 }
-                }
-            });
-        }
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-                const filter = this.dataset.filter;
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                const slidesToShow = allSlides.filter(slide => {
-                    const cardCategory = slide.dataset.category;
-                    return filter === 'all' || cardCategory === filter;
-                });
-                initializeSwiper(slidesToShow);
-            });
-        });
-
-        initializeSwiper(allSlides);
-    }
-
-    // --- INICIALIZAÇÃO DOS DOIS CARROSSÉIS ---
-
-    // Inicializa o primeiro carrossel com seus filtros
-    createFilterableCarousel('.main-plans-carousel', '#main-plans-filter .nav-link');
-
-    // Inicializa o segundo carrossel com seus filtros
-    createFilterableCarousel('.special-plans-carousel', '#special-plans-filter .nav-link');
-
-});
-</script>
 @endpush

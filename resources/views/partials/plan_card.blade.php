@@ -1,9 +1,3 @@
-{{-- /resources/views/partials/plan_card.blade.php --}}
-
-{{--
-Este é o "molde" de um único card de plano.
-Ele espera receber uma variável chamada $plano.
---}}
 <div class="card plan-card-new h-100
     @if(isset($plano['background_especial']) && $plano['background_especial'] === 'laranja') bg-globoplay @endif
     @if(isset($plano['background_especial']) && $plano['background_especial'] === 'azul') bg-max @endif
@@ -23,10 +17,23 @@ Ele espera receber uma variável chamada $plano.
             <span class="speed-unit">{{ $plano['velocidade_unidade'] }}</span>
         </div>
 
-        <div class="installation-banner my-3">
+        <div class="installation-banner my-1">
             <i class="bi bi-check-circle-fill"></i>
             <span>{{ $plano['info_instalacao'] }}</span>
         </div>
+
+        <!--  ATUALIZADO: SEÇÃO DE APPS INCLUSOS COM TEXTO  -->
+        @if(isset($plano['apps_inclusos']) && !empty($plano['apps_inclusos']))
+            <div class="included-apps-container my-1">
+                <span class="included-apps-label">Apps inclusos: </span>
+                <div class="apps-icons-wrapper">
+                    @foreach($plano['apps_inclusos'] as $app)
+                        <img src="{{ asset($app['imagem']) }}" alt="{{ $app['alt'] }}" title="{{ $app['alt'] }}" class="app-icon">
+                    @endforeach
+                </div>
+            </div>
+        @endif
+        <!--  FIM DA ATUALIZAÇÃO  -->
 
         <div class="price-separator my-3"><span>{{ $plano['texto_preco'] }}</span></div>
 
@@ -38,7 +45,7 @@ Ele espera receber uma variável chamada $plano.
         </div>
 
         <div class="mt-auto pt-4">
-            <a href="{{ $plano['link_contratar'] }}" class="btn btn-contratar">{{ $plano['texto_botao_contratar'] }}</a>
+           <a href="#" class="btn btn-contratar btn-abrir-combo" data-plano-id="{{ $plano['id'] }}">{{ $plano['texto_botao_contratar'] }}</a>
             <div class="text-center mt-4">
                 <button class="btn details-button-yellow" type="button" data-bs-toggle="collapse" data-bs-target="#details-plan-{{ $plano['id'] }}" aria-expanded="false" aria-controls="details-plan-{{ $plano['id'] }}">
                     Ver Detalhes <i class="bi bi-chevron-down"></i>

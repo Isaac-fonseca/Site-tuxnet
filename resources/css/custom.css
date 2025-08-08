@@ -281,7 +281,7 @@
     transform: scale(1.05);    /* Efeito de leve aumento */
 }
 .section-padding {
-            padding: 40px ;
+            padding: 40px 0px ;
         }
 
 
@@ -297,13 +297,37 @@
         }
 
         .plan-card-new.bg-globoplay {
-background-image: linear-gradient(to bottom, #ff8c00, #e64a19);
+background-image: linear-gradient(to bottom, #FC2135, #e85629);
 color: #fff;}
 
 
 .plan-card-new.bg-max {
 background-image: linear-gradient(to bottom,#011093, #020a32);
 color: #fff;
+}
+.plan-card-new.bg-playkids {
+
+    background-image: linear-gradient(to bottom, #64CCEE, #055481);
+    color: #ffffff;
+}
+
+.plan-card-new.bg-playkids .price-display-new .main-price,
+.plan-card-new.bg-playkids .price-display-new .cents {
+    color: #ffffff;
+}
+
+.plan-card-new.bg-playkids .price-display-new .currency,
+.plan-card-new.bg-playkids .price-display-new .period {
+    color: #ffffff;
+}
+
+.plan-card-new.bg-playkids .price-separator {
+    color: #ffffff;
+}
+
+.plan-card-new.bg-playkids .price-separator::before,
+.plan-card-new.bg-playkids .price-separator::after {
+    background-color: #ffffff;
 }
 
          .selo-popular {
@@ -510,63 +534,36 @@ color: #fff;
             z-index: 2; /* Garante que ele fique na frente dos outros */
         }
 
-        /* ================================================================ */
-        /* == SETAS DO CARROSSEL (Seu código original, já está bom) == */
-        /* ================================================================ */
-       #planos-destaque .swiper-button-prev,
-#planos-destaque .swiper-button-next {
-    position: static !important;
-    margin: 0 !important;
-    width: 56px;  /* Maior */
-    height: 56px; /* Maior */
-    background-color: #A428FF;
-    border-radius: 16px;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 15px rgba(164, 40, 255, 0.3); /* Sombra suave da cor do botão */
-    transition: all 0.3s ease-in-out; /* Transição suave para tudo */
+     /* =================================================================== */
+/* ==   ESTILO OTIMIZADO E UNIFICADO PARA TODOS OS CARROSSÉIS       == */
+/* =================================================================== */
+
+/* 1. Containers dos Carrosséis (para o selo 'Mais Popular' não ser cortado) */
+#planos-destaque .plans-carousel,
+#todos-os-planos .main-plans-carousel,
+#planos-especiais .special-plans-carousel {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
 }
 
-#planos-destaque .swiper-button-prev i,
-#planos-destaque .swiper-button-next i {
-    font-size: 1.5rem; /* Ícone maior */
-    font-weight: bold;
-}
-
-#planos-destaque .swiper-button-prev:not(.swiper-button-disabled):hover,
-#planos-destaque .swiper-button-next:not(.swiper-button-disabled):hover {
-    background-color: #340667;
-    transform: scale(1.1) translateY(-2px); /* Aumenta e levanta um pouco */
-    box-shadow: 0 6px 20px rgba(52, 6, 103, 0.4); /* Sombra mais forte */
-}
-
-#planos-destaque .swiper-button-disabled {
-    background-color: #6214A6;
-    opacity: 0.4;
-    cursor: not-allowed;
-    box-shadow: none; /* Remove a sombra quando desabilitado */
-}
-
-
+/* 2. Wrapper de Navegação (Centraliza as setas abaixo do carrossel) */
 #planos-destaque .swiper-navigation-wrapper,
 #todos-os-planos .swiper-navigation-wrapper,
-#planos-especiais .swiper-navigation-wrapper {
+#planos-especiais .swiper-navigation-wrapper,
+#pacotes-adicionais .swiper-navigation-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-top: 2.5rem;
+    margin-top: 0.5rem;
 }
 
-/* Botões de Seta (Home, Planos Principais E Planos Especiais) */
-#planos-destaque .swiper-button-prev,
-#planos-destaque .swiper-button-next,
-#todos-os-planos .swiper-button-prev,
-#todos-os-planos .swiper-button-next,
-#planos-especiais .swiper-button-prev,
-#planos-especiais .swiper-button-next {
+/* 3. Estilo Principal das Setas (Aplica a TODAS as seções) */
+#planos-destaque .swiper-button-prev, #planos-destaque .swiper-button-next,
+#todos-os-planos .swiper-button-prev, #todos-os-planos .swiper-button-next,
+#planos-especiais .swiper-button-prev, #planos-especiais .swiper-button-next,
+#pacotes-adicionais .swiper-button-prev, #pacotes-adicionais .swiper-button-next {
     position: static !important;
     margin: 0 !important;
     width: 56px;
@@ -581,46 +578,39 @@ color: #fff;
     transition: all 0.3s ease-in-out;
 }
 
-/* Ícones dentro das Setas */
-#planos-destaque .swiper-button-prev i,
-#planos-destaque .swiper-button-next i,
-#todos-os-planos .swiper-button-prev i,
-#todos-os-planos .swiper-button-next i,
-#planos-especiais .swiper-button-prev i,
-#planos-especiais .swiper-button-next i {
+/* 4. Ícones dentro das Setas */
+#planos-destaque .swiper-button-prev i, #planos-destaque .swiper-button-next i,
+#todos-os-planos .swiper-button-prev i, #todos-os-planos .swiper-button-next i,
+#planos-especiais .swiper-button-prev i, #planos-especiais .swiper-button-next i,
+#pacotes-adicionais .swiper-button-prev i, #pacotes-adicionais .swiper-button-next i {
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-/* Efeito Hover nas Setas */
-#planos-destaque .swiper-button-prev:not(.swiper-button-disabled):hover,
-#planos-destaque .swiper-button-next:not(.swiper-button-disabled):hover,
-#todos-os-planos .swiper-button-prev:not(.swiper-button-disabled):hover,
-#todos-os-planos .swiper-button-next:not(.swiper-button-disabled):hover,
-#planos-especiais .swiper-button-prev:not(.swiper-button-disabled):hover,
-#planos-especiais .swiper-button-next:not(.swiper-button-disabled):hover {
+/* 5. Efeito Hover nas Setas */
+#planos-destaque .swiper-button-prev:not(.swiper-button-disabled):hover, #planos-destaque .swiper-button-next:not(.swiper-button-disabled):hover,
+#todos-os-planos .swiper-button-prev:not(.swiper-button-disabled):hover, #todos-os-planos .swiper-button-next:not(.swiper-button-disabled):hover,
+#planos-especiais .swiper-button-prev:not(.swiper-button-disabled):hover, #planos-especiais .swiper-button-next:not(.swiper-button-disabled):hover,
+#pacotes-adicionais .swiper-button-prev:not(.swiper-button-disabled):hover, #pacotes-adicionais .swiper-button-next:not(.swiper-button-disabled):hover {
     background-color: #340667;
     transform: scale(1.1) translateY(-2px);
     box-shadow: 0 6px 20px rgba(52, 6, 103, 0.4);
 }
 
-/* Setas Desabilitadas */
+/* 6. Setas Desabilitadas */
 #planos-destaque .swiper-button-disabled,
 #todos-os-planos .swiper-button-disabled,
-#planos-especiais .swiper-button-disabled {
+#planos-especiais .swiper-button-disabled,
+#pacotes-adicionais .swiper-button-disabled {
     background-color: #6214A6;
     opacity: 0.4;
     cursor: not-allowed;
     box-shadow: none;
 }
 
-/* Remove a seta padrão (::after) do Swiper */
-#planos-destaque .swiper-button-prev::after,
-#planos-destaque .swiper-button-next::after,
-#todos-os-planos .swiper-button-prev::after,
-#todos-os-planos .swiper-button-next::after,
-#planos-especiais .swiper-button-prev::after,
-#planos-especiais .swiper-button-next::after {
+/* 7. Remove a seta padrão (::after) do Swiper de TODOS os carrosséis */
+.swiper-button-prev::after,
+.swiper-button-next::after {
     display: none !important;
 }
 /* ===============================================
@@ -952,62 +942,164 @@ h2.font-montserrat, h4.font-montserrat {
 .btn.details-button-yellow[aria-expanded="true"] > .bi-chevron-down::before {
     content: "\F286";
 }
-/* Estilo para as abas de filtro de planos */
-.filter-tabs .nav-link {
-    color: #6c757d; /* Cor do texto padrão */
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border-radius: 50px;
-    padding: 8px 20px;
-    margin: 0 5px;
+/* =================================================================== */
+/* ==          ESTILO MODERNIZADO PARA AS ABAS DE FILTRO          == */
+/* =================================================================== */
+
+/* Container das abas */
+.filter-tabs {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
 }
 
-/* Estilo para as abas de filtro de planos (permanece o mesmo) */
-.filter-tabs .nav-link {
-    color: #6c757d;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border-radius: 50px;
-    padding: 8px 20px;
+/* Estilo para cada item/link da aba */
+.filter-tabs .nav-item .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #6c757d; /* Cinza suave para itens inativos */
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50rem; /* Formato de pílula */
+    padding: 0.6rem 1.5rem;
     margin: 0 5px;
+    transition: all 0.3s ease-in-out;
 }
 
-.filter-tabs .nav-link.active {
+/* Efeito ao passar o mouse por cima de um item inativo */
+.filter-tabs .nav-item .nav-link:not(.active):hover {
+    color: var(--tuxnet-primary, #340667); /* Cor primária roxa */
+    background-color: rgba(164, 40, 255, 0.1); /* Fundo roxo bem claro */
+}
+
+/* Estilo para a aba ATIVA */
+.filter-tabs .nav-item .nav-link.active {
+    background-color: var(--tuxnet-primary, #A428FF); /* Cor primária roxa */
+    color: #fff; /* Texto branco */
+    border-color: var(--tuxnet-primary, #A428FF);
+    box-shadow: 0 5px 15px rgba(164, 40, 255, 0.4); /* Sombra suave roxa */
+    transform: translateY(-2px); /* Leve efeito de "saltar" */
+}
+
+/* Ajustes para telas de celular */
+/* VERSÃO CORRIGIDA COM QUEBRA DE LINHA */
+@media (max-width: 767px) {
+    .filter-tabs {
+        /* 1. Permite que as abas quebrem para a próxima linha */
+        flex-wrap: wrap;
+
+        /* 2. Garante que as linhas de abas continuem centralizadas */
+        justify-content: center;
+    }
+
+    .filter-tabs .nav-item {
+        /* 3. Adiciona um pequeno espaço vertical entre as abas quando elas quebram a linha */
+        margin-bottom: 10px;
+    }
+
+    .filter-tabs .nav-item .nav-link {
+        /* 4. Opcional: Diminuir um pouco o padding em telas muito pequenas para ajudar a caber mais itens por linha */
+        padding: 0.5rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}
+/* Adicione este código ao seu arquivo CSS principal */
+
+.bg-degrade-roxo {
+    background-image: linear-gradient(to bottom, #A428FF, #340667)
+}
+
+#pacotes-adicionais .pacotes-adicionais-card {
+
+    border-radius: 1.5rem;
+    padding: 3rem;
     color: #fff;
-    background-color: var(--bs-primary); /* Cor primária do seu site */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.plan-card-new.bg-playkids {
-    /* Degradê de um rosa vibrante para um tom bem claro, quase branco */
-    background-image: linear-gradient(to bottom, #FF85B2, #FFF0F5);
-
-    /* IMPORTANTE: Altera a cor do texto para escuro para garantir a leitura no fundo claro */
-    color: #495057;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 
-.plan-card-new.bg-playkids {
+@media (max-width: 767px) {
+    #pacotes-adicionais .pacotes-adicionais-card {
+        padding: 2rem;
+        text-align: center;
+    }
+}
+.included-apps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 3px;
+}
 
-    background-image: linear-gradient(to bottom, #64CCEE, #3399D6);
+.included-apps-label {
+    font-size: 18px;
+    font-weight: 600;
     color: #ffffff;
+    white-space: nowrap;
+    margin-right: 8px;
+    transition: font-size 0.2s ease-in-out;
 }
 
-.plan-card-new.bg-playkids .price-display-new .main-price,
-.plan-card-new.bg-playkids .price-display-new .cents {
-    color: #ffffff;
+.apps-icons-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1px;
 }
 
-.plan-card-new.bg-playkids .price-display-new .currency,
-.plan-card-new.bg-playkids .price-display-new .period {
-    color: #ffffff;
+.app-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 1px;
+    transition: transform 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
 }
 
-.plan-card-new.bg-playkids .price-separator {
-    color: #ffffff;
+.app-icon:hover {
+    transform: scale(1.15);
+    cursor: pointer;
 }
 
-.plan-card-new.bg-playkids .price-separator::before,
-.plan-card-new.bg-playkids .price-separator::after {
-    background-color: #ffffff;
+@media (max-width: 420px) {
+    .included-apps-label {
+        font-size: 14px;
+    }
+
+    .app-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Estilo para o rodapé do modal de combo */
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.total-price-wrapper .total-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+.total-price-wrapper .total-amount {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--bs-primary); /* Usa sua cor primária */
+}
+
+/* Estilo para a lista de adicionais */
+#lista-adicionais .list-group-item {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+#lista-adicionais .list-group-item:hover {
+    background-color: #f8f9fa;
+}
+#lista-adicionais .form-check-input {
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
 }
