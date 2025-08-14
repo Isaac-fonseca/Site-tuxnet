@@ -21,7 +21,7 @@
 <body>
      <div id="page-wrapper">
     <div id="app">
-        @include('layouts.nav') <main class="main-content py-4"> @yield('content') </main>
+        @include('layouts.nav') <main class="main-content py-2"> @yield('content') </main>
 
         @include('layouts.footer') </div>
     </div> @stack('modals')
@@ -34,50 +34,93 @@
 <a href="tel:08007226662" class="phone-float" title="Ligue para nós">
     <i class="bi bi-telephone-fill"></i>
 </a>
+{{-- Em /resources/views/layouts/app.blade.php --}}
+
+{{-- Em /resources/views/layouts/app.blade.php --}}
+
+{{-- Em /resources/views/layouts/app.blade.php --}}
+
 <div class="modal fade" id="modal-combo" tabindex="-1" aria-labelledby="modalComboLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalComboLabel">Monte seu Combo Personalizado</h5>
+                <h5 class="modal-title" id="modalComboLabel"><i class="bi bi-tools me-2"></i>Monte seu Combo Personalizado</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body p-0">
+                <div class="row g-0">
+                    {{-- COLUNA ESQUERDA: OPÇÕES DE MONTAGEM --}}
+                    <div class="col-lg-7 p-4">
 
-                {{-- NOVA SEÇÃO para selecionar o plano de internet --}}
-                <div class="mb-4">
-                    <label for="plano-internet-select" class="form-label"><strong>1. Escolha seu plano de Internet:</strong></label>
-                    <select class="form-select form-select-lg" id="plano-internet-select">
-                        {{-- Opções populadas via JavaScript --}}
-                    </select>
-                </div>
+                        {{-- PASSO 1: TIPO DE PLANO --}}
+                        <div class="mb-4">
+                            <label class="form-label"><strong>1. Qual o tipo de serviço principal?</strong></label>
+                            <div id="tipo-plano-toggles" class="d-flex flex-wrap gap-2"></div>
+                        </div>
+                        <hr>
 
-                <hr>
+                        {{-- PASSO 2: DETALHES DO PLANO (AGORA COM ABAS E CARDS) --}}
+                        <div id="plano-especifico-container">
+                            <label class="form-label"><strong>2. Escolha o seu plano:</strong></label>
 
-                {{-- Seção para os pacotes adicionais --}}
-                <div class="mb-4">
-                    <label class="form-label"><strong>2. Turbine sua conexão (opcional):</strong></label>
-                    <div id="lista-adicionais" class="list-group">
-                        {{-- Populado via JavaScript --}}
+                            {{-- Container para o dropdown (usado para planos base) --}}
+                            <div id="dropdown-container">
+                                <select class="form-select form-select-lg" id="plano-internet-select"></select>
+
+
+                            </div>
+
+                            {{-- Container para as abas e cards (usado para combos) --}}
+                            <div id="combo-selector-container" class="d-none">
+                                <div id="combo-sub-category-tabs" class="sub-category-tabs"></div>
+                                <div id="combo-plan-cards-grid" class="plan-cards-grid"></div>
+                            </div>
+
+                        </div>
+                        <hr>
+ <div id="plano-velocidade-display" class="text-center mt-3">
+        <!-- A velocidade do plano selecionado aparecerá aqui -->
+    </div>
+                        {{-- PASSO 3 E 4: ADICIONAIS --}}
+                        <div id="secao-adicionais">
+                            <div class="mb-4">
+                                <label class="form-label"><strong>3. Adicione pacotes de Streaming:</strong></label>
+                                <div id="lista-streaming" class="list-group"></div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label"><strong>4. Adicione outros serviços:</strong></label>
+                                <div id="lista-adicionais" class="list-group"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- COLUNA DIREITA: RESUMO --}}
+                    <div class="col-lg-5 bg-light p-4 d-flex flex-column">
+                        <h6 class="text-uppercase text-muted mb-3">Resumo do seu Combo</h6>
+                        <div id="resumo-plano-base" class="resumo-item">
+                            <p class="text-muted small">Selecione um plano para começar</p>
+                        </div>
+                        <div id="resumo-adicionais" class="resumo-item border-top pt-3 mt-3"></div>
+                        <div class="mt-auto">
+                            <div class="mb-3" id="resumo-pagamento-container">
+                          <label class="form-label small text-muted">Método de Pagamento:</label>
+                          <p id="resumo-metodo-pagamento" class="fw-bold"></p>
+                           </div>
+                            <hr>
+                            <div class="mb-3">
+                                <label for="cliente-nome" class="form-label"><strong>Seu nome completo:</strong></label>
+                                <input type="text" class="form-control" id="cliente-nome" placeholder="Digite seu nome aqui" required>
+                            </div>
+                            <div class="total-price-wrapper text-end">
+                                <span class="total-label">Total Mensal:</span>
+                                <span id="valor-total" class="total-amount">R$ 0,00</span>
+                            </div>
+                            <a href="#" id="btn-contratar-whatsapp" class="btn btn-success btn-lg w-100 mt-3">
+                                <i class="bi bi-whatsapp me-2"></i>Contratar pelo WhatsApp
+                            </a>
+                        </div>
                     </div>
                 </div>
-
-                <hr>
-
-                {{-- Seção para os dados do cliente --}}
-                <div class="mb-3">
-                    <label for="cliente-nome" class="form-label"><strong>3. Seu nome completo:</strong></label>
-                    <input type="text" class="form-control" id="cliente-nome" placeholder="Digite seu nome aqui" required>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <div class="total-price-wrapper">
-                    <span class="total-label">Total Mensal:</span>
-                    <span id="valor-total" class="total-amount">R$ 0,00</span>
-                </div>
-                <a href="#" id="btn-contratar-whatsapp" class="btn btn-success btn-lg">
-                    <i class="bi bi-whatsapp me-2"></i>Contratar pelo WhatsApp
-                </a>
             </div>
         </div>
     </div>

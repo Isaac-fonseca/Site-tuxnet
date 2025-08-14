@@ -22,9 +22,8 @@
             <span>{{ $plano['info_instalacao'] }}</span>
         </div>
 
-        <!--  ATUALIZADO: SEÇÃO DE APPS INCLUSOS COM TEXTO  -->
         @if(isset($plano['apps_inclusos']) && !empty($plano['apps_inclusos']))
-            <div class="included-apps-container my-1">
+            <div class="included-apps-container my-2">
                 <span class="included-apps-label">Apps inclusos: </span>
                 <div class="apps-icons-wrapper">
                     @foreach($plano['apps_inclusos'] as $app)
@@ -33,7 +32,6 @@
                 </div>
             </div>
         @endif
-        <!--  FIM DA ATUALIZAÇÃO  -->
 
         <div class="price-separator my-3"><span>{{ $plano['texto_preco'] }}</span></div>
 
@@ -43,6 +41,21 @@
             <span class="cents">,{{ $plano['preco_centavos'] }}</span>
             <span class="period">{{ $plano['periodo'] }}</span>
         </div>
+
+        <!-- ================================================================ -->
+        <!--            SEÇÃO MOVIDA PARA DEBAIXO DO PREÇO                -->
+        <!-- ================================================================ -->
+        @if(isset($plano['metodo_pagamento']))
+            <div class="payment-method-container mt-3"> {{-- Margem ajustada para 'mt-3' --}}
+                @if(Str::contains($plano['metodo_pagamento'], 'Cartão'))
+                    <i class="bi bi-credit-card-2-front-fill"></i>
+                @else
+                    <i class="bi bi-upc-scan"></i>
+                @endif
+                <span>{{ $plano['metodo_pagamento'] }}</span>
+            </div>
+        @endif
+        <!-- ================================================================ -->
 
         <div class="mt-auto pt-4">
            <a href="#" class="btn btn-contratar btn-abrir-combo" data-plano-id="{{ $plano['id'] }}">{{ $plano['texto_botao_contratar'] }}</a>
