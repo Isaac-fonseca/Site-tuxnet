@@ -169,7 +169,7 @@
     display: flex !important; /* Força o modo flex */
     justify-content: center !important; /* Força centralização horizontal */
     align-items: center !important;
-
+  
     padding: 0;
     line-height: 1;
 }
@@ -1074,32 +1074,34 @@ h2.font-montserrat, h4.font-montserrat {
     }
 }
 
-/* Estilo para o rodapé do modal de combo */
-.modal-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.total-price-wrapper .total-label {
-    font-size: 0.9rem;
-    color: #6c757d;
-}
-.total-price-wrapper .total-amount {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--bs-primary); /* Usa sua cor primária */
+/* Estilo para os cards de seleção de plano dentro do modal */
+.modal-plan-card {
+    border: 2px solid #dee2e6;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
-/* Estilo para a lista de adicionais */
-#lista-adicionais .list-group-item {
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+.modal-plan-card:hover {
+    border-color: var(--bs-primary-light, #c69cff);
+    background-color: var(--bs-light, #f8f9fa);
 }
-#lista-adicionais .list-group-item:hover {
-    background-color: #f8f9fa;
+
+.modal-plan-card.selected {
+    border-color: var(--bs-primary, #A428FF);
+    background-color: var(--bs-primary-light, rgba(164, 40, 255, 0.1));
+    box-shadow: 0 0 0 3px var(--bs-primary-light, rgba(164, 40, 255, 0.4));
 }
-#lista-adicionais .form-check-input {
-    width: 1.5em;
-    height: 1.5em;
-    cursor: pointer;
+
+.modal-plan-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.modal-plan-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--bs-primary, #A428FF);
+    margin: 0;
 }

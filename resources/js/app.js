@@ -116,134 +116,141 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         modalEnderecos.addEventListener('hidden.bs.modal', () => mainContent.classList.remove('content-ofuscado'));
     }
-
-    // --- Lógica do Modal de Compras (Carrinho) ---
-   const modalComboElement = document.getElementById('modal-combo');
+const modalComboElement = document.getElementById('modal-combo');
 if (modalComboElement) {
     const modalCombo = new bootstrap.Modal(modalComboElement);
-    let planoBasePreco = 0;
-    let planoBaseNome = '';
+    
+    // Elementos do Modal
+    const step1 = document.getElementById('modal-step-1');
+    const step2 = document.getElementById('modal-step-2');
+    const planosBaseContainer = document.getElementById('planos-base-container');
+    const listaAdicionaisDiv = document.getElementById('lista-adicionais');
+    const valorTotalEl = document.getElementById('valor-total');
+    const nomeClienteEl = document.getElementById('cliente-nome');
+    const btnVoltar = document.getElementById('btn-voltar-passo1');
+    const btnNext = document.getElementById('btn-next-step');
+    const btnContratar = document.getElementById('btn-contratar-whatsapp');
 
+    let planoBaseSelecionado = null;
+
+    // Função para calcular o total
     function calcularTotal() {
-    const planoSelect = document.getElementById('plano-internet-select');
-
-    // CORREÇÃO: Adiciona uma verificação para o caso de nenhuma opção estar selecionada
-    if (planoSelect.selectedIndex >= 0) {
-        planoBasePreco = parseFloat(planoSelect.value);
-        planoBaseNome = planoSelect.options[planoSelect.selectedIndex].text;
-    } else {
-        // Se nenhuma opção estiver selecionada, define um valor padrão para não quebrar
-        planoBasePreco = 0;
-        planoBaseNome = "Nenhum plano selecionado";
+        let precoBase = planoBaseSelecionado ? parseFloat(planoBaseSelecionado.preco) : 0;
+        let totalAdicionais = 0;
+        document.querySelectorAll('#lista-adicionais input[type="checkbox"]:checked').forEach(checkbox => {
+            totalAdicionais += parseFloat(checkbox.dataset.preco);
+        });
+        const totalFinal = precoBase + totalAdicionais;
+        valorTotalEl.textContent = `R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
     }
 
-    let totalAdicionais = 0;
-    document.querySelectorAll('#lista-adicionais input[type="checkbox"]:checked').forEach(checkbox => {
-        totalAdicionais += parseFloat(checkbox.dataset.preco);
-    });
-    const totalFinal = planoBasePreco + totalAdicionais;
-    document.getElementById('valor-total').textContent = `R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
-}
-    // Função para abrir e popular o modal
-    function abrirModalCombo(planoInicialId = null, pacoteInicialId = null) {
-    const planoSelect = document.getElementById('plano-internet-select');
-    planoSelect.innerHTML = ''; // Limpa opções antigas
-
-    // CORREÇÃO: Removemos o .filter() para que TODOS os planos apareçam no dropdown
-    planosData.forEach(plano => {
-        const preco = parseFloat(`${plano.preco_inteiro}.${plano.preco_centavos}`);
-        // O texto da opção (ex: "COMBO FIBRA PLUS - R$ 79,99")
-        const optionText = `${plano.nome} - R$ ${preco.toFixed(2).replace('.', ',')}`;
-        // O valor da opção (ex: 79.99)
-        const optionValue = preco;
-
-        const option = new Option(optionText, optionValue);
-        option.dataset.id = plano.id; // Guardamos o ID para referência
-        planoSelect.add(option);
-    });
-
-    // Seleciona o plano inicial clicado, se houver
-    if (planoInicialId) {
-        const planoInicial = planosData.find(p => p.id == planoInicialId);
-        if (planoInicial) {
-            const precoInicial = parseFloat(`${planoInicial.preco_inteiro}.${planoInicial.preco_centavos}`);
-            planoSelect.value = precoInicial;
+    // Função para mudar de passo
+    function goToStep(stepNumber) {
+        if (stepNumber === 1) {
+            step1.classList.remove('d-none'); step2.classList.add('d-none');
+            btnVoltar.classList.add('d-none'); btnNext.classList.remove('d-none');
+            btnContratar.classList.add('d-none');
+        } else if (stepNumber === 2) {
+            if (!planoBaseSelecionado) {
+                alert('Por favor, selecione um plano principal para avançar.'); return;
+            }
+            step1.classList.add('d-none'); step2.classList.remove('d-none');
+            btnVoltar.classList.remove('d-none'); btnNext.classList.add('d-none');
+            btnContratar.classList.remove('d-none');
         }
     }
 
-        // Popula a lista de adicionais
-        const listaAdicionaisDiv = document.getElementById('lista-adicionais');
+    // Abre e popula o modal
+    function abrirModalCombo(planoClicadoId) {
+        planoBaseSelecionado = null;
+        planosBaseContainer.innerHTML = '';
+
+        const planoClicado = planosData.find(p => p.id == planoClicadoId);
+        if (!planoClicado) return;
+
+        // Determina o plano base e os adicionais pré-selecionados
+        const idDoPlanoBase = planoClicado.base_plan_id || planoClicado.id;
+        const adicionaisInclusos = planoClicado.includes_addons || [];
+
+        // Popula o Passo 1 apenas com os planos de internet "puros"
+        const planosDeInternet = planosData.filter(p => !p.base_plan_id);
+        planosDeInternet.forEach(plano => {
+            const preco = parseFloat(`${plano.preco_inteiro}.${plano.preco_centavos}`);
+            const isSelected = plano.id == idDoPlanoBase ? 'selected' : '';
+            if (isSelected) {
+                planoBaseSelecionado = { id: plano.id, nome: plano.nome, preco: preco };
+            }
+            planosBaseContainer.innerHTML += `
+                <div class="col-md-6 mb-3"><div class="modal-plan-card ${isSelected}" data-id="${plano.id}" data-nome="${plano.nome}" data-preco="${preco}">
+                <div class="modal-plan-card-body"><h6 class="modal-plan-title">${plano.nome}</h6><p class="modal-plan-price">R$ ${preco.toFixed(2).replace('.', ',')}</p></div>
+                </div></div>`;
+        });
+        
+        // Popula o Passo 2 com os adicionais
         listaAdicionaisDiv.innerHTML = '';
         adicionaisData.forEach(item => {
-            // Verifica se este adicional deve vir pré-selecionado
-            const isChecked = item.id === pacoteInicialId ? 'checked' : '';
-            listaAdicionaisDiv.innerHTML += `
-                <label class="list-group-item d-flex justify-content-between align-items-center">
-                    <div><strong>${item.nome}</strong><small class="d-block text-muted">${item.descricao}</small></div>
-                    <div class="d-flex align-items-center">
-                        <strong class="me-3">+ R$ ${parseFloat(item.preco).toFixed(2).replace('.', ',')}</strong>
-                        <input class="form-check-input" type="checkbox" data-preco="${item.preco}" data-nome="${item.nome}" ${isChecked}>
-                    </div>
-                </label>`;
+            const isChecked = adicionaisInclusos.includes(item.id) ? 'checked' : '';
+            listaAdicionaisDiv.innerHTML += `<label class="list-group-item d-flex justify-content-between align-items-center"><div><strong>${item.nome}</strong><small class="d-block text-muted">${item.descricao}</small></div><div class="d-flex align-items-center"><strong class="me-3">+ R$ ${parseFloat(item.preco).toFixed(2).replace('.', ',')}</strong><input class="form-check-input" type="checkbox" data-preco="${item.preco}" data-nome="${item.nome}" data-id="${item.id}" ${isChecked}></div></label>`;
         });
 
-        // Adiciona os eventos
-        planoSelect.addEventListener('change', calcularTotal);
-        listaAdicionaisDiv.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-            checkbox.addEventListener('change', calcularTotal);
-        });
-
-        calcularTotal(); // Calcula o total inicial
-        modalCombo.show(); // Abre o modal
+        calcularTotal();
+        goToStep(1);
+        modalCombo.show();
     }
-
-
-    // Listener de clique principal
-    document.body.addEventListener('click', function (event) {
+    
+    // --- EVENT LISTENERS ---
+    document.body.addEventListener('click', function(event) {
         const targetPlano = event.target.closest('.btn-abrir-combo');
-        const targetPacote = event.target.closest('.btn-abrir-combo-pacote');
-
         if (targetPlano) {
             event.preventDefault();
-            const planoId = targetPlano.dataset.planoId;
-            abrirModalCombo(planoId, null); // Abre com um plano pré-selecionado
-        }
-
-        if (targetPacote) {
-            event.preventDefault();
-            const pacoteId = targetPacote.dataset.pacoteId;
-            abrirModalCombo(null, pacoteId); // Abre com um pacote pré-selecionado
+            abrirModalCombo(targetPlano.dataset.planoId);
         }
     });
+    
+    planosBaseContainer.addEventListener('click', function(event) {
+        const targetCard = event.target.closest('.modal-plan-card');
+        if (targetCard) {
+            document.querySelectorAll('.modal-plan-card').forEach(c => c.classList.remove('selected'));
+            targetCard.classList.add('selected');
+            planoBaseSelecionado = { id: targetCard.dataset.id, nome: targetCard.dataset.nome, preco: targetCard.dataset.preco };
+            calcularTotal();
+        }
+    });
+    // Listener para checkboxes no Passo 2
+    listaAdicionaisDiv.addEventListener('change', calcularTotal);
+    
+    // Listeners dos botões de navegação do modal
+    btnNext.addEventListener('click', () => goToStep(2));
+    btnVoltar.addEventListener('click', () => goToStep(1));
 
-
-        const btnContratarWhatsapp = document.getElementById('btn-contratar-whatsapp');
-        if (btnContratarWhatsapp) {
-            btnContratarWhatsapp.addEventListener('click', function (event) {
-                event.preventDefault();
-                const nomeCliente = document.getElementById('cliente-nome').value.trim();
-                if (nomeCliente === '') {
-                    alert('Por favor, preencha seu nome completo.');
-                    return;
-                }
-                let resumoPedido = `*Plano Principal:*\n- ${planoBaseNome}\n\n`;
-                let totalFinal = planoBasePreco;
-                const adicionaisSelecionados = document.querySelectorAll('#lista-adicionais input[type="checkbox"]:checked');
-                if (adicionaisSelecionados.length > 0) {
-                    resumoPedido += `*Pacotes Adicionais:*\n`;
-                    adicionaisSelecionados.forEach(checkbox => {
-                        resumoPedido += `- ${checkbox.dataset.nome}\n`;
-                        totalFinal += parseFloat(checkbox.dataset.preco);
-                    });
-                }
-                const valorTotalTexto = `*Total Mensal:* R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
-                const mensagem = `Olá! Gostaria de contratar o seguinte combo:\n\n*Nome:* ${nomeCliente}\n\n${resumoPedido}\n${valorTotalTexto}`;
-                const numeroWhatsapp = "5575991697370";
-                const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
-                window.open(urlWhatsapp, '_blank');
+    // Listener do botão do WhatsApp (lógica da mensagem atualizada)
+    btnContratar.addEventListener('click', function(event) {
+        event.preventDefault();
+        const nomeCliente = nomeClienteEl.value.trim();
+        if (nomeCliente === '') {
+            alert('Por favor, preencha seu nome completo.'); return;
+        }
+        if (!planoBaseSelecionado) {
+            alert('Ocorreu um erro. Por favor, volte e selecione um plano.'); return;
+        }
+        
+        let resumoPedido = `*Plano Principal:*\n- ${planoBaseSelecionado.nome}\n\n`;
+        let totalFinal = parseFloat(planoBaseSelecionado.preco);
+        const adicionaisSelecionados = document.querySelectorAll('#lista-adicionais input[type="checkbox"]:checked');
+        if (adicionaisSelecionados.length > 0) {
+            resumoPedido += `*Pacotes Adicionais:*\n`;
+            adicionaisSelecionados.forEach(checkbox => {
+                resumoPedido += `- ${checkbox.dataset.nome}\n`;
+                totalFinal += parseFloat(checkbox.dataset.preco);
             });
         }
-    }
+        const valorTotalTexto = `*Total Mensal:* R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
+        const mensagem = `Olá! Gostaria de contratar o seguinte combo:\n\n*Nome:* ${nomeCliente}\n\n${resumoPedido}\n${valorTotalTexto}`;
+        const numeroWhatsapp = "5508007226662";
+        const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
+        window.open(urlWhatsapp, '_blank');
+    });
+}
 
     // ===================================================================
     // SEÇÃO 2: ANIMAÇÕES E INTERATIVIDADE

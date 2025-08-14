@@ -42,41 +42,48 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
-                {{-- NOVA SEÇÃO para selecionar o plano de internet --}}
-                <div class="mb-4">
-                    <label for="plano-internet-select" class="form-label"><strong>1. Escolha seu plano de Internet:</strong></label>
-                    <select class="form-select form-select-lg" id="plano-internet-select">
-                        {{-- Opções populadas via JavaScript --}}
-                    </select>
-                </div>
-
-                <hr>
-
-                {{-- Seção para os pacotes adicionais --}}
-                <div class="mb-4">
-                    <label class="form-label"><strong>2. Turbine sua conexão (opcional):</strong></label>
-                    <div id="lista-adicionais" class="list-group">
-                        {{-- Populado via JavaScript --}}
+                
+                {{-- PASSO 1: ESCOLHA DO PLANO BASE --}}
+                <div id="modal-step-1">
+                    <div class="text-center mb-4">
+                        <h6 class="fw-bold">1. Escolha ou troque seu plano principal:</h6>
+                    </div>
+                    <div id="planos-base-container" class="row g-3">
+                        {{-- Cards dos planos base serão injetados aqui via JS --}}
                     </div>
                 </div>
 
-                <hr>
-
-                {{-- Seção para os dados do cliente --}}
-                <div class="mb-3">
-                    <label for="cliente-nome" class="form-label"><strong>3. Seu nome completo:</strong></label>
-                    <input type="text" class="form-control" id="cliente-nome" placeholder="Digite seu nome aqui" required>
+                {{-- PASSO 2: PACOTES ADICIONAIS E DADOS --}}
+                <div id="modal-step-2" class="d-none">
+                    <div class="mb-4">
+                        <label class="form-label"><strong>2. Turbine sua conexão (opcional):</strong></label>
+                        <div id="lista-adicionais" class="list-group">
+                            {{-- Checkboxes dos adicionais serão injetados aqui via JS --}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <label for="cliente-nome" class="form-label"><strong>3. Seu nome completo:</strong></label>
+                        <input type="text" class="form-control" id="cliente-nome" placeholder="Digite seu nome aqui" required>
+                    </div>
                 </div>
 
             </div>
-            <div class="modal-footer">
-                <div class="total-price-wrapper">
+            <div class="modal-footer justify-content-between">
+                {{-- Botão de Voltar (só aparece no passo 2) --}}
+                <button type="button" id="btn-voltar-passo1" class="btn btn-outline-secondary d-none">
+                    <i class="bi bi-arrow-left me-2"></i>Voltar
+                </button>
+
+                <div class="total-price-wrapper text-end">
                     <span class="total-label">Total Mensal:</span>
                     <span id="valor-total" class="total-amount">R$ 0,00</span>
                 </div>
-                <a href="#" id="btn-contratar-whatsapp" class="btn btn-success btn-lg">
-                    <i class="bi bi-whatsapp me-2"></i>Contratar pelo WhatsApp
+
+                {{-- Botão de Avançar / Contratar --}}
+                <a href="#" id="btn-next-step" class="btn btn-primary">Avançar</a>
+                <a href="#" id="btn-contratar-whatsapp" class="btn btn-success btn-lg d-none">
+                    <i class="bi bi-whatsapp me-2"></i>Contratar
                 </a>
             </div>
         </div>
