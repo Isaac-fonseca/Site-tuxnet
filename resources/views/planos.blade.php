@@ -29,16 +29,17 @@
         <div class="row justify-content-center ">
             <div class="col-lg-10">
                 <ul class="nav nav-pills justify-content-center filter-tabs" id="main-plans-filter">
-                    <li class="nav-item"><a class="nav-link active" href="#" data-filter="all">Todos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-filter="cartao">Exclusivo Cartão</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-filter="fibra">Fibra Óptica</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-filter="cartao">Combo Cartão</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#" data-filter="fibra">Combo Banda Larga</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" data-filter="movel">Planos Móvel</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-filter="pabx">Soluções PABX</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-filter="fixo">Telefone Fixo</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="#" data-filter="fixo">Combo FiXO</a></li>
                 </ul>
             </div>
         </div>
-
+       <div class="text-center mb-0">
+    <small class="text-muted fst-italic">*Sob consulta de viabilidade</small>
+</div>
         {{-- Carrossel 1: Planos Principais --}}
         <div class="position-relative">
             <div class="swiper main-plans-carousel">
@@ -73,15 +74,16 @@
 <div class="row justify-content-center">
     <div class="col-lg-10">
         <ul class="nav nav-pills justify-content-center filter-tabs" id="special-plans-filter">
-            <li class="nav-item"><a class="nav-link active" href="#" data-filter="all">Todos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" data-filter="max">MAX</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#" data-filter="max">MAX</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-filter="globoplay">Globoplay</a></li>
 
             <li class="nav-item"><a class="nav-link" href="#" data-filter="playkids">Playkids</a></li>
         </ul>
     </div>
 </div>
-
+ <div class="text-center mb-0">
+    <small class="text-muted fst-italic">*Sob consulta de viabilidade</small>
+</div>
         {{-- Carrossel 2: Planos Especiais --}}
         <div class="position-relative">
             <div class="swiper special-plans-carousel">
@@ -147,8 +149,49 @@
             </div>
         </div>
     </div>
-</section>
 
+</section>
+<!-- ======================================= -->
+<!-- NOVA SEÇÃO: PROVA SOCIAL (DEPOIMENTOS) -->
+<!-- ======================================= -->
+<section id="prova-social" class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Quem Confia na Tuxnet</h2>
+            <p class="lead-corporate">Junte-se a dezenas de empresas da região que contam com a nossa infraestrutura para crescer.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="testimonial-card">
+                    <blockquote>
+                        "Desde que implementamos a solução de Link Dedicado da Tuxnet, nossas quedas de sistema zeraram. A estabilidade é incomparável e o suporte é incrivelmente ágil."
+                    </blockquote>
+                    <div class="author-info">
+                        <img src="https://placehold.co/100x100/A428FF/FFFFFF?text=JS" alt="Foto de João Silva">
+                        <div>
+                            <p class="author-name mb-0">João Silva</p>
+                            <p class="author-company mb-0">Diretor de TI, Empresa Exemplo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="testimonial-card">
+                    <blockquote>
+                        "O Wi-Fi para clientes transformou a experiência em nossa loja. É rápido, seguro e a equipe da Tuxnet cuidou de toda a instalação e gerenciamento. Recomendo!"
+                    </blockquote>
+                    <div class="author-info">
+                        <img src="https://placehold.co/100x100/340667/FFFFFF?text=MA" alt="Foto de Maria Andrade">
+                        <div>
+                            <p class="author-name mb-0">Maria Andrade</p>
+                            <p class="author-company mb-0">Gerente, Varejo ABC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection
 
 @push('scripts')

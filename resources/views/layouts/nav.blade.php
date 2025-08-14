@@ -26,7 +26,7 @@
     <ul class="dropdown-menu" aria-labelledby="navbarDropdownPlanos">
         <div class="dropdown-menu-inner">
             <li><a class="dropdown-item" href="{{ route('planos.servicos', ['categoria' => 'pessoal']) }}"> <i class="bi bi-house-door-fill"></i> Para Você</a></li>
-            <li><a class="dropdown-item" href="{{ route('planos.servicos', ['categoria' => 'empresarial']) }}"> <i class="bi bi-building-fill"></i> Para Empresa</a></li>
+            <li><a class="dropdown-item" href="{{ route('empresa.servicos', ['categoria' => 'empresarial']) }}"> <i class="bi bi-building-fill"></i> Para Empresa</a></li>
         </div>
     </ul>
 </li>
@@ -34,7 +34,7 @@
                     <a class="nav-link" href="{{ route('home') }}#cta-whatsapp">Contato</a>
                 </li>
   <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('trabalhe-conosco') ? 'active' : '' }}" href="{{ url('/trabalhe-conosco') }}">trabalhe conosco</a>
+                    <a class="nav-link {{ request()->routeIs('trabalhe-conosco') ? 'active' : '' }}" href="{{ url('/trabalhe-conosco') }}">Trabalhe conosco</a>
                 </li>
                <li class="nav-item d-lg-none mt-4">
     <a class="btn btn-secondary-tuxnet" href="{{ url('/cliente/login') }}">
