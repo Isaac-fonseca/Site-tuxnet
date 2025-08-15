@@ -17,6 +17,7 @@
      @vite(['resources/css/app.css', 'resources/js/app.js'])
      <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
      <div id="page-wrapper">
@@ -122,7 +123,7 @@
                         </div>
                     </div>
                 </div>
->>>>>>> fc4029cc137dbb2540b66e298d88c230916bde9b
+
             </div>
         </div>
     </div>
@@ -134,6 +135,7 @@
         const adicionaisData = @json($adicionais ?? []);
         const pacotesData = @json($pacotes ?? []);
     </script>
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>
 

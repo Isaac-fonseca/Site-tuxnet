@@ -1,3 +1,5 @@
+{{-- /resources/views/home.blade.php --}}
+
 @extends('layouts.app')
 
 @section('title', 'Página Inicial')
@@ -8,176 +10,129 @@
 
 @section('content')
 
-   <section id="hero-carousel" class="hero-carousel">
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-
+    <section id="hero-carousel" class="hero-carousel">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('img/dogtuxnet.png') }}" class="d-block w-100" alt="Banner 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('img/preguiça200.png') }}" class="d-block w-100" alt="Banner 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
         </div>
-        <div class="carousel-inner">
+    </section>
 
-            {{-- Slide 1 --}}
-            <div class="carousel-item active">
-                <img src="{{ asset('img/dogtuxnet.png') }}" class="d-block w-100" alt="Banner 1">
+    <section id="planos-destaque" class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold">Ofertas Especiais para Você!</h2>
+                <p class="lead text-muted">Garanta sua ultravelocidade com preço de promoção antes que acabe.</p>
             </div>
 
-
-
-            {{-- NOVO SLIDE 3 --}}
-            <div class="carousel-item">
-                <img src="{{ asset('img/preguiça200.png') }}" class="d-block w-100" alt="Banner 3">
-            </div>
-
-
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próximo</span>
-        </button>
-    </div>
-</section>
-
-{{-- /resources/views/home.blade.php --}}
-
-<section id="planos-destaque" class="section-padding">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold">Ofertas Especiais para Você!</h2>
-            <p class="lead text-muted">Garanta sua ultravelocidade com preço de promoção antes que acabe.</p>
-        </div>
-
-        <div class="swiper plans-carousel">
-            <div class="swiper-wrapper">
-
-                {{-- Loop para exibir apenas os planos em destaque --}}
-                @foreach($planosDestaque as $plano)
-                    <div class="swiper-slide">
-                        {{-- A MÁGICA ACONTECE AQUI: Usando o "molde" do card --}}
-                        @include('partials.plan_card', ['plano' => $plano])
-                    </div>
-                @endforeach
-
-            </div>
-        </div>
-
-        <div class="swiper-navigation-wrapper">
-            <div class="swiper-button-prev">
-                <i class="bi bi-chevron-left"></i>
-            </div>
-            <div class="swiper-button-next">
-                <i class="bi bi-chevron-right"></i>
-            </div>
-        </div>
-
-        <div class="text-center mt-5">
-            <a href="{{ route('planos.servicos') }}" class="btn btn-ver-planos btn-lg px-4">
-                <i class="bi bi-grid-3x3-gap-fill me-2"></i>
-                Ver Todos os Nossos Planos
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="app-tuxnet" class="section-padding">
-    <div class="container">
-        <div class="row align-items-center">
-           <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0 d-flex justify-content-center animate-on-scroll fade-in-right">
-                <img src="{{ asset('img/celular.png') }}" class="img-fluid rounded shadow-lg app-tuxnet-image" alt="Aplicativo Tuxnet">
-            </div>
-            <div class="col-lg-6 order-lg-1 animate-on-scroll fade-in-left">
-                <h2 class="font-montserrat mb-3">Gerencie Tudo na <span class="text-primary-tuxnet">Palma da Sua Mão</span></h2>
-                <p class="lead mb-3">Com o aplicativo Tuxnet, você tem o controle total dos seus serviços de forma rápida e fácil!</p>
-                <ul class="list-unstyled app-features-list mb-4">
-                    <li><i class="bi bi-check-circle-fill text-success me-2"></i>Acompanhe seu consumo de dados.</li>
-                    <li><i class="bi bi-receipt-cutoff text-success me-2"></i>Acesse e pague suas faturas.</li>
-                    <li><i class="bi bi-tools text-success me-2"></i>Solicite suporte técnico simplificado.</li>
-                    <li><i class="bi bi-bell-fill text-success me-2"></i>Fique por dentro das novidades e promoções.</li>
-                    <li><i class="bi bi-pencil-square text-success me-2"></i>Altere dados cadastrais e muito mais!</li>
-                </ul>
-                <div class="row align-items-center">
-                    <div class="col-md-7">
-                        <p class="fw-bold mb-2">Baixe agora e facilite seu dia a dia:</p>
-                        <div class="app-buttons-container">
-                            <a href="https://play.google.com/store/apps/details?id=com.hubsoft_client_app.tuxnet&hl=pt_BR" target="_blank" class="btn-app-store">
-                                <i class="bi bi-google-play"></i>
-                                <div>
-                                    <span>Disponível no</span>
-                                    Google Play
-                                </div>
-                            </a>
-                            <a href="https://apps.apple.com/br/app/tuxnet/id1530094992" target="_blank" class="btn-app-store">
-                                <i class="bi bi-apple"></i>
-                                <div>
-                                    <span>Baixar na</span>
-                                    App Store
-                                </div>
-                            </a>
+            <div class="swiper plans-carousel" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper">
+                    @foreach($planosDestaque as $plano)
+                        <div class="swiper-slide">
+                            @include('partials.plan_card', ['plano' => $plano])
                         </div>
-                    </div>
-                    <div class="col-md-5 mt-4 mt-md-0 d-flex justify-content-center justify-content-md-end">
-                        <img src="{{ asset('img/playstore.png') }}" class="img-fluid app-qrcode" alt="QR Code para baixar o aplicativo Tuxnet">
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="swiper-navigation-wrapper" data-aos="fade-up" data-aos-delay="300">
+                <div class="swiper-button-prev"><i class="bi bi-chevron-left"></i></div>
+                <div class="swiper-button-next"><i class="bi bi-chevron-right"></i></div>
+            </div>
+
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="{{ route('planos.servicos') }}" class="btn btn-ver-planos btn-lg px-4">
+                    <i class="bi bi-grid-3x3-gap-fill me-2"></i>
+                    Ver Todos os Nossos Planos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="app-tuxnet" class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0 d-flex justify-content-center" data-aos="fade-left">
+                    <img src="{{ asset('img/celular.png') }}" class="img-fluid rounded shadow-lg app-tuxnet-image" alt="Aplicativo Tuxnet">
+                </div>
+                <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+                    <h2 class="font-montserrat mb-3">Gerencie Tudo na <span class="text-primary-tuxnet">Palma da Sua Mão</span></h2>
+                    <p class="lead mb-3">Com o aplicativo Tuxnet, você tem o controle total dos seus serviços de forma rápida e fácil!</p>
+                    <ul class="list-unstyled app-features-list mb-4">
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>Acompanhe seu consumo de dados.</li>
+                        <li><i class="bi bi-receipt-cutoff text-success me-2"></i>Acesse e pague suas faturas.</li>
+                        <li><i class="bi bi-tools text-success me-2"></i>Solicite suporte técnico simplificado.</li>
+                        <li><i class="bi bi-bell-fill text-success me-2"></i>Fique por dentro das novidades e promoções.</li>
+                        <li><i class="bi bi-pencil-square text-success me-2"></i>Altere dados cadastrais e muito mais!</li>
+                    </ul>
+                    <div class="row align-items-center">
+                        <div class="col-md-7">
+                            <p class="fw-bold mb-2">Baixe agora e facilite seu dia a dia:</p>
+                            <div class="app-buttons-container">
+                                <a href="https://play.google.com/store/apps/details?id=com.hubsoft_client_app.tuxnet&hl=pt_BR" target="_blank" class="btn-app-store">
+                                    <i class="bi bi-google-play"></i>
+                                    <div><span>Disponível no</span> Google Play</div>
+                                </a>
+                                <a href="https://apps.apple.com/br/app/tuxnet/id1530094992" target="_blank" class="btn-app-store">
+                                    <i class="bi bi-apple"></i>
+                                    <div><span>Baixar na</span> App Store</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-5 mt-4 mt-md-0 d-flex justify-content-center justify-content-md-end">
+                            <img src="{{ asset('img/playstore.png') }}" class="img-fluid app-qrcode" alt="QR Code para baixar o aplicativo Tuxnet">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     <section id="porque-tuxnet" class="section-padding bg-white">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center mb-5">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
                     <h2 class="font-montserrat">Por que escolher a <span class="text-primary-tuxnet">Tuxnet</span>?</h2>
                     <p class="lead">Descubra os diferenciais que fazem da nossa conexão a melhor escolha para você.</p>
                 </div>
             </div>
             <div class="row text-center justify-content-center">
-
-                <div class="col-lg-4 col-md-6 mb-4 animate-on-scroll fade-in-up">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-card h-100 p-4">
                         <div class="feature-icon mb-3"><i class="bi bi-speedometer2 display-4 text-secondary-tuxnet"></i></div>
                         <h5 class="font-montserrat mb-2">Ultra Velocidade</h5>
                         <p class="small">Fibra óptica de ponta para navegação, streaming e jogos sem travamentos.</p>
                     </div>
                 </div>
-
-                <div class="col-lg-4 col-md-6 mb-4 animate-on-scroll fade-in-up" data-animation-delay="100">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="feature-card h-100 p-4">
                         <div class="feature-icon mb-3"><i class="bi bi-headset display-4 text-secondary-tuxnet"></i></div>
                         <h5 class="font-montserrat mb-2">Suporte Ágil</h5>
                         <p class="small">Nossa equipe especializada está pronta para te ajudar rapidamente quando precisar.</p>
                     </div>
                 </div>
-
-                <div class="col-lg-4 col-md-6 mb-4 animate-on-scroll fade-in-up" data-animation-delay="200">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="feature-card h-100 p-4">
                         <div class="feature-icon mb-3"><i class="bi bi-gem display-4 text-secondary-tuxnet"></i></div>
                         <h5 class="font-montserrat mb-2">Tecnologia de Ponta</h5>
                         <p class="small">Investimento constante em infraestrutura moderna para sua melhor experiência.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4 animate-on-scroll fade-in-up" data-animation-delay="300">
-                    <div class="feature-card h-100 p-4">
-                        <div class="feature-icon mb-3"><i class="bi bi-file-earmark-text display-4 text-secondary-tuxnet"></i></div>
-                        <h5 class="font-montserrat mb-2">Planos Transparentes</h5>
-                        <p class="small">Sem surpresas na fatura e com a clareza que você merece ao contratar.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4 animate-on-scroll fade-in-up" data-animation-delay="400">
-                    <div class="feature-card h-100 p-4">
-                        <div class="feature-icon mb-3">
-                            <i class="bi bi-gift-fill display-4 text-secondary-tuxnet"></i>
-                        </div>
-                        <h5 class="font-montserrat mb-2">Vantagens Exclusivas (SVA)</h5>
-                        <p class="small">Aproveite pacotes bônus como Deezer, MAX e GloboPlay inclusos em diversos planos para seu entretenimento!</p>
                     </div>
                 </div>
             </div>
@@ -185,49 +140,39 @@
     </section>
 
     <section id="cidades-atendidas" class="section-padding cidades-atendidas">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center mb-5">
-                <h2 class="font-montserrat">Cidades <span class="text-primary-tuxnet">Atendidas na Bahia</span></h2>
-                <p class="lead">Levamos nossa conexão de alta qualidade para diversas localidades. Clique na sua cidade para ver nossos endereços!</p>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            {{-- Loop para criar os cards de cada cidade --}}
-            @foreach($lojasPorCidade as $cidade => $enderecos)
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card h-100 text-center cidade-card"
-                     data-bs-toggle="modal"
-                     data-bs-target="#modalEnderecos"
-                     data-cidade="{{ $cidade }}"
-                     data-enderecos="{{ json_encode($enderecos) }}"
-                     style="cursor: pointer;">
-                     {{-- Selo de destaque para a Matriz --}}
-                    @if ($cidade == 'Riachão do Jacuípe')
-                        <span class="selo-matriz">MATRIZ <i class="bi bi-star-fill ms-1"></i></span>
-                    @endif
-
-                    <div class="card-body">
-                      <img src="img/logos/tlogo.svg" alt="Ícone de localização Tuxo" class="icone-localizacao mb-3">
-                        <h5 class="card-title font-montserrat">{{ $cidade }}</h5>
-                    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="font-montserrat">Cidades <span class="text-primary-tuxnet">Atendidas na Bahia</span></h2>
+                    <p class="lead">Levamos nossa conexão de alta qualidade para diversas localidades. Clique na sua cidade para ver nossos endereços!</p>
                 </div>
             </div>
-            @endforeach
-        </div>
-        <div class="row mt-4">
-            <div class="col-12 text-center">
-                <p>Não encontrou sua cidade? <a href="{{ route('home') }}#cta-whatsapp" class="text-primary-tuxnet fw-bold">Entre em contato</a> para verificar a disponibilidade.</p>
+            <div class="row justify-content-center">
+                @foreach($lojasPorCidade as $cidade => $enderecos)
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                    <div class="card h-100 text-center cidade-card" data-bs-toggle="modal" data-bs-target="#modalEnderecos" data-cidade="{{ $cidade }}" data-enderecos="{{ json_encode($enderecos) }}" style="cursor: pointer;">
+                        @if ($cidade == 'Riachão do Jacuípe')
+                            <span class="selo-matriz">MATRIZ <i class="bi bi-star-fill ms-1"></i></span>
+                        @endif
+                        <div class="card-body">
+                            <img src="img/logos/tlogo.svg" alt="Ícone de localização Tuxo" class="icone-localizacao mb-3">
+                            <h5 class="card-title font-montserrat">{{ $cidade }}</h5>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <div class="row mt-4" data-aos="fade-up">
+                <div class="col-12 text-center">
+                    <p>Não encontrou sua cidade? <a href="#cta-whatsapp" class="text-primary-tuxnet fw-bold">Entre em contato</a> para verificar a disponibilidade.</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-
+    </section>
 
     <section id="cta-whatsapp" class="section-padding bg-light">
-       <div class="container">
-            <div class="cta-content-box animate-on-scroll fade-in-up">
+       <div class="container" data-aos="fade-up">
+            <div class="cta-content-box">
                 <div class="row align-items-center">
                     <div class="col-md-5 mb-4 mb-md-0 text-center text-md-start">
                         <img src="{{ asset('img/tuxvalor.jpg') }}" class="img-fluid rounded cta-image" alt="Fale com a Tuxnet">
@@ -251,65 +196,46 @@
             </div>
         </div>
     </section>
-    {{--
- <section id="sobre-empresa" class="section-padding bg-white">
 
- <div class="container">
-
-<div class="row align-items-center">
-
-<div class="col-lg-6 mb-4 mb-lg-0 text-center animate-on-scroll fade-in-left">
-
-<img src="{{ asset('img/slogan.png') }}" class="img-fluid rounded shadow sobre-empresa-image" alt="Sobre a Tuxnet">
-
- </div>
-
- <div class="col-lg-6 animate-on-scroll fade-in-right">
-
- <h2 class="font-montserrat mb-3 text-center text-lg-start">Bem-vindo à <span class="text-primary-tuxnet">Tuxnet</span></h2>
-
- <p class="lead">Somos uma empresa líder em soluções de telecomunicações, dedicada a fornecer internet de alta velocidade, telefonia e serviços inovadores para residências e empresas.</p>
- <p>Com uma infraestrutura moderna e uma equipe apaixonada por tecnologia, nosso compromisso é conectar pessoas e negócios ao futuro, oferecendo qualidade, confiança e um atendimento excepcional.</p>
-
- <p>Nossa missão é simplificar sua vida digital, garantindo que você tenha sempre a melhor experiência, seja navegando, trabalhando, estudando ou se divertindo.</p>
-
- <div class="text-center text-lg-start">
-
-<a href="{{ url('/sobre') }}" class="btn btn-primary-tuxnet mt-3">Saiba Mais Sobre Nós</a>
-
- </div>
-
- </div>
-
- </div>
- </div>
-
-</section>
---}}
     <a href="https://wa.me/5508007226662?text=Olá! Gostaria de mais informações sobre os planos da Tuxnet." target="_blank" class="whatsapp-float" title="Fale Conosco pelo WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 
-
 @endsection
 
-
-@push( 'modals')
-<div class="modal fade" id="modalEnderecos" tabindex="-1" aria-labelledby="modalEnderecosLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title font-montserrat" id="modalEnderecosLabel">Endereços em <span id="modal-cidade-nome"></span></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-    <div id="modal-lista-enderecos">
+@push('modals')
+    {{-- O HTML do seu modal de endereços permanece aqui, sem alterações --}}
+     <div class="modal fade" id="modalEnderecos" tabindex="-1" aria-labelledby="modalEnderecosLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title font-montserrat" id="modalEnderecosLabel">Endereços em <span id="modal-cidade-nome"></span></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="modal-lista-enderecos">
+              {{-- Endereços são populados aqui via JavaScript --}}
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
         </div>
-</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
       </div>
     </div>
-  </div>
-</div>
+@endpush
+
+@push('scripts')
+    {{-- Adiciona o script da biblioteca AOS e o inicializa --}}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializa o AOS depois que a página carregar completamente
+        window.addEventListener('load', function() {
+            AOS.init({
+                duration: 800,      // Duração da animação em ms
+                once: true,         // A animação acontece apenas uma vez
+                offset: 100,        // Distância em pixels para disparar a animação
+            });
+        });
+    </script>
 @endpush
